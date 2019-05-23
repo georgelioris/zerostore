@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../actions";
+import Cart from "./Cart";
 
 class Home extends Component {
   addToCart = item => {
@@ -42,8 +43,13 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <h3>Home</h3>
-        {this.renderItems()}
+        <div className="row">
+          <div className="col s10">
+            <h3>Items</h3>
+            {this.renderItems()}
+          </div>
+          <Cart />
+        </div>
       </div>
     );
   }

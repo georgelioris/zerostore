@@ -9,7 +9,7 @@ const cartItems = (state = [], action) => {
         return [...state, item];
       } else {
         item.quantity++;
-        return state;
+        return [...state];
       }
     default:
       return state;
