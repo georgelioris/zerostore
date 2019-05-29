@@ -1,16 +1,15 @@
-import { ADD_TO_CART } from "../constants";
+import { ADD_TO_CART, INC_QUANT } from "../constants";
 
 const cartItems = (state = [], action) => {
+  const { item } = action;
   switch (action.type) {
     case ADD_TO_CART:
-      const { item } = action;
-      if (isNaN(item.quantity)) {
-        item.quantity = 1;
-        return [...state, item];
-      } else {
-        item.quantity++;
-        return [...state];
-      }
+      const newItem = { id: item.id, price: item.price, quantity: 1 };
+      return [...state, newItem];
+    case INC_QUANT:
+      item.quantity++;
+      return [...state];
+
     default:
       return state;
   }

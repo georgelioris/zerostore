@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToCart } from "../actions";
+import { addToCart, incQuant } from "../actions";
 import Cart from "./Cart";
 
 class Home extends Component {
-  addToCart = item => {
-    this.props.addToCart(item);
-    console.log(this.props.cartItems);
+  handleClick = item => {
+    //Check if the item is already in cart
+    const itemInCart = this.props.cartItems.find(
+      cartItem => item.id === cartItem.id
+    );
+    //If item is allready in cart increase quantity
+    //Else add it in cart
+    return itemInCart
+      ? this.props.incQuant(itemInCart)
+      : this.props.addToCart(item);
   };
 
   renderItems() {
@@ -21,7 +28,7 @@ class Home extends Component {
                 <span
                   to="/"
                   className="btn-floating halfway-fab waves-effect waves-light red"
-                  onClick={() => this.addToCart(item)}
+                  onClick={() => this.handleClick(item)}
                 >
                   <i className="material-icons">add</i>
                 </span>
@@ -67,6 +74,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addToCart: item => {
       dispatch(addToCart(item));
+    },
+    incQuant: item => {
+      dispatch(incQuant(item));
     }
   };
 };
