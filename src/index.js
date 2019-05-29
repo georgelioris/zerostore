@@ -6,9 +6,9 @@ import reducer from "./reducers";
 import { Provider } from "react-redux";
 import "./index.css";
 import { initState } from "./preloadState";
-
 //import history from "./history";
 
+//Logging
 const logger = store => next => action => {
   console.log("dispatching", action);
   let { item } = action;
@@ -19,7 +19,7 @@ const logger = store => next => action => {
 };
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(reducer, initState, applyMiddleware(logger, logger));
+const store = createStore(reducer, initState, applyMiddleware(logger));
 console.log(store.getState());
 
 const Root = () => {
