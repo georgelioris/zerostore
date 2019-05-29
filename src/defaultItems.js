@@ -53,5 +53,37 @@ export const defaultItems = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 90,
     img: Item6
+  },
+  {
+    id: 7,
+    title: "Black",
+    desc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    price: 390,
+    img: Item6
+  },
+  {
+    id: 8,
+    title: "Another One",
+    desc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    price: 40,
+    img: Item6
+  },
+  {
+    id: 9,
+    title: "Orange",
+    desc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    price: 190,
+    img: Item6
+  },
+  {
+    id: 10,
+    title: "Model One",
+    desc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
+    price: 55,
+    img: Item6
   }
 ];

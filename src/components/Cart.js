@@ -12,11 +12,11 @@ class Cart extends Component {
               <div className="card-content white-text">
                 <span className="card-title">
                   {this.props.items.find(item => cartItem.id === item.id).title}
+
+                  <span> &times; </span>
+                  <span>{cartItem.quantity}</span>
                 </span>
                 <div className="action">
-                  <span>{cartItem.quantity}</span>
-                  <span> &times; </span>
-
                   <br />
                   <span>Subtotal: {cartItem.price * cartItem.quantity}$</span>
                 </div>
@@ -25,13 +25,15 @@ class Cart extends Component {
           );
         })}
         <hr />
-        <span>
+        <div className="total">
           Total:
-          {this.props.cartItems.reduce((acc, item) => {
-            return acc + item.price * item.quantity;
-          }, 0)}
-          $
-        </span>
+          <span>
+            {this.props.cartItems.reduce((acc, item) => {
+              return acc + item.price * item.quantity;
+            }, 0)}
+            $
+          </span>
+        </div>
       </div>
     );
   }

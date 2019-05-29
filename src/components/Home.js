@@ -18,7 +18,7 @@ class Home extends Component {
 
   renderItems() {
     return (
-      <div className="item-container">
+      <div className="box">
         {this.props.items.map(item => {
           return (
             <div className="card" key={item.id}>
@@ -49,7 +49,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col s10">
             <h3>Items</h3>

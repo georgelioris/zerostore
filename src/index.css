@@ -1,6 +1,7 @@
 .box {
   display: flex;
   justify-content: space-between;
+  align-content: flex-start;
   flex-wrap: wrap;
   widows: 100%;
   float: left;
@@ -54,4 +55,14 @@
 
 .cartList .card {
   width: 100%;
+  font-size: 1em;
+}
+
+.cartList .total span {
+  float: right;
+}
+
+.row .col .cartList .card .white-text {
+  padding: 15px 15px 15px 15px;
+  margin: 0px;
 }
