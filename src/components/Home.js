@@ -9,8 +9,8 @@ class Home extends Component {
     const itemInCart = this.props.cartItems.find(
       cartItem => item.id === cartItem.id
     );
-    //If item is allready in cart increase quantity
-    //Else add it in cart
+    //If true, increase quantity
+    //Else, add it in cart
     return itemInCart
       ? this.props.incQuant(itemInCart)
       : this.props.addToCart(item);
