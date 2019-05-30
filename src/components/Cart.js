@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { incQuant, decQuant } from "../actions";
+import { incQuant, decQuant, removeFromCart } from "../actions";
 import Icon from "@material-ui/core/Icon";
 
 class Cart extends Component {
@@ -9,6 +9,9 @@ class Cart extends Component {
   };
   handleDecQuant = item => {
     this.props.decQuant(item);
+  };
+  handleRemoveFromCart = item => {
+    this.props.removeFromCart(item);
   };
 
   renderCart() {
@@ -20,7 +23,13 @@ class Cart extends Component {
               <div className="card-content white-text">
                 <span className="card-title">
                   {this.props.items.find(item => cartItem.id === item.id).title}
+                  <div className="remove">
+                    <span onClick={() => this.handleRemoveFromCart(cartItem)}>
+                      <Icon>clear</Icon>
+                    </span>
+                  </div>
                 </span>
+
                 <div className="action">
                   <span onClick={() => this.handleDecQuant(cartItem)}>
                     <Icon>remove_circle</Icon>
@@ -75,6 +84,9 @@ const mapDispatchToProps = dispatch => {
     },
     decQuant: item => {
       dispatch(decQuant(item));
+    },
+    removeFromCart: item => {
+      dispatch(removeFromCart(item));
     }
   };
 };
