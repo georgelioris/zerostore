@@ -1,4 +1,9 @@
-import { ADD_TO_CART, INC_QUANT } from "../constants";
+import { ADD_TO_CART, INC_QUANT, DEC_QUANT } from "../constants";
+
+const removeById = (state = [], id) => {
+  const cartItems = state.filter(cartItem => cartItem.id !== id);
+  return cartItems;
+};
 
 const cartItems = (state = [], action) => {
   const { item } = action;
@@ -11,6 +16,14 @@ const cartItems = (state = [], action) => {
       return [...state];
     default:
       return state;
+    case DEC_QUANT:
+      if (item.quantity > 1) {
+        item.quantity--;
+        return [...state];
+      } else {
+        const cartItems = removeById(state, item.id);
+        return cartItems;
+      }
   }
 };
 
