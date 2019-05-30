@@ -6,8 +6,7 @@ import {
 } from "../constants";
 
 const removeById = (state = [], id) => {
-  const cartItems = state.filter(cartItem => cartItem.id !== id);
-  return cartItems;
+  return state.filter(cartItem => cartItem.id !== id);
 };
 
 const cartItems = (state = [], action) => {
