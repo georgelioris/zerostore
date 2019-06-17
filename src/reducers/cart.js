@@ -5,32 +5,54 @@ import {
   REMOVE_FROM_CART
 } from "../constants";
 
-const removeById = (state = [], id) => {
-  return state.filter(cartItem => cartItem.id !== id);
-};
-
-const cartItems = (state = [], action) => {
+const cartItem = (state, action) => {
   const { item } = action;
   switch (action.type) {
     case ADD_TO_CART:
-      const addedItem = { id: item.id, price: item.price, quantity: 1 };
-      return [...state, addedItem];
+      return {
+        id: item.id,
+        price: item.price,
+        quantity: 1
+      };
     case INC_QUANT:
-      item.quantity++;
-      return [...state];
-    default:
+      if (state.id === item.id) {
+        return {
+          ...state,
+          quantity: state.quantity + 1
+        };
+      }
       return state;
     case DEC_QUANT:
-      if (item.quantity > 1) {
-        item.quantity--;
-        return [...state];
-      } else {
-        const cartItems = removeById(state, item.id);
-        return cartItems;
+      if (state.id === item.id) {
+        return {
+          ...state,
+          quantity: state.quantity - 1
+        };
       }
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+const removeFromCart = (state = [], action) => {
+  const { item } = action;
+  return state.filter(i => i.id !== item.id);
+};
+
+const cartItems = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TO_CART:
+      return [...state, cartItem(undefined, action)];
+    case INC_QUANT:
+      return state.map(i => cartItem(i, action));
+    case DEC_QUANT:
+      return state.map(i => cartItem(i, action));
     case REMOVE_FROM_CART:
-      const cartItems = removeById(state, item.id);
-      return cartItems;
+      return removeFromCart(state, action);
+    default:
+      return state;
   }
 };
 

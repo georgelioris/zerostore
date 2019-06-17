@@ -8,7 +8,12 @@ class Cart extends Component {
     this.props.incQuant(item);
   };
   handleDecQuant = item => {
-    this.props.decQuant(item);
+    const quantCheck =
+      this.props.cartItems.find(cartItem => item.id === cartItem.id).quantity >
+      1;
+    return quantCheck
+      ? this.props.decQuant(item)
+      : this.props.removeFromCart(item);
   };
   handleRemoveFromCart = item => {
     this.props.removeFromCart(item);
@@ -72,8 +77,7 @@ class Cart extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    cartItems: state.cartItems,
-    cartTotal: state.items.cartTotal
+    cartItems: state.cartItems
   };
 };
 

@@ -2,7 +2,8 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   INC_QUANT,
-  DEC_QUANT
+  DEC_QUANT,
+  ITEM_CHANGE
 } from "../constants";
 
 export const addToCart = item => {
@@ -32,6 +33,14 @@ export const incQuant = item => {
 export const decQuant = item => {
   const action = {
     type: DEC_QUANT,
+    item
+  };
+  return action;
+};
+
+export const itemChange = item => {
+  const action = {
+    type: ITEM_CHANGE,
     item
   };
   return action;
