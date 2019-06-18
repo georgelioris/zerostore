@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { incQuant, decQuant, removeFromCart } from "../actions";
-import CartItem from "./CartItem";
+import CartItemList from "./CartItemList";
 
 class Cart extends Component {
   handleIncQuant = item => {
@@ -19,40 +19,17 @@ class Cart extends Component {
     this.props.removeFromCart(item);
   };
 
-  renderCart() {
-    return (
-      <div className="cartList">
-        {this.props.cartItems.map(cartItem => {
-          return (
-            <CartItem
-              key={cartItem.id}
-              cartItem={cartItem}
-              items={this.props.items}
-              IncQuant={() => this.handleIncQuant(cartItem)}
-              DecQuant={() => this.handleDecQuant(cartItem)}
-              RemoveItem={() => this.handleRemove(cartItem)}
-            />
-          );
-        })}
-        <hr />
-        <div className="total">
-          Total:
-          <span>
-            {this.props.cartItems.reduce((acc, item) => {
-              return acc + item.price * item.quantity;
-            }, 0)}
-            $
-          </span>
-        </div>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="col s2">
         <h4>Cart</h4>
-        {this.renderCart()}
+        <CartItemList
+          cartItems={this.props.cartItems}
+          items={this.props.items}
+          IncQuant={this.handleIncQuant}
+          DecQuant={this.handleDecQuant}
+          RemoveItem={this.handleRemove}
+        />
       </div>
     );
   }

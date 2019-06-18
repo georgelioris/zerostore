@@ -37,8 +37,7 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    cartItems: state.cartItems,
-    cartTotal: state.items.cartTotal
+    cartItems: state.cartItems
   };
 };
 
