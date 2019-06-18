@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { incQuant, decQuant, removeFromCart } from "../actions";
-import Icon from "@material-ui/core/Icon";
+import CartItem from "./CartItem";
 
 class Cart extends Component {
   handleIncQuant = item => {
@@ -15,7 +15,7 @@ class Cart extends Component {
       ? this.props.decQuant(item)
       : this.props.removeFromCart(item);
   };
-  handleRemoveFromCart = item => {
+  handleRemove = item => {
     this.props.removeFromCart(item);
   };
 
@@ -24,30 +24,14 @@ class Cart extends Component {
       <div className="cartList">
         {this.props.cartItems.map(cartItem => {
           return (
-            <div className="card grey darken-1" key={cartItem.id}>
-              <div className="card-content white-text">
-                <span className="card-title">
-                  {this.props.items.find(item => cartItem.id === item.id).title}
-                  <div className="remove">
-                    <span onClick={() => this.handleRemoveFromCart(cartItem)}>
-                      <Icon>clear</Icon>
-                    </span>
-                  </div>
-                </span>
-
-                <div className="action">
-                  <span onClick={() => this.handleDecQuant(cartItem)}>
-                    <Icon>remove_circle</Icon>
-                  </span>
-                  <span className="quantity">{cartItem.quantity}</span>
-                  <span onClick={() => this.handleIncQuant(cartItem)}>
-                    <Icon>add_circle</Icon>
-                  </span>
-                  <br />
-                  <span>Subtotal: {cartItem.price * cartItem.quantity}$</span>
-                </div>
-              </div>
-            </div>
+            <CartItem
+              key={cartItem.id}
+              cartItem={cartItem}
+              items={this.props.items}
+              IncQuant={() => this.handleIncQuant(cartItem)}
+              DecQuant={() => this.handleDecQuant(cartItem)}
+              RemoveItem={() => this.handleRemove(cartItem)}
+            />
           );
         })}
         <hr />

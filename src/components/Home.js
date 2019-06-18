@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addToCart, incQuant } from "../actions";
 import Cart from "./Cart";
 import Inventory from "./Inventory";
+import Item from "./Item";
 
 class Home extends Component {
   handleClick = item => {
@@ -17,31 +18,16 @@ class Home extends Component {
       : this.props.addToCart(item);
   };
 
-  renderItems() {
+  renderItemList() {
     return (
       <div className="box">
         {this.props.items.map(item => {
           return (
-            <div className="card" key={item.id}>
-              <div className="card-image">
-                <img src={item.img} alt={item.title} />
-                <span className="card-title">{item.title}</span>
-                <span
-                  to="/"
-                  className="btn-floating halfway-fab waves-effect waves-light red"
-                  onClick={() => this.handleClick(item)}
-                >
-                  <i className="material-icons">add</i>
-                </span>
-              </div>
-
-              <div className="card-content">
-                <p>{item.desc}</p>
-                <p>
-                  <b>Price: {item.price}$</b>
-                </p>
-              </div>
-            </div>
+            <Item
+              item={item}
+              key={item.id}
+              onItemClick={() => this.handleClick(item)}
+            />
           );
         })}
       </div>
@@ -54,7 +40,7 @@ class Home extends Component {
         <div className="row">
           <div className="col s10">
             <h3>Items</h3>
-            {this.renderItems()}
+            {this.renderItemList()}
           </div>
           <Cart />
         </div>
