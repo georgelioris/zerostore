@@ -23,4 +23,12 @@ const Item = ({ item, onItemClick }) => (
   </div>
 );
 
-export default Item;
+const ItemList = ({ items, onClick }) => (
+  <div className="box">
+    {items.map(item => (
+      <Item key={item.id} item={item} onItemClick={() => onClick(item)} />
+    ))}
+  </div>
+);
+
+export default ItemList;

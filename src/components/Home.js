@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addToCart, incQuant } from "../actions";
 import Cart from "./Cart";
 import Inventory from "./Inventory";
-import Item from "./Item";
+import ItemList from "./ItemList";
 
 class Home extends Component {
   handleClick = item => {
@@ -18,29 +18,13 @@ class Home extends Component {
       : this.props.addToCart(item);
   };
 
-  renderItemList() {
-    return (
-      <div className="box">
-        {this.props.items.map(item => {
-          return (
-            <Item
-              item={item}
-              key={item.id}
-              onItemClick={() => this.handleClick(item)}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-
   render() {
     return (
       <div>
         <div className="row">
           <div className="col s10">
             <h3>Items</h3>
-            {this.renderItemList()}
+            <ItemList items={this.props.items} onClick={this.handleClick} />
           </div>
           <Cart />
         </div>
