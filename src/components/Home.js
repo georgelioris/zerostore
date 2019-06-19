@@ -7,12 +7,9 @@ import ItemList from "./ItemList";
 
 class Home extends Component {
   handleClick = item => {
-    //Check if the item is already in cart
     const itemInCart = this.props.cartItems.find(
       cartItem => item.id === cartItem.id
     );
-    //If true, increase quantity
-    //Else, add it in cart
     return itemInCart
       ? this.props.incQuant(itemInCart)
       : this.props.addToCart(item);

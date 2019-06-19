@@ -4,19 +4,17 @@ import { incQuant, decQuant, removeFromCart } from "../actions";
 import CartItemList from "./CartItemList";
 
 class Cart extends Component {
-  handleIncQuant = item => {
-    this.props.incQuant(item);
+  handleIncQuant = cartItem => {
+    this.props.incQuant(cartItem);
   };
-  handleDecQuant = item => {
-    const quantCheck =
-      this.props.cartItems.find(cartItem => item.id === cartItem.id).quantity >
-      1;
+  handleDecQuant = cartItem => {
+    const quantCheck = cartItem.quantity > 1;
     return quantCheck
-      ? this.props.decQuant(item)
-      : this.props.removeFromCart(item);
+      ? this.props.decQuant(cartItem)
+      : this.props.removeFromCart(cartItem);
   };
-  handleRemove = item => {
-    this.props.removeFromCart(item);
+  handleRemove = cartItem => {
+    this.props.removeFromCart(cartItem);
   };
 
   render() {
@@ -44,14 +42,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    incQuant: item => {
-      dispatch(incQuant(item));
+    incQuant: cartItem => {
+      dispatch(incQuant(cartItem));
     },
-    decQuant: item => {
-      dispatch(decQuant(item));
+    decQuant: cartItem => {
+      dispatch(decQuant(cartItem));
     },
-    removeFromCart: item => {
-      dispatch(removeFromCart(item));
+    removeFromCart: cartItem => {
+      dispatch(removeFromCart(cartItem));
     }
   };
 };
