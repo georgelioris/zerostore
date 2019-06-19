@@ -11,7 +11,6 @@ const cartItem = (state, action) => {
     case ADD_TO_CART:
       return {
         id: item.id,
-        price: item.price,
         quantity: 1
       };
     case INC_QUANT:
