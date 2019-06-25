@@ -1,4 +1,4 @@
-.box {
+.itemList {
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
@@ -52,6 +52,9 @@
 }
 
 /**/
+body {
+  background-color: #eeeeee !important;
+}
 
 .cartList .card {
   width: 100%;
@@ -74,4 +77,18 @@
 
 .cartList .remove {
   float: right;
+}
+
+.cartList .subTotal {
+  margin-top: 10px;
+}
+/* .btn-action {
+  background: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+} */
+
+.cartList {
+  user-select: none;
 }

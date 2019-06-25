@@ -22,8 +22,7 @@ class Cart extends Component {
       <div className="col s2">
         <h4>Cart</h4>
         <CartItemList
-          cartItems={this.props.cartItems}
-          items={this.props.items}
+          {...this.props}
           IncQuant={this.handleIncQuant}
           DecQuant={this.handleDecQuant}
           RemoveItem={this.handleRemove}

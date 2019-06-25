@@ -6,8 +6,11 @@ const subTotal = items => cartItem => {
 };
 
 const itemProp = items => (cartItem, prop) => {
-  return items.find(item => cartItem.id === item.id)[prop];
+  const key = cartItem.id;
+  return items[key][prop];
 };
+
+//
 
 const CartItem = ({
   items,
@@ -16,8 +19,8 @@ const CartItem = ({
   onClickDec,
   onClickRemove
 }) => (
-  <div className="card grey darken-1" key={cartItem.id}>
-    <div className="card-content white-text">
+  <div className="card white darken-1" key={cartItem.id}>
+    <div className="card-content black-text">
       <span className="card-title">
         {itemProp(items)(cartItem, "title")}
         <div className="remove">
@@ -28,18 +31,25 @@ const CartItem = ({
       </span>
 
       <div className="action">
-        <span onClick={onClickDec}>
-          <Icon>remove_circle</Icon>
+        <span
+          className={
+            cartItem.quantity === 1
+              ? "btn-floating white disabled"
+              : "btn-floating white"
+          }
+          onClick={onClickDec}
+        >
+          <i className="material-icons black-text">remove</i>
         </span>
         <span className="quantity">{cartItem.quantity}</span>
-        <span onClick={onClickInc}>
-          <Icon>add_circle</Icon>
+        <span className="btn-floating white" onClick={onClickInc}>
+          <i class="small material-icons black-text">add</i>
         </span>
         <br />
-        <span>
+        <div className="subTotal">
           Subtotal: {subTotal(items)(cartItem)}
           {` `}$
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -59,7 +69,6 @@ const CartItemList = ({ cartItems, items, IncQuant, DecQuant, RemoveItem }) => (
         />
       );
     })}
-    <hr />
     <div className="total">
       Total:
       <span>

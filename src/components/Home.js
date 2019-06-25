@@ -25,7 +25,6 @@ class Home extends Component {
           </div>
           <Cart />
         </div>
-        <Inventory />
       </div>
     );
   }
@@ -33,7 +32,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items,
+    items: Object.values(state.items),
     cartItems: state.cartItems
   };
 };

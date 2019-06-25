@@ -24,7 +24,7 @@ const Item = ({ item, onItemClick }) => (
 );
 
 const ItemList = ({ items, onClick }) => (
-  <div className="box">
+  <div className="itemList">
     {items.map(item => (
       <Item key={item.id} item={item} onItemClick={() => onClick(item)} />
     ))}
