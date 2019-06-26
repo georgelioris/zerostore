@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { itemChange } from "../actions/index";
 
 class Inventory extends Component {
-  handleChange = e => {
-    e.preventDefault();
-    console.log("changed", e.target.value, this);
+  handleChange = (e, id) => {
+    const key = id;
+    this.props.itemChange({ key, [e.target.id]: e.target.value });
   };
 
   renderInventory() {
@@ -16,38 +16,40 @@ class Inventory extends Component {
             <form
               className="col s12"
               key={item.id}
-              onSubmit={this.handleChange}
+              ref={form => (this.form = form)}
+              onChange={e => this.handleChange(e, item.id)}
             >
               <div className="row">
                 <div className="input-field col s6">
                   <input
                     ref={input => (this.title = input)}
-                    id="item_title"
+                    id="title"
                     type="text"
+                    value={item.tile}
                     className="validate"
                     defaultValue={item.title}
                   />
-                  <label htmlFor="item_title">Item Title</label>
+                  <label htmlFor="title">Item Title</label>
                 </div>
                 <div className="input-field col s1">
                   <input
                     ref={input => (this.id = input)}
-                    id="item_id"
+                    id="id"
                     type="number"
                     className="validate"
                     defaultValue={item.id}
                   />
-                  <label htmlFor="item_id">Item Id</label>
+                  <label htmlFor="id">Item Id</label>
                 </div>
                 <div className="input-field col s3">
                   <input
                     ref={input => (this.img = input)}
-                    id="image_url"
+                    id="img"
                     type="text"
                     className="validate"
                     defaultValue={item.img}
                   />
-                  <label htmlFor="image_url">Image Url</label>
+                  <label htmlFor="img">Image Url</label>
                 </div>
                 <div className="input-field col s2">
                   <input
@@ -64,20 +66,14 @@ class Inventory extends Component {
                 <div className="input-field col s12">
                   <input
                     ref={input => (this.desc = input)}
-                    id="description"
+                    id="desc"
                     type="text"
                     className="materialize-textarea"
                     defaultValue={item.desc}
                   />
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="desc">Description</label>
                 </div>
               </div>
-              <div className="row" />
-              <input
-                type="submit"
-                className="waves-effect waves-light btn-small red right"
-                value="submit"
-              />
             </form>
           );
         })}
@@ -91,15 +87,14 @@ class Inventory extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items,
-    cartItems: state.cartItems
+    items: Object.values(state.items)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    itemChange: item => {
-      dispatch(itemChange(item));
+    itemChange: payload => {
+      dispatch(itemChange(payload));
     }
   };
 };

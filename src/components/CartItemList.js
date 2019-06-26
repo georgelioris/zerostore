@@ -43,7 +43,7 @@ const CartItem = ({
         </span>
         <span className="quantity">{cartItem.quantity}</span>
         <span className="btn-floating white" onClick={onClickInc}>
-          <i class="small material-icons black-text">add</i>
+          <i className="small material-icons black-text">add</i>
         </span>
         <br />
         <div className="subTotal">

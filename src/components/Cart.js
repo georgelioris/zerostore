@@ -8,10 +8,7 @@ class Cart extends Component {
     this.props.incQuant(cartItem);
   };
   handleDecQuant = cartItem => {
-    const quantCheck = cartItem.quantity > 1;
-    return quantCheck
-      ? this.props.decQuant(cartItem)
-      : this.props.removeFromCart(cartItem);
+    this.props.decQuant(cartItem);
   };
   handleRemove = cartItem => {
     this.props.removeFromCart(cartItem);

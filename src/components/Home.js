@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addToCart, incQuant } from "../actions";
 import Cart from "./Cart";
 import Inventory from "./Inventory";
+
 import ItemList from "./ItemList";
 
 class Home extends Component {
@@ -22,6 +23,7 @@ class Home extends Component {
           <div className="col s10">
             <h3>Items</h3>
             <ItemList items={this.props.items} onClick={this.handleClick} />
+            <Inventory />
           </div>
           <Cart />
         </div>

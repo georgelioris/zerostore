@@ -38,10 +38,10 @@ export const decQuant = item => {
   return action;
 };
 
-export const itemChange = item => {
+export const itemChange = payload => {
   const action = {
     type: ITEM_CHANGE,
-    item
+    payload
   };
   return action;
 };

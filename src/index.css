@@ -92,3 +92,7 @@ body {
 .cartList {
   user-select: none;
 }
+
+.item-form {
+  border-bottom: 2px black;
+}
