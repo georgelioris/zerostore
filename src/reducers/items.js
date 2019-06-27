@@ -4,12 +4,12 @@ const item = (state, action) => {
   switch (action.type) {
     case ITEM_CHANGE:
       const { payload } = action;
-      const prop = Object.getOwnPropertyNames(payload)[1];
-      const value = Object.values(payload)[1];
-      return {
+      const newProperties = payload.properties;
+      const item = {
         ...state,
-        [prop]: value
+        ...newProperties
       };
+      return item;
     default:
       return state;
   }
@@ -19,7 +19,7 @@ const items = (state = {}, action) => {
   switch (action.type) {
     case ITEM_CHANGE:
       const { payload } = action;
-      const key = Object.values(payload)[0];
+      const key = payload.key;
       const targetItem = state[key];
       return { ...state, [key]: item(targetItem, action) };
     default:

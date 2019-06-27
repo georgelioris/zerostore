@@ -5,7 +5,8 @@ import { itemChange } from "../actions/index";
 class Inventory extends Component {
   handleChange = (e, id) => {
     const key = id;
-    this.props.itemChange({ key, [e.target.id]: e.target.value });
+    const properties = { [e.target.id]: e.target.value };
+    this.props.itemChange({ key, properties });
   };
 
   renderInventory() {
