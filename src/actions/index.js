@@ -3,7 +3,8 @@ import {
   REMOVE_FROM_CART,
   INC_QUANT,
   DEC_QUANT,
-  ITEM_CHANGE
+  ITEM_CHANGE,
+  REMOVE_FROM_INV
 } from "../constants";
 
 export const addToCart = item => {
@@ -42,6 +43,14 @@ export const itemChange = payload => {
   const action = {
     type: ITEM_CHANGE,
     payload
+  };
+  return action;
+};
+
+export const removeFromInventory = item => {
+  const action = {
+    type: REMOVE_FROM_INV,
+    item
   };
   return action;
 };

@@ -35,7 +35,7 @@ const cartItem = (state, action) => {
   }
 };
 
-const removeFromCart = (state = [], action) => {
+const removeCartItem = (state = [], action) => {
   const { item } = action;
   return state.filter(i => i.id !== item.id);
 };
@@ -49,7 +49,7 @@ const cartItems = (state = [], action) => {
     case DEC_QUANT:
       return state.map(i => cartItem(i, action));
     case REMOVE_FROM_CART:
-      return removeFromCart(state, action);
+      return removeCartItem(state, action);
     default:
       return state;
   }

@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { itemChange } from "../actions/index";
+import { itemChange, removeFromInventory } from "../actions/index";
+import Icon from "@material-ui/core/Icon";
 
 class Inventory extends Component {
   handleChange = (e, id) => {
     const key = id;
     const properties = { [e.target.id]: e.target.value };
     this.props.itemChange({ key, properties });
+  };
+  handleRemove = item => {
+    this.props.removeFromInventory(item);
   };
 
   renderInventory() {
@@ -20,6 +24,11 @@ class Inventory extends Component {
               ref={form => (this.form = form)}
               onChange={e => this.handleChange(e, item.id)}
             >
+              <div className="remove">
+                <span onClick={() => this.handleRemove(item)}>
+                  <Icon>clear</Icon>
+                </span>
+              </div>
               <div className="row">
                 <div className="input-field col s6">
                   <input
@@ -96,6 +105,9 @@ const mapDispatchToProps = dispatch => {
   return {
     itemChange: payload => {
       dispatch(itemChange(payload));
+    },
+    removeFromInventory: item => {
+      dispatch(removeFromInventory(item));
     }
   };
 };
