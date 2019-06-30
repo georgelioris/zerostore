@@ -16,8 +16,8 @@ class Cart extends Component {
 
   render() {
     return (
-      <div className="col s2">
-        <h4>Cart</h4>
+      <div>
+        <h3>Cart</h3>
         <CartItemList
           {...this.props}
           IncQuant={this.handleIncQuant}

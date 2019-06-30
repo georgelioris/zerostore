@@ -18,13 +18,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <div className="row">
-          <div className="col s10">
-            <h3>Items</h3>
-            <ItemList items={this.props.items} onClick={this.handleClick} />
-            <Inventory />
-          </div>
+      <div className="row">
+        <div className="col s10">
+          <ItemList items={this.props.items} onClick={this.handleClick} />
+          <Inventory />
+        </div>
+        <div className="col s2">
           <Cart />
         </div>
       </div>

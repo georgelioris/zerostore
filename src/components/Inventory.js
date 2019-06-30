@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { itemChange, removeFromInventory } from "../actions/index";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 
 class Inventory extends Component {
   handleChange = (e, id) => {
@@ -19,16 +19,11 @@ class Inventory extends Component {
         {this.props.items.map(item => {
           return (
             <form
-              className="col s12"
+              className="col s12 inventory-item"
               key={item.id}
               ref={form => (this.form = form)}
               onChange={e => this.handleChange(e, item.id)}
             >
-              <div className="remove">
-                <span onClick={() => this.handleRemove(item)}>
-                  <Icon>clear</Icon>
-                </span>
-              </div>
               <div className="row">
                 <div className="input-field col s6">
                   <input
@@ -41,17 +36,7 @@ class Inventory extends Component {
                   />
                   <label htmlFor="title">Item Title</label>
                 </div>
-                <div className="input-field col s1">
-                  <input
-                    ref={input => (this.id = input)}
-                    id="id"
-                    type="number"
-                    className="validate"
-                    defaultValue={item.id}
-                  />
-                  <label htmlFor="id">Item Id</label>
-                </div>
-                <div className="input-field col s3">
+                <div className="input-field col s4">
                   <input
                     ref={input => (this.img = input)}
                     id="img"
@@ -84,6 +69,12 @@ class Inventory extends Component {
                   <label htmlFor="desc">Description</label>
                 </div>
               </div>
+              <span
+                className="waves-effect waves-light btn red"
+                onClick={() => this.handleRemove(item)}
+              >
+                remove
+              </span>
             </form>
           );
         })}
