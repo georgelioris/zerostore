@@ -10,8 +10,6 @@ const itemProp = items => (cartItem, prop) => {
   return items[key][prop];
 };
 
-//
-
 const CartItem = ({
   items,
   cartItem,
