@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { itemChange, removeFromInventory } from "../actions/index";
+import { itemChange, removeFromInventory, addToInv } from "../actions/index";
 // import Icon from "@material-ui/core/Icon";
 
 class Inventory extends Component {
@@ -11,6 +11,18 @@ class Inventory extends Component {
   };
   handleRemove = item => {
     this.props.removeFromInventory(item);
+  };
+  handleInv = event => {
+    event.preventDefault();
+    const item = {
+      id: Number(this.id.value),
+      title: this.title.value,
+      price: this.price.value,
+      desc: this.desc.value,
+      img: this.img.value
+    };
+    this.props.addToInv(item);
+    this.addItemForm.reset();
   };
 
   renderInventory() {
@@ -36,7 +48,17 @@ class Inventory extends Component {
                   />
                   <label htmlFor="title">Item Title</label>
                 </div>
-                <div className="input-field col s4">
+                <div className="input-field col s1">
+                  <input
+                    ref={input => (this.id = input)}
+                    id="id"
+                    type="number"
+                    className="validate"
+                    defaultValue={item.id}
+                  />
+                  <label htmlFor="id">ID</label>
+                </div>
+                <div className="input-field col s3">
                   <input
                     ref={input => (this.img = input)}
                     id="img"
@@ -69,15 +91,74 @@ class Inventory extends Component {
                   <label htmlFor="desc">Description</label>
                 </div>
               </div>
-              <span
+              <button
                 className="waves-effect waves-light btn red"
                 onClick={() => this.handleRemove(item)}
               >
                 remove
-              </span>
+              </button>
             </form>
           );
         })}
+        <form
+          className="col s12 inventory-item"
+          ref={form => (this.addItemForm = form)}
+          onSubmit={e => this.handleInv(e)}
+        >
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                ref={input => (this.title = input)}
+                type="text"
+                className="validate"
+                placeholder="Item Title"
+              />
+              <label htmlFor="title">Item Title</label>
+            </div>
+            <div className="input-field col s1">
+              <input
+                ref={input => (this.id = input)}
+                id="id"
+                type="number"
+                className="validate"
+                placeholder="ID"
+              />
+              <label htmlFor="id">ID</label>
+            </div>
+            <div className="input-field col s3">
+              <input
+                ref={input => (this.img = input)}
+                type="text"
+                className="validate"
+                placeholder="Img Url"
+              />
+              <label htmlFor="img">Image Url</label>
+            </div>
+            <div className="input-field col s2">
+              <input
+                ref={input => (this.price = input)}
+                type="number"
+                className="validate"
+                placeholder="$$"
+              />
+              <label htmlFor="price">Price</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input
+                ref={input => (this.desc = input)}
+                type="text"
+                className="materialize-textarea"
+                placeholder="Item Description..."
+              />
+              <label htmlFor="desc">Description</label>
+            </div>
+          </div>
+          <span className="add-button">
+            <button className="waves-effect waves-light btn">Add Item</button>
+          </span>
+        </form>
       </div>
     );
   }
@@ -99,6 +180,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeFromInventory: item => {
       dispatch(removeFromInventory(item));
+    },
+    addToInv: item => {
+      dispatch(addToInv(item));
     }
   };
 };
