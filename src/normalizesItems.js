@@ -7,7 +7,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 110,
-    img: ItemImg
+    img: ItemImg,
+    category: "Winter"
   },
   2: {
     id: 2,
@@ -15,7 +16,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 80,
-    img: ItemImg
+    img: ItemImg,
+    category: "New"
   },
   3: {
     id: 3,
@@ -23,7 +25,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 120,
-    img: ItemImg
+    img: ItemImg,
+    category: "On Sale"
   },
   4: {
     id: 4,
@@ -31,7 +34,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 260,
-    img: ItemImg
+    img: ItemImg,
+    category: "On Sale"
   },
   5: {
     id: 5,
@@ -39,7 +43,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 160,
-    img: ItemImg
+    img: ItemImg,
+    category: "Summer"
   },
   6: {
     id: 6,
@@ -47,7 +52,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 90,
-    img: ItemImg
+    img: ItemImg,
+    category: "Summer"
   },
   7: {
     id: 7,
@@ -55,7 +61,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 390,
-    img: ItemImg
+    img: ItemImg,
+    category: "Winter"
   },
   8: {
     id: 8,
@@ -63,7 +70,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 40,
-    img: ItemImg
+    img: ItemImg,
+    category: "New"
   },
   9: {
     id: 9,
@@ -71,7 +79,8 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 190,
-    img: ItemImg
+    img: ItemImg,
+    category: "New"
   },
   10: {
     id: 10,
@@ -79,6 +88,7 @@ export const defaultItems = {
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 55,
-    img: ItemImg
+    img: ItemImg,
+    category: "New"
   }
 };

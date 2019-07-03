@@ -33,11 +33,28 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: Object.values(state.items),
+    items: getItems(state.items, "SHOW_ALL"),
     cartItems: state.cartItems
   };
 };
 
+const getItems = (items, filter) => {
+  const itemsArr = Object.values(items);
+  switch (filter) {
+    case "SHOW_ALL":
+      return itemsArr;
+    case "SHOW_NEW":
+      return itemsArr.filter(i => i.category === "New");
+    case "SHOW_ON_SALE":
+      return itemsArr.filter(i => i.category === "On Sale");
+    case "SHOW_WINTER":
+      return itemsArr.filter(i => i.category === "Winter");
+    case "SHOW_SUMMER":
+      return itemsArr.filter(i => i.category === "Summer");
+    default:
+      return itemsArr;
+  }
+};
 const mapDispatchToProps = dispatch => {
   return {
     addToCart: item => {

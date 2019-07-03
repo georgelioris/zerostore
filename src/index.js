@@ -1,7 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import App from "./App";
-import { createStore /*applyMiddleware */ } from "redux";
+import {
+  createStore
+  // , applyMiddleware
+} from "redux";
 import { rootReducer } from "./reducers";
 import { Provider } from "react-redux";
 import "./index.css";
@@ -19,7 +22,11 @@ import { initState } from "./preloadState";
 // };
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(rootReducer, initState /*applyMiddleware(logger)*/);
+const store = createStore(
+  rootReducer,
+  initState
+  // applyMiddleware(logger)
+);
 console.log(store.getState());
 
 const Root = () => {

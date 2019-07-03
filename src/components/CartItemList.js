@@ -55,6 +55,16 @@ const CartItem = ({
 
 const CartItemList = ({ cartItems, items, IncQuant, DecQuant, RemoveItem }) => (
   <div className="cartList">
+    <h4>My Cart</h4>
+    <div className="total">
+      Total:
+      <span>
+        {cartItems.reduce((acc, cartItem) => {
+          return acc + subTotal(items)(cartItem);
+        }, 0)}
+        {` `}$
+      </span>
+    </div>
     {cartItems.map(cartItem => {
       return (
         <CartItem
@@ -67,15 +77,6 @@ const CartItemList = ({ cartItems, items, IncQuant, DecQuant, RemoveItem }) => (
         />
       );
     })}
-    <div className="total">
-      Total:
-      <span>
-        {cartItems.reduce((acc, cartItem) => {
-          return acc + subTotal(items)(cartItem);
-        }, 0)}
-        {` `}$
-      </span>
-    </div>
   </div>
 );
 
