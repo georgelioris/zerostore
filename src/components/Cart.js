@@ -32,17 +32,8 @@ class Cart extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    cartItems: getExistingCartItems(state.items, state.cartItems)
+    cartItems: state.cartItems
   };
-};
-
-const getExistingCartItems = (items, cartItems) => {
-  const newcItems = cartItems.filter(cartItem =>
-    items.hasOwnProperty(cartItem.id)
-  );
-  console.log(newcItems);
-
-  return newcItems;
 };
 
 const mapDispatchToProps = dispatch => {

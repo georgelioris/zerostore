@@ -7,7 +7,7 @@ const subTotal = items => cartItem => {
 
 const itemProp = items => (cartItem, prop) => {
   const key = cartItem.id;
-  return items[key][prop];
+  return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
 };
 
 const CartItem = ({

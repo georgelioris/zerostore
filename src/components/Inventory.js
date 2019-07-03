@@ -91,12 +91,12 @@ class Inventory extends Component {
                   <label htmlFor="desc">Description</label>
                 </div>
               </div>
-              <button
+              <span
                 className="waves-effect waves-light btn red"
                 onClick={() => this.handleRemove(item)}
               >
                 remove
-              </button>
+              </span>
             </form>
           );
         })}
