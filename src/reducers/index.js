@@ -13,6 +13,5 @@ export const rootReducer = (state, action) => {
   const filteredCart = intermediateState.cartItems.filter(cartItem =>
     intermediateState.items.hasOwnProperty(cartItem.id)
   );
-  const finalState = { ...intermediateState, cartItems: filteredCart };
-  return finalState;
+  return { ...intermediateState, cartItems: filteredCart };
 };
