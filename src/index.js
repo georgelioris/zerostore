@@ -15,7 +15,7 @@ import { initState } from "./preloadState";
 // const logger = store => next => action => {
 //   console.log("dispatching", action);
 //   let { item } = action;
-//   console.log("id", item.id);
+//   console.log("id", item);
 //   let result = next(action);
 //   console.log("next state", store.getState());
 //   return result;

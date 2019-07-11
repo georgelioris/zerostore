@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToCart, incQuant } from "../actions";
+import { addToCart, incQuant, setVisibility } from "../actions";
 import Cart from "./Cart";
 import Inventory from "./Inventory";
-
 import ItemList from "./ItemList";
+import CategoryFilters from "./CategoryFilters";
+import M from "materialize-css";
 
 class Home extends Component {
+  componentDidMount() {
+    // Auto initialize all the things!
+    M.AutoInit();
+  }
+
   handleClick = item => {
     const itemInCart = this.props.cartItems.find(
       cartItem => item.id === cartItem.id
@@ -15,11 +21,18 @@ class Home extends Component {
       ? this.props.incQuant(itemInCart)
       : this.props.addToCart(item);
   };
-
+  handleFilter = filter => {
+    this.props.setVisibility(filter);
+  };
   render() {
     return (
       <div className="row">
         <div className="col s10">
+          <CategoryFilters
+            categories={this.props.filters}
+            active={this.props.visibilityFilter}
+            onClick={this.handleFilter}
+          />
           <ItemList items={this.props.items} onClick={this.handleClick} />
           <Inventory />
         </div>
@@ -33,28 +46,33 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: getItems(state.items, "SHOW_ALL"),
-    cartItems: state.cartItems
+    items: visibleItems(state.items, state.visibilityFilter),
+    cartItems: state.cartItems,
+    visibilityFilter: state.visibilityFilter,
+    filters: filters(state.items)
   };
 };
 
-const getItems = (items, filter) => {
+const visibleItems = (items, filter) => {
   const itemsArr = Object.values(items);
-  switch (filter) {
-    case "SHOW_ALL":
-      return itemsArr;
-    case "SHOW_NEW":
-      return itemsArr.filter(i => i.category === "New");
-    case "SHOW_ON_SALE":
-      return itemsArr.filter(i => i.category === "On Sale");
-    case "SHOW_WINTER":
-      return itemsArr.filter(i => i.category === "Winter");
-    case "SHOW_SUMMER":
-      return itemsArr.filter(i => i.category === "Summer");
-    default:
-      return itemsArr;
-  }
+
+  return filter === "All"
+    ? itemsArr
+    : itemsArr.filter(i => i.category === filter);
 };
+
+const filters = items => {
+  const itemsArr = Object.values(items);
+  const categories = itemsArr.reduce(
+    (acc, item) =>
+      acc.find(category => category === item.category)
+        ? acc
+        : [...acc, item.category],
+    []
+  );
+  return categories;
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     addToCart: item => {
@@ -62,6 +80,9 @@ const mapDispatchToProps = dispatch => {
     },
     incQuant: item => {
       dispatch(incQuant(item));
+    },
+    setVisibility: filter => {
+      dispatch(setVisibility(filter));
     }
   };
 };
