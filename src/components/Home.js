@@ -4,7 +4,7 @@ import { addToCart, incQuant, setVisibility } from "../actions";
 import Cart from "./Cart";
 import Inventory from "./Inventory";
 import ItemList from "./ItemList";
-import CategoryFilters from "./CategoryFilters";
+import ItemFilters from "./ItemFilters";
 import M from "materialize-css";
 
 class Home extends Component {
@@ -28,7 +28,8 @@ class Home extends Component {
     return (
       <div className="row">
         <div className="col s10">
-          <CategoryFilters
+          <h3>Items</h3>
+          <ItemFilters
             categories={this.props.filters}
             active={this.props.visibilityFilter}
             onClick={this.handleFilter}

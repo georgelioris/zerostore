@@ -2,7 +2,10 @@ import React from "react";
 
 const CategoryFilters = ({ active, categories, onClick }) => (
   <div className="category-filters">
-    <span className="dropdown-trigger btn" data-target="categories">
+    <span
+      className="dropdown-trigger btn red lighten-1"
+      data-target="categories"
+    >
       {active}
     </span>
     <ul id="categories" className="dropdown-content">
