@@ -21,7 +21,7 @@ class Home extends Component {
       ? this.props.incQuant(itemInCart)
       : this.props.addToCart(item);
   };
-  handleFilter = filter => {
+  setFilter = filter => {
     this.props.setVisibility(filter);
   };
   render() {
@@ -32,7 +32,7 @@ class Home extends Component {
           <ItemFilters
             categories={this.props.filters}
             active={this.props.visibilityFilter}
-            onClick={this.handleFilter}
+            onClick={this.setFilter}
           />
           <ItemList items={this.props.items} onClick={this.handleClick} />
           <Inventory />
@@ -56,7 +56,6 @@ const mapStateToProps = state => {
 
 const visibleItems = (items, filter) => {
   const itemsArr = Object.values(items);
-
   return filter === "All"
     ? itemsArr
     : itemsArr.filter(i => i.category === filter);

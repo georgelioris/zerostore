@@ -6,7 +6,14 @@ import { itemChange, removeFromInventory, addToInv } from "../actions/index";
 class Inventory extends Component {
   handleChange = (e, id) => {
     const key = id;
-    const properties = { [e.target.id]: e.target.value };
+    const eventValue = e.target.value;
+    const properties =
+      eventValue === "true"
+        ? { [e.target.id]: true }
+        : eventValue === "false"
+        ? { [e.target.id]: false }
+        : { [e.target.id]: eventValue };
+    console.log(properties);
     this.props.itemChange({ key, properties });
   };
   handleRemove = item => {
@@ -14,12 +21,15 @@ class Inventory extends Component {
   };
   handleInv = event => {
     event.preventDefault();
+    const getAvail = this.available.value === "true" ? true : false;
     const item = {
       id: Number(this.id.value),
       title: this.title.value,
       price: this.price.value,
       desc: this.desc.value,
-      img: this.img.value
+      img: this.img.value,
+      category: this.category.value,
+      available: getAvail
     };
     this.props.addToInv(item);
     this.addItemForm.reset();
@@ -91,6 +101,29 @@ class Inventory extends Component {
                   <label htmlFor="desc">Description</label>
                 </div>
               </div>
+              <div className="row">
+                <div className="input-field col s6">
+                  <input
+                    ref={input => (this.category = input)}
+                    id="category"
+                    type="text"
+                    className="validate"
+                    defaultValue={item.category}
+                  />
+                  <label htmlFor="category">category</label>
+                </div>
+                <div className="input-field col s6">
+                  <select
+                    ref={input => (this.available = input)}
+                    id="available"
+                    defaultValue={item.available}
+                  >
+                    <option value="true">Available</option>
+                    <option value="false">Unavailable</option>
+                  </select>
+                  <label>Availability</label>
+                </div>
+              </div>
               <span
                 className="waves-effect waves-light btn red"
                 onClick={() => this.handleRemove(item)}
@@ -153,6 +186,23 @@ class Inventory extends Component {
                 placeholder="Item Description..."
               />
               <label htmlFor="desc">Description</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                ref={input => (this.category = input)}
+                type="text"
+                className="validate"
+              />
+              <label htmlFor="category">category</label>
+            </div>
+            <div className="input-field col s6">
+              <select ref={input => (this.available = input)} id="available">
+                <option value="true">Available</option>
+                <option value="false">Unavalable</option>
+              </select>
+              <label>Availability</label>
             </div>
           </div>
           <span className="add-button">

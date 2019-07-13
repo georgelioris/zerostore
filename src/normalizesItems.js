@@ -9,7 +9,7 @@ export const defaultItems = {
     price: 110,
     img: ItemImg,
     category: "Winter",
-    availiable: true
+    available: true
   },
   2: {
     id: 2,
@@ -19,7 +19,7 @@ export const defaultItems = {
     price: 80,
     img: ItemImg,
     category: "New",
-    availiable: true
+    available: true
   },
   3: {
     id: 3,
@@ -29,7 +29,7 @@ export const defaultItems = {
     price: 120,
     img: ItemImg,
     category: "On Sale",
-    availiable: true
+    available: true
   },
   4: {
     id: 4,
@@ -39,7 +39,7 @@ export const defaultItems = {
     price: 260,
     img: ItemImg,
     category: "On Sale",
-    availiable: true
+    available: true
   },
   5: {
     id: 5,
@@ -49,7 +49,7 @@ export const defaultItems = {
     price: 160,
     img: ItemImg,
     category: "Summer",
-    availiable: true
+    available: true
   },
   6: {
     id: 6,
@@ -59,7 +59,7 @@ export const defaultItems = {
     price: 90,
     img: ItemImg,
     category: "Summer",
-    availiable: true
+    available: true
   },
   7: {
     id: 7,
@@ -69,7 +69,7 @@ export const defaultItems = {
     price: 390,
     img: ItemImg,
     category: "Winter",
-    availiable: true
+    available: true
   },
   8: {
     id: 8,
@@ -79,7 +79,7 @@ export const defaultItems = {
     price: 40,
     img: ItemImg,
     category: "New",
-    availiable: true
+    available: true
   },
   9: {
     id: 9,
@@ -89,7 +89,7 @@ export const defaultItems = {
     price: 190,
     img: ItemImg,
     category: "New",
-    availiable: true
+    available: true
   },
   10: {
     id: 10,
@@ -99,6 +99,6 @@ export const defaultItems = {
     price: 55,
     img: ItemImg,
     category: "New",
-    availiable: true
+    available: true
   }
 };
