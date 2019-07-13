@@ -7,6 +7,7 @@
   float: left;
   margin-top: 1em;
 }
+
 .itemList .card {
   margin: 0rem 0.5rem 0.5rem 0rem;
 }
@@ -15,21 +16,26 @@
   font-size: 2.4em;
   cursor: pointer;
 }
+
 .card {
   width: 300px;
 }
+
 .card .card-image .card-title {
   color: black;
   font-weight: 400;
   padding-top: 0px; /*!*/
   padding-bottom: 0px; /*!*/
 }
+
 .cart {
   margin-top: 40px;
 }
+
 .collection .collection-item {
   display: flex;
 }
+
 .collection-item.avatar .title {
   font-size: 20px;
   font-weight: 500;
@@ -37,10 +43,12 @@
   display: block;
   margin-bottom: 20px;
 }
+
 .collection .collection-item img {
   width: 150px;
   margin-right: 25px;
 }
+
 .item-desc {
   align-self: center;
 }
@@ -56,7 +64,8 @@
   margin: 0.5rem;
 }
 
-/**/
+/*---------------------------------*/
+
 body {
   background-color: #eeeeee !important;
 }
@@ -87,12 +96,6 @@ body {
 .cartList .subTotal {
   margin-top: 10px;
 }
-/* .btn-action {
-  background: white;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-} */
 
 .cartList {
   user-select: none;
@@ -110,24 +113,11 @@ body {
   float: right;
 }
 
-/* .category-filters ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.category-filters li span {
-  display: block;
-  float: left;
-  padding: 0px 5px 0px 5px;
-} */
-
 .dropdown-content li > span {
   color: rgba(0, 0, 0, 0.87);
 }
 
-/* Avialiablity Overlay */
-/* This is messy.. */
+/*------Avialiablity Overlay-----*/
 
 .card .unavailable {
   position: absolute;
@@ -135,16 +125,16 @@ body {
   height: 100%;
   border-radius: 0;
   top: 0;
-  bottom: 0 !important ;
-  margin: 0 !important;
+  bottom: 0;
   left: 0;
-  right: 0 !important;
+  right: 0;
+  margin: 0;
   box-sizing: border-box;
   text-align: center;
   background: rgba(129, 129, 129, 0.7) !important;
   font-size: 1.5em;
-  color: white !important;
-  transition-property: width, height, background, top, left, bottom;
+  color: #fff !important;
+  transition-property: width, height, background, top, left, right, bottom;
   -webkit-transition-property: width, height, background, top, left, bottom;
 }
 
@@ -170,4 +160,4 @@ body {
   width: 40px;
 }
 
-/********************************/
+/*-------------------------------*/
