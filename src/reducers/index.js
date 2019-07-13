@@ -12,8 +12,10 @@ export const combinedReducer = combineReducers({
 export const rootReducer = (state, action) => {
   const intermediateState = combinedReducer(state, action);
   /// Filter cartItems to remove any item that is no longer in store
-  const filteredCart = intermediateState.cartItems.filter(cartItem =>
-    intermediateState.items.hasOwnProperty(cartItem.id)
+  const filteredCart = intermediateState.cartItems.filter(
+    cartItem =>
+      intermediateState.items.hasOwnProperty(cartItem.id) &&
+      intermediateState.items[cartItem.id]["available"] === true
   );
   return { ...intermediateState, cartItems: filteredCart };
 };

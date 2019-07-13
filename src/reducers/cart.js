@@ -9,12 +9,10 @@ const cartItem = (state, action) => {
   const { item } = action;
   switch (action.type) {
     case ADD_TO_CART:
-      return item.available === true
-        ? {
-            id: item.id,
-            quantity: 1
-          }
-        : state;
+      return {
+        id: item.id,
+        quantity: 1
+      };
     case INC_QUANT:
       if (state.id === item.id) {
         return {
@@ -43,15 +41,17 @@ const cartItem = (state, action) => {
 // };
 
 const cartItems = (state = [], action) => {
+  const { item } = action;
   switch (action.type) {
     case ADD_TO_CART:
-      return [...state, cartItem(undefined, action)];
+      return item.available === true
+        ? [...state, cartItem(undefined, action)]
+        : state;
     case INC_QUANT:
       return state.map(i => cartItem(i, action));
     case DEC_QUANT:
       return state.map(i => cartItem(i, action));
     case REMOVE_FROM_CART:
-      const { item } = action;
       return state.filter(i => i.id !== item.id);
     default:
       return state;
