@@ -9,10 +9,12 @@ const cartItem = (state, action) => {
   const { item } = action;
   switch (action.type) {
     case ADD_TO_CART:
-      return {
-        id: item.id,
-        quantity: 1
-      };
+      return item.available === true
+        ? {
+            id: item.id,
+            quantity: 1
+          }
+        : state;
     case INC_QUANT:
       if (state.id === item.id) {
         return {
