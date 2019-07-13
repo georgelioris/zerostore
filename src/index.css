@@ -134,8 +134,9 @@ body {
   background: rgba(129, 129, 129, 0.7) !important;
   font-size: 1.5em;
   color: #fff !important;
-  transition-property: width, height, background, top, left, right, bottom;
-  -webkit-transition-property: width, height, background, top, left, bottom;
+  transition-property: width, height, background, top, right, bottom, left;
+  -webkit-transition-property: width, height, background, top, right, bottom,
+    left;
 }
 
 .unavailable span::before {
