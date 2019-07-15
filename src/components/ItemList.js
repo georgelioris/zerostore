@@ -27,11 +27,15 @@ const Item = ({ item, onItemClick }) => (
   </div>
 );
 
-const ItemList = ({ items, onClick }) => (
+const ItemList = ({ items, onClick, cartItems }) => (
   <div>
     <div className="item-list">
       {items.map(item => (
-        <Item key={item.id} item={item} onItemClick={() => onClick(item)} />
+        <Item
+          key={item.id}
+          item={item}
+          onItemClick={() => onClick(item, cartItems)}
+        />
       ))}
     </div>
   </div>

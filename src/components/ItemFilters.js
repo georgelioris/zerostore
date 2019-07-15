@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryFilters = ({ active, categories, onClick }) => (
+const ItemFilters = ({ active, categories, onClick }) => (
   <div className="category-filters">
     <span
       className="dropdown-trigger btn red lighten-1"
@@ -25,4 +25,4 @@ const CategoryFilters = ({ active, categories, onClick }) => (
   </div>
 );
 
-export default CategoryFilters;
+export default ItemFilters;
