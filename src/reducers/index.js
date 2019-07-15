@@ -15,7 +15,7 @@ export const rootReducer = (state, action) => {
   const filteredCart = intermediateState.cartItems.filter(
     cartItem =>
       intermediateState.items.hasOwnProperty(cartItem.id) &&
-      intermediateState.items[cartItem.id].available === true
+      intermediateState.items[cartItem.id].available
   );
   return { ...intermediateState, cartItems: filteredCart };
 };

@@ -88,7 +88,6 @@ class Inventory extends Component {
                     defaultValue={item.desc}
                     placeholder="Item Description..."
                   />
-                  <label htmlFor="desc">Description</label>
                 </div>
               </div>
               <div className="row">
@@ -112,7 +111,6 @@ class Inventory extends Component {
                     <option value="true">Available</option>
                     <option value="false">Unavailable</option>
                   </select>
-                  <label>Availability</label>
                 </div>
               </div>
               <span
