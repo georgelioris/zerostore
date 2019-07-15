@@ -35,11 +35,6 @@ const cartItem = (state, action) => {
   }
 };
 
-// const removeCartItem = (state = [], action) => {
-//   const { item } = action;
-//   return state.filter(i => i.id !== item.id);
-// };
-
 const cartItems = (state = [], action) => {
   const { item } = action;
   switch (action.type) {

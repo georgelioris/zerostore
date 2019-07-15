@@ -13,6 +13,18 @@ const item = (state = {}, action) => {
         }
       };
       return updatedItem;
+
+    case ADD_TO_INV:
+      const { item } = action;
+      const addedKey = state;
+      const addedItem = {
+        [addedKey]: {
+          id: addedKey,
+          ...item
+        }
+      };
+      return addedItem;
+
     case REMOVE_FROM_INV:
       const itemkey = action.item.id;
       return Object.keys(state).reduce(
@@ -25,33 +37,11 @@ const item = (state = {}, action) => {
             : acc,
         {}
       );
-    case ADD_TO_INV:
-      const { item } = action;
-      const addedKey = state;
-      const addedItem = {
-        [addedKey]: {
-          id: addedKey,
-          ...item
-        }
-      };
-      return addedItem;
 
     default:
       return state;
   }
 };
-
-// const updateItem = (state, action) => {
-//   const { payload } = action;
-//   const key = payload.key;
-//   const newProperties = payload.properties;
-//   return {
-//     [key]: {
-//       ...state,
-//       ...newProperties
-//     }
-//   };
-// };
 
 // const removeItem = (state, itemkey) =>
 //   Object.keys(state).reduce(
@@ -71,10 +61,10 @@ const items = (state = {}, action) => {
       const itemState = state[action.payload.key];
       return { ...state, ...item(itemState, action) };
     case ADD_TO_INV:
-      const getId = Object.keys(state).length;
-      const newId = getId !== 0 ? state[getId].id + 1 : 1;
+      const lastKey = Object.keys(state).length;
+      const newKey = lastKey !== 0 ? state[lastKey].id + 1 : 1;
       debugger;
-      return { ...state, ...item(newId, action) };
+      return { ...state, ...item(newKey, action) };
     case REMOVE_FROM_INV:
       return item(state, action);
     default:
