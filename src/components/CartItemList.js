@@ -2,11 +2,12 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 
 const subTotal = items => cartItem => {
-  return itemProp(items)(cartItem, "price") * cartItem.quantity;
+  return getProperty(items)(cartItem, "price") * cartItem.quantity;
 };
 
-const itemProp = items => (cartItem, prop) => {
-  return items.find(item => cartItem.id === item.id)[prop];
+const getProperty = items => (cartItem, prop) => {
+  const key = cartItem.id;
+  return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
 };
 
 const CartItem = ({
@@ -16,10 +17,10 @@ const CartItem = ({
   onClickDec,
   onClickRemove
 }) => (
-  <div className="card grey darken-1" key={cartItem.id}>
-    <div className="card-content white-text">
+  <div className="card white darken-1" key={cartItem.id}>
+    <div className="card-content black-text">
       <span className="card-title">
-        {itemProp(items)(cartItem, "title")}
+        {getProperty(items)(cartItem, "title")}
         <div className="remove">
           <span onClick={onClickRemove}>
             <Icon>clear</Icon>
@@ -28,18 +29,23 @@ const CartItem = ({
       </span>
 
       <div className="action">
-        <span onClick={onClickDec}>
-          <Icon>remove_circle</Icon>
+        <span
+          className={
+            "btn-floating white " + (cartItem.quantity === 1 ? "disabled" : "")
+          }
+          onClick={onClickDec}
+        >
+          <i className="material-icons black-text">remove</i>
         </span>
         <span className="quantity">{cartItem.quantity}</span>
-        <span onClick={onClickInc}>
-          <Icon>add_circle</Icon>
+        <span className="btn-floating white" onClick={onClickInc}>
+          <i className="small material-icons black-text">add</i>
         </span>
         <br />
-        <span>
+        <div className="subTotal">
           Subtotal: {subTotal(items)(cartItem)}
           {` `}$
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -47,6 +53,16 @@ const CartItem = ({
 
 const CartItemList = ({ cartItems, items, IncQuant, DecQuant, RemoveItem }) => (
   <div className="cartList">
+    <h4>My Cart</h4>
+    <div className="total">
+      Total:
+      <span>
+        {cartItems.reduce((acc, cartItem) => {
+          return acc + subTotal(items)(cartItem);
+        }, 0)}
+        {` `}$
+      </span>
+    </div>
     {cartItems.map(cartItem => {
       return (
         <CartItem
@@ -59,16 +75,6 @@ const CartItemList = ({ cartItems, items, IncQuant, DecQuant, RemoveItem }) => (
         />
       );
     })}
-    <hr />
-    <div className="total">
-      Total:
-      <span>
-        {cartItems.reduce((acc, cartItem) => {
-          return acc + subTotal(items)(cartItem);
-        }, 0)}
-        {` `}$
-      </span>
-    </div>
   </div>
 );
 

@@ -8,10 +8,7 @@ class Cart extends Component {
     this.props.incQuant(cartItem);
   };
   handleDecQuant = cartItem => {
-    const quantCheck = cartItem.quantity > 1;
-    return quantCheck
-      ? this.props.decQuant(cartItem)
-      : this.props.removeFromCart(cartItem);
+    this.props.decQuant(cartItem);
   };
   handleRemove = cartItem => {
     this.props.removeFromCart(cartItem);
@@ -19,11 +16,9 @@ class Cart extends Component {
 
   render() {
     return (
-      <div className="col s2">
-        <h4>Cart</h4>
+      <div>
         <CartItemList
-          cartItems={this.props.cartItems}
-          items={this.props.items}
+          {...this.props}
           IncQuant={this.handleIncQuant}
           DecQuant={this.handleDecQuant}
           RemoveItem={this.handleRemove}

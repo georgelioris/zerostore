@@ -3,7 +3,10 @@ import {
   REMOVE_FROM_CART,
   INC_QUANT,
   DEC_QUANT,
-  ITEM_CHANGE
+  ITEM_CHANGE,
+  REMOVE_FROM_INV,
+  ADD_TO_INV,
+  VISIBILITY_FILTER
 } from "../constants";
 
 export const addToCart = item => {
@@ -38,10 +41,34 @@ export const decQuant = item => {
   return action;
 };
 
-export const itemChange = item => {
+export const itemChange = payload => {
   const action = {
     type: ITEM_CHANGE,
+    payload
+  };
+  return action;
+};
+
+export const removeFromInventory = item => {
+  const action = {
+    type: REMOVE_FROM_INV,
     item
+  };
+  return action;
+};
+
+export const addToInv = item => {
+  const action = {
+    type: ADD_TO_INV,
+    item
+  };
+  return action;
+};
+
+export const setVisibility = filter => {
+  const action = {
+    type: VISIBILITY_FILTER,
+    filter
   };
   return action;
 };

@@ -6,11 +6,15 @@ const Item = ({ item, onItemClick }) => (
       <img src={item.img} alt={item.title} />
       <span className="card-title">{item.title}</span>
       <span
-        to="/"
-        className="btn-floating halfway-fab waves-effect waves-light red"
+        className={
+          "btn-floating halfway-fab waves-effect waves-light red" +
+          (item.available === false ? " unavailable disabled" : "")
+        }
         onClick={onItemClick}
       >
-        <i className="material-icons">add</i>
+        <span>
+          <i className="material-icons">add</i>
+        </span>
       </span>
     </div>
 
@@ -23,11 +27,17 @@ const Item = ({ item, onItemClick }) => (
   </div>
 );
 
-const ItemList = ({ items, onClick }) => (
-  <div className="box">
-    {items.map(item => (
-      <Item key={item.id} item={item} onItemClick={() => onClick(item)} />
-    ))}
+const ItemList = ({ items, onClick, cartItems }) => (
+  <div>
+    <div className="item-list">
+      {items.map(item => (
+        <Item
+          key={item.id}
+          item={item}
+          onItemClick={() => onClick(item, cartItems)}
+        />
+      ))}
+    </div>
   </div>
 );
 

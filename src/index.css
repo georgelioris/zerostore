@@ -1,30 +1,41 @@
-.box {
+.item-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  widows: 100%;
+  width: 100%;
   float: left;
+  margin-top: 1em;
 }
+
+.item-list .card {
+  margin: 0rem 0.5rem 0.5rem 0rem;
+}
+
 .material-icons {
   font-size: 2.4em;
   cursor: pointer;
 }
+
 .card {
   width: 300px;
 }
+
 .card .card-image .card-title {
   color: black;
   font-weight: 400;
   padding-top: 0px; /*!*/
   padding-bottom: 0px; /*!*/
 }
+
 .cart {
   margin-top: 40px;
 }
+
 .collection .collection-item {
   display: flex;
 }
+
 .collection-item.avatar .title {
   font-size: 20px;
   font-weight: 500;
@@ -32,10 +43,12 @@
   display: block;
   margin-bottom: 20px;
 }
+
 .collection .collection-item img {
   width: 150px;
   margin-right: 25px;
 }
+
 .item-desc {
   align-self: center;
 }
@@ -51,7 +64,11 @@
   margin: 0.5rem;
 }
 
-/**/
+/*---------------------------------*/
+
+body {
+  background-color: #eeeeee !important;
+}
 
 .cartList .card {
   width: 100%;
@@ -72,6 +89,81 @@
   padding: 0px 10px 0px 10px;
 }
 
-.cartList .remove {
+.remove {
   float: right;
+}
+
+.cartList .subTotal {
+  margin-top: 10px;
+}
+
+.cartList {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory-item {
+  margin-bottom: 2em;
+  padding: 2em !important;
+  border: 2px solid #cfcfcf;
+}
+
+.add-button {
+  float: right;
+}
+
+.dropdown-content li > span {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+/*------Avialiablity Overlay-----*/
+
+.card .unavailable {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) !important;
+  font-size: 1.5em;
+  color: #fff !important;
+  transition-property: width, height, background, top, right, bottom, left;
+  -webkit-transition-property: width, height, background, top, right, bottom,
+    left;
+}
+
+.unavailable span::before {
+  content: "Unavailable";
+}
+.unavailable i {
+  display: none;
+}
+
+.unavailable span {
+  text-align: center;
+  margin-top: 28% !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  height: 20% !important;
+  display: block;
+  height: 10%;
+  background: #ef5350 !important;
+}
+
+.halfway-fab span {
+  width: 40px;
+}
+
+/*-------------------------------*/
+
+.item-list .card .card-image img {
+  min-width: 300px;
+  min-height: 200px;
 }
