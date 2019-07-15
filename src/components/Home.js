@@ -17,13 +17,20 @@ class Home extends Component {
     const itemInCart = this.props.cartItems.find(
       cartItem => item.id === cartItem.id
     );
+    M.toast({
+      html: "Added to cart!",
+      classes: "rounded",
+      displayLength: "1000"
+    });
     return itemInCart
       ? this.props.incQuant(itemInCart)
       : this.props.addToCart(item);
   };
+
   setFilter = filter => {
     this.props.setVisibility(filter);
   };
+
   render() {
     return (
       <div className="row">

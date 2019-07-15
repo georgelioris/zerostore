@@ -1,10 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import App from "./App";
-import {
-  createStore
-  // , applyMiddleware
-} from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { rootReducer } from "./reducers";
 import { Provider } from "react-redux";
 import "./index.css";
@@ -12,21 +9,17 @@ import { initState } from "./preloadState";
 //import history from "./history";
 
 // Logging
-// const logger = store => next => action => {
-//   console.log("dispatching", action);
-//   let { item } = action;
-//   console.log("id", item);
-//   let result = next(action);
-//   console.log("next state", store.getState());
-//   return result;
-// };
+const logger = store => next => action => {
+  console.log("dispatching", action);
+  let { item } = action;
+  console.log("id", item);
+  let result = next(action);
+  console.log("next state", store.getState());
+  return result;
+};
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
-  rootReducer,
-  initState
-  // applyMiddleware(logger)
-);
+const store = createStore(rootReducer, initState, applyMiddleware(logger));
 console.log(store.getState());
 
 const Root = () => {

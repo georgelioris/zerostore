@@ -13,7 +13,6 @@ class Inventory extends Component {
         : eventValue === "false"
         ? { [e.target.id]: false }
         : { [e.target.id]: eventValue };
-    console.log(properties);
     this.props.itemChange({ key, properties });
   };
   handleRemove = item => {
@@ -23,10 +22,9 @@ class Inventory extends Component {
     event.preventDefault();
     const getAvail = this.available.value === "true" ? true : false;
     const item = {
-      id: Number(this.id.value),
       title: this.title.value,
-      price: this.price.value,
       desc: this.desc.value,
+      price: this.price.value,
       img: this.img.value,
       category: this.category.value,
       available: getAvail
@@ -55,28 +53,19 @@ class Inventory extends Component {
                     value={item.tile}
                     className="validate"
                     defaultValue={item.title}
+                    placeholder="Item Title"
                   />
-                  <label htmlFor="title">Item Title</label>
                 </div>
-                <div className="input-field col s1">
-                  <input
-                    ref={input => (this.id = input)}
-                    id="id"
-                    type="number"
-                    className="validate"
-                    defaultValue={item.id}
-                  />
-                  <label htmlFor="id">ID</label>
-                </div>
-                <div className="input-field col s3">
+
+                <div className="input-field col s4">
                   <input
                     ref={input => (this.img = input)}
                     id="img"
                     type="text"
                     className="validate"
                     defaultValue={item.img}
+                    placeholder="Img url"
                   />
-                  <label htmlFor="img">Image Url</label>
                 </div>
                 <div className="input-field col s2">
                   <input
@@ -85,8 +74,8 @@ class Inventory extends Component {
                     defaultValue={item.price}
                     type="number"
                     className="validate"
+                    placeholder="$$"
                   />
-                  <label htmlFor="price">Price</label>
                 </div>
               </div>
               <div className="row">
@@ -97,6 +86,7 @@ class Inventory extends Component {
                     type="text"
                     className="materialize-textarea"
                     defaultValue={item.desc}
+                    placeholder="Item Description..."
                   />
                   <label htmlFor="desc">Description</label>
                 </div>
@@ -109,11 +99,12 @@ class Inventory extends Component {
                     type="text"
                     className="validate"
                     defaultValue={item.category}
+                    placeholder="Category"
                   />
-                  <label htmlFor="category">category</label>
                 </div>
                 <div className="input-field col s6">
                   <select
+                    className="browser-default"
                     ref={input => (this.available = input)}
                     id="available"
                     defaultValue={item.available}
@@ -146,26 +137,15 @@ class Inventory extends Component {
                 className="validate"
                 placeholder="Item Title"
               />
-              <label htmlFor="title">Item Title</label>
             </div>
-            <div className="input-field col s1">
-              <input
-                ref={input => (this.id = input)}
-                id="id"
-                type="number"
-                className="validate"
-                placeholder="ID"
-              />
-              <label htmlFor="id">ID</label>
-            </div>
-            <div className="input-field col s3">
+
+            <div className="input-field col s4">
               <input
                 ref={input => (this.img = input)}
                 type="text"
                 className="validate"
                 placeholder="Img Url"
               />
-              <label htmlFor="img">Image Url</label>
             </div>
             <div className="input-field col s2">
               <input
@@ -174,7 +154,6 @@ class Inventory extends Component {
                 className="validate"
                 placeholder="$$"
               />
-              <label htmlFor="price">Price</label>
             </div>
           </div>
           <div className="row">
@@ -185,7 +164,6 @@ class Inventory extends Component {
                 className="materialize-textarea"
                 placeholder="Item Description..."
               />
-              <label htmlFor="desc">Description</label>
             </div>
           </div>
           <div className="row">
@@ -195,14 +173,16 @@ class Inventory extends Component {
                 type="text"
                 className="validate"
               />
-              <label htmlFor="category">category</label>
             </div>
             <div className="input-field col s6">
-              <select ref={input => (this.available = input)} id="available">
+              <select
+                ref={input => (this.available = input)}
+                id="available"
+                defaultValue="true"
+              >
                 <option value="true">Available</option>
                 <option value="false">Unavalable</option>
               </select>
-              <label>Availability</label>
             </div>
           </div>
           <span className="add-button">

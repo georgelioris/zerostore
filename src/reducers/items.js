@@ -27,9 +27,10 @@ const item = (state = {}, action) => {
       );
     case ADD_TO_INV:
       const { item } = action;
-      const addedKey = item.id;
+      const addedKey = state;
       const addedItem = {
         [addedKey]: {
+          id: addedKey,
           ...item
         }
       };
@@ -70,7 +71,10 @@ const items = (state = {}, action) => {
       const itemState = state[action.payload.key];
       return { ...state, ...item(itemState, action) };
     case ADD_TO_INV:
-      return { ...state, ...item(undefined, action) };
+      const getId = Object.keys(state).length;
+      const newId = getId !== 0 ? state[getId].id + 1 : 1;
+      debugger;
+      return { ...state, ...item(newId, action) };
     case REMOVE_FROM_INV:
       return item(state, action);
     default:

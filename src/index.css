@@ -1,4 +1,4 @@
-.itemList {
+.item-list {
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
@@ -8,7 +8,7 @@
   margin-top: 1em;
 }
 
-.itemList .card {
+.item-list .card {
   margin: 0rem 0.5rem 0.5rem 0rem;
 }
 
@@ -131,7 +131,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   text-align: center;
-  background: rgba(129, 129, 129, 0.7) !important;
+  background: rgba(0, 0, 0, 0.4) !important;
   font-size: 1.5em;
   color: #fff !important;
   transition-property: width, height, background, top, right, bottom, left;
@@ -162,3 +162,8 @@ body {
 }
 
 /*-------------------------------*/
+
+.item-list .card .card-image img {
+  min-width: 300px;
+  min-height: 200px;
+}

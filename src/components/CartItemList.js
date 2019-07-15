@@ -2,10 +2,10 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 
 const subTotal = items => cartItem => {
-  return itemProp(items)(cartItem, "price") * cartItem.quantity;
+  return getProperty(items)(cartItem, "price") * cartItem.quantity;
 };
 
-const itemProp = items => (cartItem, prop) => {
+const getProperty = items => (cartItem, prop) => {
   const key = cartItem.id;
   return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
 };
@@ -20,7 +20,7 @@ const CartItem = ({
   <div className="card white darken-1" key={cartItem.id}>
     <div className="card-content black-text">
       <span className="card-title">
-        {itemProp(items)(cartItem, "title")}
+        {getProperty(items)(cartItem, "title")}
         <div className="remove">
           <span onClick={onClickRemove}>
             <Icon>clear</Icon>
@@ -31,9 +31,7 @@ const CartItem = ({
       <div className="action">
         <span
           className={
-            cartItem.quantity === 1
-              ? "btn-floating white disabled"
-              : "btn-floating white"
+            "btn-floating white " + (cartItem.quantity === 1 ? "disabled" : "")
           }
           onClick={onClickDec}
         >

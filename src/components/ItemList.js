@@ -1,9 +1,5 @@
 import React from "react";
 
-const unavailClassName = item => {
-  return item.available === false ? "unavailable disabled" : "";
-};
-
 const Item = ({ item, onItemClick }) => (
   <div className="card" key={item.id}>
     <div className="card-image">
@@ -11,8 +7,8 @@ const Item = ({ item, onItemClick }) => (
       <span className="card-title">{item.title}</span>
       <span
         className={
-          "btn-floating halfway-fab waves-effect waves-light red " +
-          unavailClassName(item)
+          "btn-floating halfway-fab waves-effect waves-light red" +
+          (item.available === false ? " unavailable disabled" : "")
         }
         onClick={onItemClick}
       >
@@ -33,7 +29,7 @@ const Item = ({ item, onItemClick }) => (
 
 const ItemList = ({ items, onClick }) => (
   <div>
-    <div className="itemList">
+    <div className="item-list">
       {items.map(item => (
         <Item key={item.id} item={item} onItemClick={() => onClick(item)} />
       ))}
