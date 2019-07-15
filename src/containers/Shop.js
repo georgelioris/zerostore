@@ -5,28 +5,22 @@ import Inventory from "../components/Inventory";
 import ItemList from "../components/ItemList";
 import ItemFilters from "../components/ItemFilters";
 import M from "materialize-css";
+import Cart from "../components/Cart";
 
 const Shop = ({
   items,
+  cartItems,
   categories,
   visibilityFilter,
   setFilter,
-  cartItems,
-  addToCart,
-  incQuant
+  handleClick
 }) => {
   useEffect(() => {
     M.AutoInit();
   });
-
-  const handleClick = (item, cartItems) => {
-    const itemInCart = cartItems.find(cartItem => item.id === cartItem.id);
-    return itemInCart ? incQuant(itemInCart) : addToCart(item);
-  };
-
   return (
     <div className="row">
-      <div className="col s12">
+      <div className="col s10">
         <h3>Items</h3>
         <ItemFilters
           categories={categories}
@@ -35,6 +29,9 @@ const Shop = ({
         />
         <ItemList items={items} cartItems={cartItems} onClick={handleClick} />
         <Inventory />
+      </div>
+      <div className="col s2">
+        <Cart />
       </div>
     </div>
   );
@@ -70,11 +67,11 @@ const filters = items => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addToCart: item => {
-      dispatch(addToCart(item));
-    },
-    incQuant: item => {
-      dispatch(incQuant(item));
+    handleClick: (item, cartItems) => {
+      const itemInCart = cartItems.find(cartItem => item.id === cartItem.id);
+      return itemInCart
+        ? dispatch(incQuant(itemInCart))
+        : dispatch(addToCart(item));
     },
     setFilter: filter => {
       dispatch(setVisibility(filter));
