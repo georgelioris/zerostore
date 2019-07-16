@@ -6,6 +6,9 @@
   width: 100%;
   float: left;
   margin-top: 1em;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .item-list .card {
@@ -166,4 +169,10 @@ body {
 .item-list .card .card-image img {
   min-width: 300px;
   min-height: 200px;
+}
+
+.category-filters {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }

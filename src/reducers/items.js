@@ -1,4 +1,4 @@
-import { ITEM_CHANGE, REMOVE_FROM_INV, ADD_TO_INV } from "../constants";
+import { ITEM_CHANGE, REMOVE_FROM_SHOP, ADD_TO_SHOP } from "../constants";
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -14,7 +14,7 @@ const item = (state = {}, action) => {
       };
       return updatedItem;
 
-    case ADD_TO_INV:
+    case ADD_TO_SHOP:
       const { item } = action;
       const addedKey = state;
       const addedItem = {
@@ -25,7 +25,7 @@ const item = (state = {}, action) => {
       };
       return addedItem;
 
-    case REMOVE_FROM_INV:
+    case REMOVE_FROM_SHOP:
       const itemkey = action.item.id;
       return Object.keys(state).reduce(
         (acc, key) =>
@@ -43,29 +43,16 @@ const item = (state = {}, action) => {
   }
 };
 
-// const removeItem = (state, itemkey) =>
-//   Object.keys(state).reduce(
-//     (acc, key) =>
-//       Number(key) !== itemkey
-//         ? {
-//             ...acc,
-//             [key]: state[key]
-//           }
-//         : acc,
-//     {}
-//   );
-
 const items = (state = {}, action) => {
   switch (action.type) {
     case ITEM_CHANGE:
       const itemState = state[action.payload.key];
       return { ...state, ...item(itemState, action) };
-    case ADD_TO_INV:
+    case ADD_TO_SHOP:
       const lastKey = Object.keys(state).length;
       const newKey = lastKey !== 0 ? state[lastKey].id + 1 : 1;
-      debugger;
       return { ...state, ...item(newKey, action) };
-    case REMOVE_FROM_INV:
+    case REMOVE_FROM_SHOP:
       return item(state, action);
     default:
       return state;

@@ -1,9 +1,9 @@
 import React from "react";
 
 const Item = ({ item, onItemClick }) => (
-  <div className="card" key={item.id}>
+  <div className="card hoverable" key={item.id}>
     <div className="card-image">
-      <img src={item.img} alt={item.title} />
+      <img src={item.img} alt={item.title} className="responsive-img" />
       <span className="card-title">{item.title}</span>
       <span
         className={
@@ -27,14 +27,14 @@ const Item = ({ item, onItemClick }) => (
   </div>
 );
 
-const ItemList = ({ items, onClick, cartItems }) => (
+const ItemList = ({ items, handleItemClick, cartItems }) => (
   <div>
     <div className="item-list">
       {items.map(item => (
         <Item
           key={item.id}
           item={item}
-          onItemClick={() => onClick(item, cartItems)}
+          onItemClick={() => handleItemClick(item, cartItems)}
         />
       ))}
     </div>

@@ -4,8 +4,8 @@ import {
   INC_QUANT,
   DEC_QUANT,
   ITEM_CHANGE,
-  REMOVE_FROM_INV,
-  ADD_TO_INV,
+  REMOVE_FROM_SHOP,
+  ADD_TO_SHOP,
   VISIBILITY_FILTER
 } from "../constants";
 
@@ -49,17 +49,17 @@ export const itemChange = payload => {
   return action;
 };
 
-export const removeFromInventory = item => {
+export const removeFromShop = item => {
   const action = {
-    type: REMOVE_FROM_INV,
+    type: REMOVE_FROM_SHOP,
     item
   };
   return action;
 };
 
-export const addToInv = item => {
+export const addToShop = item => {
   const action = {
-    type: ADD_TO_INV,
+    type: ADD_TO_SHOP,
     item
   };
   return action;
