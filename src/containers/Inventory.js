@@ -43,7 +43,8 @@ const Inventory = ({ ...props }) => {
   };
 
   return (
-    <div className="row">
+    <div className="container">
+      <h4>Inventory</h4>
       {props.items.map(item => {
         return (
           <form
@@ -136,29 +137,35 @@ const Inventory = ({ ...props }) => {
       >
         <div className="row">
           <div className="input-field col s6">
-            <input name="title" type="text" placeholder="Item Title" />
+            <input name="title" id="title" type="text" />
+            <label htmlFor="title">Title</label>
           </div>
 
           <div className="input-field col s4">
-            <input name="img" type="text" placeholder="Img Url" />
+            <input name="img" id="img" type="text" />
+
+            <label htmlFor="img">Img Url</label>
           </div>
           <div className="input-field col s2">
-            <input name="price" type="number" placeholder="$$" />
+            <input name="price" id="price" type="number" />
+            <label htmlFor="price">Price</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s12">
             <input
               name="desc"
+              id="desc"
               type="text"
               className="materialize-textarea"
-              placeholder="Item Description..."
             />
+            <label htmlFor="desc">Description</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input name="category" type="text" />
+            <input name="category" id="category" type="text" />
+            <label htmlFor="category">Category</label>
           </div>
           <div className="input-field col s6">
             <select name="available" defaultValue="true">
@@ -166,12 +173,12 @@ const Inventory = ({ ...props }) => {
               <option value="false">Unavalable</option>
             </select>
           </div>
+          <span className="add-button">
+            <button className="waves-effect waves-light blue darken-2 btn">
+              Add Item
+            </button>
+          </span>
         </div>
-        <span className="add-button">
-          <button className="waves-effect waves-light blue darken-2 btn">
-            Add Item
-          </button>
-        </span>
       </form>
     </div>
   );

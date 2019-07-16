@@ -8,7 +8,7 @@ import ItemFilters from "../components/ItemFilters";
 
 const Shop = ({ ...props }) => (
   <div className="container">
-    <h3>Items</h3>
+    <h4>Items</h4>
     <ItemFilters {...props} />
     <ItemList {...props} />
   </div>

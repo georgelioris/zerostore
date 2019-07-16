@@ -10,6 +10,13 @@ const getProperty = items => (cartItem, prop) => {
   return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
 };
 
+const total = (cartItems, items) => {
+  const total = cartItems.reduce((acc, cartItem) => {
+    return acc + subTotal(items)(cartItem);
+  }, 0);
+  return total ? "Total: " + total + " $" : "";
+};
+
 const CartItem = ({
   items,
   cartItem,
@@ -19,11 +26,11 @@ const CartItem = ({
 }) => (
   <div className="card white darken-1" key={cartItem.id}>
     <div className="card-content black-text row">
-      <div class="col s2">
+      <div className="col s2">
         <img
           src={getProperty(items)(cartItem, "img")}
           alt=""
-          class="circle responsive-img"
+          className="circle responsive-img"
         />
       </div>
       <div className="col s10">
@@ -70,27 +77,26 @@ const CartItemList = ({
 }) => (
   <div className="cartList">
     <h4>My Cart</h4>
-
-    {cartItems.map(cartItem => {
-      return (
-        <CartItem
-          key={cartItem.id}
-          cartItem={cartItem}
-          items={items}
-          onClickInc={() => incQuant(cartItem)}
-          onClickDec={() => decQuant(cartItem)}
-          onClickRemove={() => removeFromCart(cartItem)}
-        />
-      );
-    })}
+    {cartItems.length ? (
+      cartItems.map(cartItem => {
+        return (
+          <CartItem
+            key={cartItem.id}
+            cartItem={cartItem}
+            items={items}
+            onClickInc={() => incQuant(cartItem)}
+            onClickDec={() => decQuant(cartItem)}
+            onClickRemove={() => removeFromCart(cartItem)}
+          />
+        );
+      })
+    ) : (
+      <div className="container center no-content">
+        <i className="material-icons">local_grocery_store</i>
+      </div>
+    )}
     <div className="total">
-      <span>
-        Total: {` `}
-        {cartItems.reduce((acc, cartItem) => {
-          return acc + subTotal(items)(cartItem);
-        }, 0)}
-        {` `}$
-      </span>
+      <span>{total(cartItems, items)}</span>
     </div>
   </div>
 );
