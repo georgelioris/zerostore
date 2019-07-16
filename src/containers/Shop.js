@@ -14,15 +14,15 @@ const Shop = ({ ...props }) => (
   </div>
 );
 
-const visibleItems = (items, filter) => {
-  const itemsArr = Object.values(items);
+const visibleItems = (itemsObj, filter) => {
+  const itemsArr = Object.values(itemsObj);
   return filter === "All"
     ? itemsArr
     : itemsArr.filter(i => i.category === filter);
 };
 
-const categories = items => {
-  const itemsArr = Object.values(items);
+const categories = itemsObj => {
+  const itemsArr = Object.values(itemsObj);
   const categories = itemsArr.reduce(
     (acc, item) =>
       acc.find(category => category === item.category || item.category === "")

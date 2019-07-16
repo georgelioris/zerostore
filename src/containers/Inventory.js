@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { itemChange, removeFromShop, addToShop } from "../actions/index";
 import M from "materialize-css";
