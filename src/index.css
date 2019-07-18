@@ -186,3 +186,9 @@ body {
 .no-content i {
   cursor: default;
 }
+
+.sidenav {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
