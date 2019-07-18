@@ -1,4 +1,4 @@
-.item-list {
+.item-card-list {
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
@@ -11,7 +11,7 @@
   -moz-user-select: none;
 }
 
-.item-list .card {
+.item-card-list .card {
   margin: 0rem 0.5rem 0.5rem 0rem;
 }
 
@@ -166,7 +166,7 @@ body {
 
 /*-------------------------------*/
 
-.item-list .card .card-image img {
+.item-card-list .card .card-image img {
   min-width: 300px;
   min-height: 200px;
 }

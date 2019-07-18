@@ -1,21 +1,6 @@
 import React from "react";
 import Icon from "@material-ui/core/Icon";
-
-const subTotal = items => cartItem => {
-  return getProperty(items)(cartItem, "price") * cartItem.quantity;
-};
-
-const getProperty = items => (cartItem, prop) => {
-  const key = cartItem.id;
-  return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
-};
-
-const total = (cartItems, items) => {
-  const total = cartItems.reduce((acc, cartItem) => {
-    return acc + subTotal(items)(cartItem);
-  }, 0);
-  return total ? "Total: " + total + " $" : "";
-};
+import { getProperty, total, subTotal } from "../helpers";
 
 const CartItem = ({
   items,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import M from "materialize-css";
 
-const ItemFilters = ({ visibilityFilter, categories, setFilter }) => {
+const FilterList = ({ visibilityFilter, categories, setFilter }) => {
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -11,7 +11,10 @@ const ItemFilters = ({ visibilityFilter, categories, setFilter }) => {
         className="dropdown-trigger btn red lighten-1"
         data-target="categories"
       >
-        {visibilityFilter}
+        <span className="valign-wrapper">
+          {visibilityFilter}
+          <i className="material-icons small">arrow_drop_down</i>
+        </span>
       </span>
       <ul id="categories" className="dropdown-content">
         <li value="All" onClick={() => setFilter("All")}>
@@ -30,4 +33,4 @@ const ItemFilters = ({ visibilityFilter, categories, setFilter }) => {
     </div>
   );
 };
-export default ItemFilters;
+export default FilterList;

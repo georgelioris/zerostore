@@ -1,15 +1,16 @@
 import React from "react";
 
-const Item = ({ item, onItemClick }) => (
+const ItemCard = ({ item, onItemClick }) => (
   <div className="card hoverable" key={item.id}>
     <div className="card-image">
       <img src={item.img} alt={item.title} className="responsive-img" />
       <span className="card-title">{item.title}</span>
       <span
         className={
-          "btn-floating halfway-fab waves-effect waves-light red" +
+          "btn-floating halfway-fab waves-effect waves-light red sidenav-trigger" +
           (item.available === false ? " unavailable disabled" : "")
         }
+        data-target="slide-out"
         onClick={onItemClick}
       >
         <span>
@@ -27,11 +28,11 @@ const Item = ({ item, onItemClick }) => (
   </div>
 );
 
-const ItemList = ({ items, handleItemClick, cartItems }) => (
+const ItemCardList = ({ visibleItems, handleItemClick, cartItems }) => (
   <div>
-    <div className="item-list">
-      {items.map(item => (
-        <Item
+    <div className="item-card-list">
+      {visibleItems.map(item => (
+        <ItemCard
           key={item.id}
           item={item}
           onItemClick={() => handleItemClick(item, cartItems)}
@@ -41,4 +42,4 @@ const ItemList = ({ items, handleItemClick, cartItems }) => (
   </div>
 );
 
-export default ItemList;
+export default ItemCardList;

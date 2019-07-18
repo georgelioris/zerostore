@@ -6,7 +6,7 @@ const Navbar = ({ count }) => {
     <nav className="nav-wrapper red darken-4">
       <div className="container">
         <Link to="/" className="brand-logo">
-          Shopping
+          ZeroStore
         </Link>
 
         <ul className="right">
@@ -17,7 +17,7 @@ const Navbar = ({ count }) => {
             <Link to="/Cart">
               My cart{" "}
               <span
-                className="new badge orange lighten-1 "
+                className="new badge white darken-3 black-text"
                 data-badge-caption=""
               >
                 {count}

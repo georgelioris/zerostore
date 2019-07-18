@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { addToCart, incQuant, setVisibility } from "../actions";
+import { addToCart, removeFromCart, incQuant, setVisibility } from "../actions";
 // import Inventory from "./Inventory";
-import ItemList from "../components/ItemList";
-import ItemFilters from "../components/ItemFilters";
-// import Cart from "./Cart";
+import ItemCardList from "../components/ItemCardList";
+import FilterList from "../components/FilterList";
+import SideCartItemList from "../components/SideCartItemList";
+import M from "materialize-css";
 
-const Shop = ({ ...props }) => (
-  <div className="container">
-    <h4>Items</h4>
-    <ItemFilters {...props} />
-    <ItemList {...props} />
-  </div>
-);
+const Shop = ({ ...props }) => {
+  useEffect(() => {
+    const cartNav = document.querySelector(".sidenav");
+    M.Sidenav.init(cartNav, { edge: "right" });
+  }, []);
+  return (
+    <div>
+      <SideCartItemList {...props} />
+      <div className="container">
+        <h4>{props.visibilityFilter} Items</h4>
+        <FilterList {...props} />
+        <ItemCardList {...props} />
+      </div>
+    </div>
+  );
+};
 
 const visibleItems = (itemsObj, filter) => {
   const itemsArr = Object.values(itemsObj);
@@ -35,7 +45,8 @@ const categories = itemsObj => {
 
 const mapStateToProps = state => {
   return {
-    items: visibleItems(state.items, state.visibilityFilter),
+    items: state.items,
+    visibleItems: visibleItems(state.items, state.visibilityFilter),
     cartItems: state.cartItems,
     visibilityFilter: state.visibilityFilter,
     categories: categories(state.items)
@@ -52,6 +63,9 @@ const mapDispatchToProps = dispatch => {
     },
     setFilter: filter => {
       dispatch(setVisibility(filter));
+    },
+    removeFromCart: cartItem => {
+      dispatch(removeFromCart(cartItem));
     }
   };
 };
