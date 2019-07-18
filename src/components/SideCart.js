@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const SideCartItem = ({ items, cartItem, onClickRemove }) => (
   <li>
-    <a href="#!">
+    <Link to="/">
       <i className="material-icons tiny" onClick={onClickRemove}>
         clear
       </i>
       {getProperty(items)(cartItem, "title")} (x{cartItem.quantity})
-    </a>
+    </Link>
   </li>
 );
 
