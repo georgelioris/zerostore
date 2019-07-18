@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "@material-ui/core/Icon";
+import { Image } from "./Image";
 import { getProperty, total, subTotal } from "../helpers";
 
 const CartItem = ({
@@ -9,13 +10,14 @@ const CartItem = ({
   onClickDec,
   onClickRemove
 }) => (
-  <div className="card white darken-1" key={cartItem.id}>
+  <div className="card grey darken-1" key={cartItem.id}>
     <div className="card-content black-text row">
       <div className="col s2">
-        <img
-          src={getProperty(items)(cartItem, "img")}
-          alt=""
-          className="circle responsive-img"
+        <Image
+          classNames="circle"
+          url={getProperty(items)(cartItem, "img")}
+          width={"120px"}
+          height={"120px"}
         />
       </div>
       <div className="col s10">
@@ -44,8 +46,7 @@ const CartItem = ({
           </span>
           <br />
           <div className="subTotal">
-            Subtotal: {subTotal(items)(cartItem)}
-            {` `}$
+            {`Subtotal: ${subTotal(items)(cartItem)}$`}
           </div>
         </div>
       </div>

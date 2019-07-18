@@ -192,3 +192,9 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
 }
+
+.image-component {
+  display: block;
+  background-size: cover !important;
+  background-position: center !important;
+}

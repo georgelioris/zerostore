@@ -11,5 +11,5 @@ export const total = (cartItems, items) => {
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + subTotal(items)(cartItem);
   }, 0);
-  return total ? "Total: " + total + " $" : "";
+  return total ? `Total: ${total} $` : "";
 };

@@ -1,15 +1,14 @@
 import React from "react";
+import { Image } from "./Image";
 
 const ItemCard = ({ item, onItemClick }) => (
   <div className="card hoverable" key={item.id}>
     <div className="card-image">
-      <img src={item.img} alt={item.title} className="responsive-img" />
+      <Image url={item.img} width={"300px"} height={"200px"} />
       <span className="card-title">{item.title}</span>
       <span
-        className={
-          "btn-floating halfway-fab waves-effect waves-light red sidenav-trigger" +
-          (item.available === false ? " unavailable disabled" : "")
-        }
+        className={`btn-floating halfway-fab waves-effect waves-light red sidenav-trigger
+          ${item.available === false ? " unavailable disabled" : ""}`}
         data-target="slide-out"
         onClick={onItemClick}
       >
