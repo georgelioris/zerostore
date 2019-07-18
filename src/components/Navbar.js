@@ -15,10 +15,10 @@ const Navbar = ({ count }) => {
 
           <ul className="right right hide-on-med-and-down">
             <li>
-              <NavLink exact="/Shop">Shop</NavLink>
+              <NavLink to="/Shop">Shop</NavLink>
             </li>
             <li>
-              <NavLink exact="/Cart" activeClassName="active">
+              <NavLink to="/Cart" activeClassName="active">
                 My cart{" "}
                 <span
                   className="new badge white darken-3 black-text"
