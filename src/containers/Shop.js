@@ -4,17 +4,17 @@ import { addToCart, removeFromCart, incQuant, setVisibility } from "../actions";
 // import Inventory from "./Inventory";
 import ItemCardList from "../components/ItemCardList";
 import FilterList from "../components/FilterList";
-import SideCartItemList from "../components/SideCartItemList";
+import SideCart from "../components/SideCart";
 import M from "materialize-css";
 
 const Shop = ({ ...props }) => {
   useEffect(() => {
-    const cartNav = document.querySelector(".sidenav");
-    M.Sidenav.init(cartNav, { edge: "right" });
+    const sideCart = document.querySelector(".sidenav");
+    M.Sidenav.init(sideCart, { edge: "right" });
   }, []);
   return (
     <div>
-      <SideCartItemList {...props} />
+      <SideCart {...props} />
       <div className="container">
         <h4>{props.visibilityFilter} Items</h4>
         <FilterList {...props} />

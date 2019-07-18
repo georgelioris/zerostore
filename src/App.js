@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import history from "./history";
 import "materialize-css"; // It installs the JS asset only
 import "materialize-css/dist/css/materialize.min.css";
@@ -9,10 +10,10 @@ import Shop from "./containers/Shop";
 import Cart from "./containers/Cart";
 import Inventory from "./containers/Inventory";
 
-const App = () => (
+const App = ({ ...props }) => (
   <Router history={history}>
     <div className="App">
-      <Navbar />
+      <Navbar {...props} />
       <Switch>
         <Route exact path="/" component={Shop} />
         <Route exact path="/Cart" component={Cart} />
@@ -23,4 +24,12 @@ const App = () => (
   </Router>
 );
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    count: state.cartItems.reduce((acc, cartItem) => {
+      return acc + cartItem.quantity;
+    }, 0)
+  };
+};
+
+export default connect(mapStateToProps)(App);

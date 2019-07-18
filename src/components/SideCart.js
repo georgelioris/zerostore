@@ -13,7 +13,7 @@ const SideCartItem = ({ items, cartItem, onClickRemove }) => (
   </li>
 );
 
-const SideCartItemList = ({ cartItems, items, removeFromCart }) => (
+const SideCart = ({ cartItems, items, removeFromCart }) => (
   <ul id="slide-out" className="sidenav">
     <li>
       <Link to="/cart" className="sidenav-close">
@@ -48,4 +48,4 @@ const SideCartItemList = ({ cartItems, items, removeFromCart }) => (
   </ul>
 );
 
-export default SideCartItemList;
+export default SideCart;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+
 const Navbar = ({ count }) => {
   return (
     <nav className="nav-wrapper red darken-4">
@@ -30,12 +30,4 @@ const Navbar = ({ count }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    count: state.cartItems.reduce((acc, cartItem) => {
-      return acc + cartItem.quantity;
-    }, 0)
-  };
-};
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;
