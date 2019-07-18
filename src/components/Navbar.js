@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = ({ count }) => {
   return (
-    <div>
+    <header>
       <nav className="nav-wrapper red darken-2">
         <Link to="/" data-target="mobile-demo" className="sidenav-trigger">
           <i className="material-icons">menu</i>
@@ -62,7 +62,7 @@ const Navbar = ({ count }) => {
           </NavLink>
         </li>
       </ul>
-    </div>
+    </header>
   );
 };
 

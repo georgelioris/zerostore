@@ -13,14 +13,14 @@ const Shop = ({ ...props }) => {
     M.Sidenav.init(sideCart, { edge: "right" });
   }, []);
   return (
-    <div>
+    <main>
       <SideCart {...props} />
       <div className="container">
         <h4>{props.visibilityFilter} Items</h4>
         <FilterList {...props} />
         <ItemCardList {...props} />
       </div>
-    </div>
+    </main>
   );
 };
 

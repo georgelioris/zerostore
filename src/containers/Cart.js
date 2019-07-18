@@ -5,9 +5,11 @@ import CartItemList from "../components/CartItemList";
 
 const Cart = ({ ...props }) => {
   return (
-    <div className="container">
-      <CartItemList {...props} />
-    </div>
+    <main>
+      <div className="container">
+        <CartItemList {...props} />
+      </div>
+    </main>
   );
 };
 
