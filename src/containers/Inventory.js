@@ -10,6 +10,9 @@ const Inventory = ({ ...props }) => {
 
   useEffect(() => {
     M.updateTextFields();
+    return () => {
+      document.getElementById("addItemForm").reset();
+    };
   }, [props.items.length]);
 
   const handleItemChange = (e, name) => {
@@ -39,7 +42,10 @@ const Inventory = ({ ...props }) => {
       category: e.category.value,
       available: getAvail
     };
-    props.addToShop(item);
+    ///Check if all fields are filled
+    if (Object.values(item).filter(value => value !== "").length === 6) {
+      props.addToShop(item);
+    }
   };
 
   return (
@@ -133,7 +139,6 @@ const Inventory = ({ ...props }) => {
           onSubmit={e => {
             e.preventDefault();
             handleAddToShop(e);
-            document.getElementById("addItemForm").reset();
           }}
         >
           <div className="row">
