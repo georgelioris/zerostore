@@ -9,6 +9,7 @@ import M from "materialize-css";
 
 const Shop = ({ ...props }) => {
   useEffect(() => {
+    M.AutoInit();
     const sideCart = document.getElementById("slide-out");
     M.Sidenav.init(sideCart, { edge: "right" });
   }, []);

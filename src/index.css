@@ -1,18 +1,28 @@
 .item-card-list {
   display: flex;
   justify-content: flex-start;
+  align-self: center;
   align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
   float: left;
   margin-top: 1em;
+  flex-direction: row;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
 
 .item-card-list .card {
-  margin: 0rem 0.5rem 0.5rem 0rem;
+  /* margin: 0rem 0.5rem 0.5rem 0rem; */
+  height: 400px;
+}
+
+.item-card-list .row .col {
+  padding: 0 !important;
+}
+.item-card-list .row {
+  margin-bottom: 0px;
 }
 
 .material-icons {
@@ -22,17 +32,6 @@
 
 .card {
   width: 300px;
-}
-
-.card .card-image .card-title {
-  color: black;
-  font-weight: 400;
-  padding-top: 0px; /*!*/
-  padding-bottom: 0px; /*!*/
-}
-
-.cart {
-  margin-top: 40px;
 }
 
 .collection .collection-item {
@@ -50,21 +49,6 @@
 .collection .collection-item img {
   width: 150px;
   margin-right: 25px;
-}
-
-.item-desc {
-  align-self: center;
-}
-
-.item-container {
-  display: flex;
-  align-self: flex-start;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.item-container .card {
-  margin: 0.5rem;
 }
 
 /*---------------------------------*/
@@ -195,6 +179,7 @@ body {
 
 .image-component {
   display: block;
+
   background-size: cover !important;
   background-position: center !important;
 }
