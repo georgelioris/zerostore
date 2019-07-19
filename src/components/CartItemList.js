@@ -10,7 +10,7 @@ const CartItem = ({
   onClickDec,
   onClickRemove
 }) => (
-  <div className="card grey lighten-3" key={cartItem.id}>
+  <div className="card white" key={cartItem.id}>
     <div className="card-content black-text row">
       <div className="col s2">
         <Image
@@ -32,10 +32,9 @@ const CartItem = ({
 
         <div className="action">
           <span
-            className={
-              "btn-floating white " +
-              (cartItem.quantity === 1 ? "disabled" : "")
-            }
+            className={`btn-floating white ${
+              cartItem.quantity === 1 ? "disabled" : ""
+            }`}
             onClick={onClickDec}
           >
             <i className="material-icons black-text">remove</i>

@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = ({ count }) => {
   return (
     <header>
-      <nav className="nav-wrapper blue-grey darken-4 white-text">
+      <nav className="nav-wrapper red darken-2 white-text">
         <Link to="/" data-target="mobile-demo" className="sidenav-trigger">
           <i className="material-icons">menu</i>
         </Link>
@@ -56,10 +56,7 @@ const Navbar = ({ count }) => {
             activeStyle={{ fontWeight: "bold" }}
           >
             <i className="material-icons small">local_grocery_store</i>Cart
-            <span
-              className="new badge blue-grey darken-4"
-              data-badge-caption=""
-            >
+            <span className="new badge red darken-2" data-badge-caption="">
               {count}
             </span>
           </NavLink>

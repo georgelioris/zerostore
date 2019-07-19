@@ -2,48 +2,53 @@ import React from "react";
 import { Image } from "./Image";
 import { Link } from "react-router-dom";
 
-const ItemCard = ({ item, onItemClick }) => (
+const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
   <div className="row">
     <div className="col s12 m6">
       <div className="card hoverable" key={item.id}>
         <div className="card-image ">
           <Image url={item.img} width={"300px"} height={"200px"} />
-          <span
-            className={`btn-floating halfway-fab waves-effect waves-light sidenav-trigger
-          ${item.available === false ? " unavailable disabled" : ""}`}
+          <button
+            className={`btn-floating halfway-fab waves-effect waves-light red accent-2 sidenav-trigger ${
+              item.available === false ? "unavailable disabled" : ""
+            }`}
             data-target="slide-out"
             onClick={onItemClick}
           >
-            <span>
-              <i className="material-icons">add</i>
-            </span>
-          </span>
+            <i className="material-icons">add</i>
+          </button>
         </div>
 
-        <div className="card-content grey lighten-4">
+        <div className="card-content">
           <span className="card-title">{item.title}</span>
           <p className="truncate">{item.desc}</p>
-          <p className="right">
+          <p>
             <b>Price: {item.price}$</b>
           </p>
         </div>
-        <div className="card-action glue-grey darken-4">
-          <span
+        <div className="card-action grey lighten-4">
+          <button
+            onClick={onCategoryClick}
             className="waves-effect
-            blue-grey lighten-3 white-text waves-light  btn-flat"
+            red accent-1 white-text waves-light  btn-flat"
           >
             {item.category}
-          </span>
-          <a className="blue-grey-text right" href="!#">
+          </button>
+          <Link className="red-text" to="/">
             More
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   </div>
 );
 
-const ItemCardList = ({ visibleItems, handleItemClick, cartItems }) => (
+const ItemCardList = ({
+  visibleItems,
+  handleItemClick,
+  cartItems,
+  setFilter
+}) => (
   <div>
     <div className="item-card-list">
       {visibleItems.map(item => (
@@ -51,6 +56,7 @@ const ItemCardList = ({ visibleItems, handleItemClick, cartItems }) => (
           key={item.id}
           item={item}
           onItemClick={() => handleItemClick(item, cartItems)}
+          onCategoryClick={() => setFilter(item.category)}
         />
       ))}
     </div>
