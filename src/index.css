@@ -13,10 +13,10 @@
   -moz-user-select: none;
 }
 
-.item-card-list .card {
+/* .item-card-list .card {
   /* margin: 0rem 0.5rem 0.5rem 0rem; */
-  height: 400px;
-}
+/* height: 400px;
+} */
 
 .item-card-list .row .col {
   padding: 0 !important;
@@ -75,7 +75,6 @@ body {
   font-size: 1.5rem;
   padding: 0px 10px 0px 10px;
 }
-
 .remove {
   float: right;
 }
@@ -118,7 +117,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(0, 10, 18, 0.3) !important;
   font-size: 1.5em;
   color: #fff !important;
   transition-property: width, height, background, top, right, bottom, left;
@@ -141,7 +140,7 @@ body {
   height: 20% !important;
   display: block;
   height: 10%;
-  background: #ef5350 !important;
+  background: #4f5b62 !important;
 }
 
 .halfway-fab span {
@@ -182,4 +181,26 @@ body {
 
   background-size: cover !important;
   background-position: center !important;
+}
+
+.item-card-list .card-content {
+  margin-top: auto;
+  padding-top: auto;
+}
+
+.card-action {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+
+.card-action a {
+  height: inherit;
+  padding-top: auto !important;
+}
+
+.item-card-list .btn-floating {
+  background: #4f5b62;
 }

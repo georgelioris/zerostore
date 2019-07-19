@@ -10,7 +10,7 @@ const CartItem = ({
   onClickDec,
   onClickRemove
 }) => (
-  <div className="card grey darken-1" key={cartItem.id}>
+  <div className="card grey lighten-3" key={cartItem.id}>
     <div className="card-content black-text row">
       <div className="col s2">
         <Image

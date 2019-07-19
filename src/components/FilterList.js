@@ -8,7 +8,7 @@ const FilterList = ({ visibilityFilter, categories, setFilter }) => {
   return (
     <div className="category-filters">
       <span
-        className="dropdown-trigger btn red lighten-1"
+        className="dropdown-trigger btn blue-grey lighten-2 "
         data-target="categories"
       >
         <span className="valign-wrapper">

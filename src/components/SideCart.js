@@ -41,9 +41,9 @@ const SideCart = ({ cartItems, items, removeFromCart }) => (
     )}
 
     <li>
-      <a href="#!" className="subheader">
+      <Link to="/" className="subheader">
         {total(cartItems, items)}
-      </a>
+      </Link>
     </li>
   </ul>
 );

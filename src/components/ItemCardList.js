@@ -1,14 +1,15 @@
 import React from "react";
 import { Image } from "./Image";
+import { Link } from "react-router-dom";
 
 const ItemCard = ({ item, onItemClick }) => (
   <div className="row">
     <div className="col s12 m6">
       <div className="card hoverable" key={item.id}>
-        <div className="card-image">
+        <div className="card-image ">
           <Image url={item.img} width={"300px"} height={"200px"} />
           <span
-            className={`btn-floating halfway-fab waves-effect waves-light red sidenav-trigger
+            className={`btn-floating halfway-fab waves-effect waves-light sidenav-trigger
           ${item.available === false ? " unavailable disabled" : ""}`}
             data-target="slide-out"
             onClick={onItemClick}
@@ -19,12 +20,23 @@ const ItemCard = ({ item, onItemClick }) => (
           </span>
         </div>
 
-        <div className="card-content">
+        <div className="card-content grey lighten-4">
           <span className="card-title">{item.title}</span>
-          <p>{item.desc}</p>
-          <p>
+          <p className="truncate">{item.desc}</p>
+          <p className="right">
             <b>Price: {item.price}$</b>
           </p>
+        </div>
+        <div className="card-action glue-grey darken-4">
+          <span
+            className="waves-effect
+            blue-grey lighten-3 white-text waves-light  btn-flat"
+          >
+            {item.category}
+          </span>
+          <a className="blue-grey-text right" href="!#">
+            More
+          </a>
         </div>
       </div>
     </div>
