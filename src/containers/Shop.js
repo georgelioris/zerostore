@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { unique } from "../helpers";
+import { onlyUnique } from "../helpers";
 import {
   addToCart,
   removeFromCart,
@@ -53,7 +53,7 @@ const categories = itemsObj => {
     (acc, item) => [...acc, item.category],
     []
   );
-  const categories = getCategories.filter(unique).filter(Boolean);
+  const categories = onlyUnique(getCategories);
   return categories;
 };
 

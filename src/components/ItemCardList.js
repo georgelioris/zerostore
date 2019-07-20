@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
   <div className="row">
     <div className="col s12 m6">
-      <div className="card hoverable" key={item.id}>
+      <div className="card" key={item.id}>
         <div className="card-image ">
           <Image url={item.img} width={"300px"} height={"200px"} />
           <span
