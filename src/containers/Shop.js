@@ -32,17 +32,19 @@ const Shop = ({ ...props }) => {
 };
 
 const visibleItems = (itemsObj, filters) => {
-  const itemsArr =
+  const visibleItems =
     filters.categoryFilter === "All"
       ? Object.values(itemsObj)
       : Object.values(itemsObj).filter(
           i => i.category === filters.categoryFilter
         );
-  return filters.priceFilter === "low"
-    ? itemsArr.sort((a, b) => a.price - b.price)
-    : filters.priceFilter === "high"
-    ? itemsArr.sort((a, b) => b.price - a.price)
-    : itemsArr;
+  const sortedVisibleItems =
+    filters.priceFilter === "low"
+      ? visibleItems.sort((a, b) => a.price - b.price)
+      : filters.priceFilter === "high"
+      ? visibleItems.sort((a, b) => b.price - a.price)
+      : visibleItems;
+  return sortedVisibleItems;
 };
 
 const categories = itemsObj => {
