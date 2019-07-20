@@ -8,7 +8,6 @@ import {
   setCategoryFilter,
   setPriceFilter
 } from "../actions";
-// import Inventory from "./Inventory";
 import ItemCardList from "../components/ItemCardList";
 import FilterList from "../components/FilterList";
 import SideCart from "../components/SideCart";

@@ -8,15 +8,18 @@ const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
       <div className="card hoverable" key={item.id}>
         <div className="card-image ">
           <Image url={item.img} width={"300px"} height={"200px"} />
-          <button
+          <span
             className={`btn-floating halfway-fab waves-effect waves-light red accent-2 sidenav-trigger ${
-              item.available === false ? "unavailable disabled" : ""
+              item.available === false ? " unavailable disabled" : ""
             }`}
             data-target="slide-out"
             onClick={onItemClick}
           >
-            <i className="material-icons">add</i>
-          </button>
+            {" "}
+            <span>
+              <i className="material-icons">add</i>
+            </span>
+          </span>
         </div>
 
         <div className="card-content">

@@ -28,6 +28,9 @@ const Navbar = ({ count }) => {
                 </span>
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/Inventory">Inventory</NavLink>
+            </li>
           </ul>
         </div>
       </nav>
@@ -59,6 +62,11 @@ const Navbar = ({ count }) => {
             <span className="new badge red darken-2" data-badge-caption="">
               {count}
             </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Inventory" className="sidenav-close">
+            <i className="material-icons small">store</i>Shop
           </NavLink>
         </li>
       </ul>
