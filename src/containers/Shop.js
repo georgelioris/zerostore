@@ -49,11 +49,12 @@ const visibleItems = (itemsObj, filters) => {
 
 const categories = itemsObj => {
   const itemsArr = Object.values(itemsObj);
-  const categories = itemsArr.reduce(
+  const getCategories = itemsArr.reduce(
     (acc, item) => [...acc, item.category],
     []
   );
-  return categories.filter(unique).filter(Boolean);
+  const categories = getCategories.filter(unique).filter(Boolean);
+  return categories;
 };
 
 const mapStateToProps = state => {

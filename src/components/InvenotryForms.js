@@ -11,7 +11,7 @@ const Inventory = ({
       {items.map(item => {
         return (
           <form
-            className="col s12 inventory-item"
+            className="col s12 white inventory-item"
             key={item.id}
             onChange={event => handleItemChange(event, item.id)}
           >
