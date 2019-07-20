@@ -47,7 +47,7 @@ const ItemCardList = ({
   visibleItems,
   handleItemClick,
   cartItems,
-  setFilter
+  setCategoryFilter
 }) => (
   <div>
     <div className="item-card-list">
@@ -56,7 +56,7 @@ const ItemCardList = ({
           key={item.id}
           item={item}
           onItemClick={() => handleItemClick(item, cartItems)}
-          onCategoryClick={() => setFilter(item.category)}
+          onCategoryClick={() => setCategoryFilter(item.category)}
         />
       ))}
     </div>

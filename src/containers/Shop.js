@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart, incQuant, setVisibility } from "../actions";
+import {
+  addToCart,
+  removeFromCart,
+  incQuant,
+  setCategoryFilter,
+  setPriceFilter
+} from "../actions";
 // import Inventory from "./Inventory";
 import ItemCardList from "../components/ItemCardList";
 import FilterList from "../components/FilterList";
@@ -17,7 +23,7 @@ const Shop = ({ ...props }) => {
     <main>
       <SideCart {...props} />
       <div className="container">
-        <h4>{props.visibilityFilter} Items</h4>
+        <h4>{props.filters.categoryFilter} Items</h4>
         <FilterList {...props} />
         <ItemCardList {...props} />
       </div>
@@ -25,11 +31,18 @@ const Shop = ({ ...props }) => {
   );
 };
 
-const visibleItems = (itemsObj, filter) => {
-  const itemsArr = Object.values(itemsObj);
-  return filter === "All"
-    ? itemsArr
-    : itemsArr.filter(i => i.category === filter);
+const visibleItems = (itemsObj, filters) => {
+  const itemsArr =
+    filters.categoryFilter === "All"
+      ? Object.values(itemsObj)
+      : Object.values(itemsObj).filter(
+          i => i.category === filters.categoryFilter
+        );
+  return filters.priceFilter === "low"
+    ? itemsArr.sort((a, b) => a.price - b.price)
+    : filters.priceFilter === "high"
+    ? itemsArr.sort((a, b) => b.price - a.price)
+    : itemsArr;
 };
 
 const categories = itemsObj => {
@@ -47,9 +60,9 @@ const categories = itemsObj => {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    visibleItems: visibleItems(state.items, state.visibilityFilter),
+    visibleItems: visibleItems(state.items, state.filters),
     cartItems: state.cartItems,
-    visibilityFilter: state.visibilityFilter,
+    filters: state.filters,
     categories: categories(state.items)
   };
 };
@@ -62,11 +75,14 @@ const mapDispatchToProps = dispatch => {
         ? dispatch(incQuant(itemInCart))
         : dispatch(addToCart(item));
     },
-    setFilter: filter => {
-      dispatch(setVisibility(filter));
+    setCategoryFilter: filter => {
+      dispatch(setCategoryFilter(filter));
     },
     removeFromCart: cartItem => {
       dispatch(removeFromCart(cartItem));
+    },
+    setPriceFilter: cartItem => {
+      dispatch(setPriceFilter(cartItem));
     }
   };
 };

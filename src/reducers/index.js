@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import items from "./items";
 import cartItems from "./cart";
-import visibilityFilter from "./visibilityFilter.js";
+import filters from "./filters";
 
 export const combinedReducer = combineReducers({
   items: items,
   cartItems: cartItems,
-  visibilityFilter: visibilityFilter
+  filters: filters
 });
 
 export const rootReducer = (state, action) => {

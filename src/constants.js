@@ -6,3 +6,4 @@ export const ITEM_CHANGE = "ITEM_CHANGE";
 export const REMOVE_FROM_SHOP = "REMOVE_FROM_INV";
 export const ADD_TO_SHOP = "ADD_TO_INV";
 export const VISIBILITY_FILTER = "VISIBILITY_FILTER";
+export const SORT_BY = "SORT_BY";

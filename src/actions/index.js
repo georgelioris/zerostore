@@ -6,7 +6,8 @@ import {
   ITEM_CHANGE,
   REMOVE_FROM_SHOP,
   ADD_TO_SHOP,
-  VISIBILITY_FILTER
+  VISIBILITY_FILTER,
+  SORT_BY
 } from "../constants";
 
 export const addToCart = item => {
@@ -65,10 +66,19 @@ export const addToShop = item => {
   return action;
 };
 
-export const setVisibility = filter => {
+export const setCategoryFilter = filter => {
   const action = {
     type: VISIBILITY_FILTER,
     filter
   };
+  return action;
+};
+
+export const setPriceFilter = filter => {
+  const action = {
+    type: SORT_BY,
+    filter
+  };
+
   return action;
 };
