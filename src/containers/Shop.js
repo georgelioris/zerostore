@@ -75,11 +75,11 @@ const mapDispatchToProps = dispatch => {
         ? dispatch(incQuant(itemInCart))
         : dispatch(addToCart(item));
     },
-    setCategoryFilter: filter => {
-      dispatch(setCategoryFilter(filter));
-    },
     removeFromCart: cartItem => {
       dispatch(removeFromCart(cartItem));
+    },
+    setCategoryFilter: filter => {
+      dispatch(setCategoryFilter(filter));
     },
     setPriceFilter: cartItem => {
       dispatch(setPriceFilter(cartItem));
