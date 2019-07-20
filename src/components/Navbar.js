@@ -66,7 +66,7 @@ const Navbar = ({ count }) => {
         </li>
         <li>
           <NavLink to="/Inventory" className="sidenav-close">
-            <i className="material-icons small">store</i>Shop
+            <i className="material-icons small">build</i>Inventory
           </NavLink>
         </li>
       </ul>
