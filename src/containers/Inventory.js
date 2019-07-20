@@ -17,7 +17,7 @@ const Inventory = ({ ...props }) => {
 
   const handleItemChange = (e, name) => {
     const key = name;
-    const eventValue = e.target.value;
+    const eventValue = e.target.value.trim();
     const properties =
       eventValue === "true"
         ? { [e.target.name]: true }
@@ -35,11 +35,11 @@ const Inventory = ({ ...props }) => {
     const e = event.target;
     const getAvail = e.available.value === "true" ? true : false;
     const item = {
-      title: e.title.value,
-      desc: e.desc.value,
-      price: e.price.value,
-      img: e.img.value,
-      category: e.category.value,
+      title: e.title.value.trim(),
+      desc: e.desc.value.trim(),
+      price: e.price.value.trim(),
+      img: e.img.value.trim(),
+      category: e.category.value.trim(),
       available: getAvail
     };
     ///Check if all fields are filled
@@ -95,14 +95,14 @@ const Inventory = ({ ...props }) => {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input
+                  <textarea
                     id={"desc-" + item.id}
                     name="desc"
                     type="text"
                     className="materialize-textarea"
                     defaultValue={item.desc}
                     placeholder="Item Description..."
-                  />
+                  ></textarea>
                   <label htmlFor={"desc-" + item.id}>Description</label>
                 </div>
               </div>

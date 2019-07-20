@@ -27,13 +27,17 @@ const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
           </p>
         </div>
         <div className="card-action grey lighten-4">
-          <button
-            onClick={onCategoryClick}
-            className="waves-effect
+          {item.category ? (
+            <button
+              onClick={onCategoryClick}
+              className="waves-effect
             red accent-1 white-text waves-light  btn-flat"
-          >
-            {item.category}
-          </button>
+            >
+              {item.category}
+            </button>
+          ) : (
+            ""
+          )}
           <Link className="red-text" to="/">
             More
           </Link>

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { unique } from "../helpers";
 import {
   addToCart,
   removeFromCart,
@@ -48,13 +49,10 @@ const visibleItems = (itemsObj, filters) => {
 const categories = itemsObj => {
   const itemsArr = Object.values(itemsObj);
   const categories = itemsArr.reduce(
-    (acc, item) =>
-      acc.find(category => category === item.category || item.category === "")
-        ? acc
-        : [...acc, item.category],
+    (acc, item) => [...acc, item.category],
     []
   );
-  return categories;
+  return categories.filter(unique).filter(Boolean);
 };
 
 const mapStateToProps = state => {

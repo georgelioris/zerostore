@@ -13,3 +13,5 @@ export const total = (cartItems, items) => {
   }, 0);
   return total ? `Total: ${total} $` : "";
 };
+
+export const unique = (value, index, array) => array.indexOf(value) === index;
