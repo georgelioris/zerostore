@@ -3,28 +3,22 @@ import Icon from "@material-ui/core/Icon";
 import { Image } from "./Image";
 import { getProperty, total, subTotal } from "../helpers";
 
-const CartItem = ({
-  items,
-  cartItem,
-  onClickInc,
-  onClickDec,
-  onClickRemove
-}) => (
+const CartItem = ({ ...cartItem }) => (
   <div className="card white" key={cartItem.id}>
     <div className="card-content black-text row">
       <div className="col s2">
         <Image
           classNames="circle"
-          url={getProperty(items)(cartItem, "img")}
+          url={cartItem.getProperty("img")}
           width={"120px"}
           height={"120px"}
         />
       </div>
       <div className="col s10">
         <span className="card-title">
-          {getProperty(items)(cartItem, "title")}
+          {cartItem.getProperty("title")}
           <div className="remove">
-            <span onClick={onClickRemove}>
+            <span onClick={cartItem.onClickRemove}>
               <Icon>clear</Icon>
             </span>
           </div>
@@ -35,18 +29,16 @@ const CartItem = ({
             className={`btn-floating white ${
               cartItem.quantity === 1 ? "disabled" : ""
             }`}
-            onClick={onClickDec}
+            onClick={cartItem.onClickDec}
           >
             <i className="material-icons black-text">remove</i>
           </span>
           <span className="quantity">{cartItem.quantity}</span>
-          <span className="btn-floating white" onClick={onClickInc}>
+          <span className="btn-floating white" onClick={cartItem.onClickInc}>
             <i className="small material-icons black-text">add</i>
           </span>
           <br />
-          <div className="subTotal">
-            {`Subtotal: ${subTotal(items)(cartItem)}$`}
-          </div>
+          <div className="subTotal">{`Subtotal: ${cartItem.subTotal}$`}</div>
         </div>
       </div>
     </div>
@@ -59,31 +51,36 @@ const CartItemList = ({
   incQuant,
   decQuant,
   removeFromCart
-}) => (
-  <div className="cartList">
-    <h4>My Cart</h4>
-    {cartItems.length ? (
-      cartItems.map(cartItem => {
-        return (
-          <CartItem
-            key={cartItem.id}
-            cartItem={cartItem}
-            items={items}
-            onClickInc={() => incQuant(cartItem)}
-            onClickDec={() => decQuant(cartItem)}
-            onClickRemove={() => removeFromCart(cartItem)}
-          />
-        );
-      })
-    ) : (
-      <div className="container center no-content">
-        <i className="material-icons">local_grocery_store</i>
-      </div>
-    )}
-    <div className="total">
-      <span>{total(cartItems, items)}</span>
+}) => {
+  const cartList = cartItems.length ? (
+    cartItems.map(cartItem => {
+      return (
+        <CartItem
+          key={cartItem.id}
+          {...cartItem}
+          items={items}
+          getProperty={getProperty(items)(cartItem)}
+          subTotal={subTotal(items)(cartItem)}
+          onClickInc={() => incQuant(cartItem)}
+          onClickDec={() => decQuant(cartItem)}
+          onClickRemove={() => removeFromCart(cartItem)}
+        />
+      );
+    })
+  ) : (
+    <div className="container center no-content">
+      <i className="material-icons">local_grocery_store</i>
     </div>
-  </div>
-);
+  );
+  return (
+    <div className="cartList">
+      <h4>My Cart</h4>
+      {cartList}
+      <div className="total">
+        <span>{total(cartItems, items)}</span>
+      </div>
+    </div>
+  );
+};
 
 export default CartItemList;

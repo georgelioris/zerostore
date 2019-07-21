@@ -1,8 +1,8 @@
 export const subTotal = items => cartItem => {
-  return getProperty(items)(cartItem, "price") * cartItem.quantity;
+  return getProperty(items)(cartItem)("price") * cartItem.quantity;
 };
 
-export const getProperty = items => (cartItem, prop) => {
+export const getProperty = items => cartItem => prop => {
   const key = cartItem.id;
   return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
 };

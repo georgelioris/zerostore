@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "./Image";
 import { Link } from "react-router-dom";
 
-const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
+const ItemCard = ({ ...item }) => (
   <div className="row">
     <div className="col s12 m6">
       <div className="card" key={item.id}>
@@ -13,9 +13,8 @@ const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
               item.available === false ? " unavailable disabled" : ""
             }`}
             data-target="slide-out"
-            onClick={onItemClick}
+            onClick={item.onItemClick}
           >
-            {" "}
             <span>
               <i className="material-icons">add</i>
             </span>
@@ -32,7 +31,7 @@ const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
         <div className="card-action grey lighten-4">
           {item.category ? (
             <button
-              onClick={onCategoryClick}
+              onClick={item.onCategoryClick}
               className="waves-effect
             red accent-1 white-text waves-light  btn-flat"
             >
@@ -41,7 +40,7 @@ const ItemCard = ({ item, onItemClick, onCategoryClick }) => (
           ) : (
             ""
           )}
-          <Link className="red-text" to="/">
+          <Link className="red-text" to={`/items/${item.title}-${item.id}`}>
             More
           </Link>
         </div>
@@ -55,19 +54,20 @@ const ItemCardList = ({
   handleItemClick,
   cartItems,
   setCategoryFilter
-}) => (
-  <div>
-    <div className="item-card-list">
-      {visibleItems.map(item => (
-        <ItemCard
-          key={item.id}
-          item={item}
-          onItemClick={() => handleItemClick(item, cartItems)}
-          onCategoryClick={() => setCategoryFilter(item.category)}
-        />
-      ))}
+}) => {
+  const itemCardList = visibleItems.map(item => (
+    <ItemCard
+      key={item.id}
+      {...item}
+      onItemClick={() => handleItemClick(item, cartItems)}
+      onCategoryClick={() => setCategoryFilter(item.category)}
+    />
+  ));
+  return (
+    <div>
+      <div className="item-card-list">{itemCardList}</div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ItemCardList;

@@ -81,12 +81,12 @@ const Inventory = ({
               </div>
             </div>
 
-            <button
+            <span
               className="waves-effect waves-light btn red"
               onClick={() => handleRemoveFromShop(item)}
             >
               remove
-            </button>
+            </span>
           </form>
         );
       })}
@@ -138,7 +138,10 @@ const Inventory = ({
           </div>
         </div>
 
-        <button className="waves-effect waves-light blue darken-2 btn right">
+        <button
+          type="submit"
+          className="waves-effect waves-light blue darken-2 btn right"
+        >
           Add Item
         </button>
       </form>

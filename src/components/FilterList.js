@@ -10,6 +10,15 @@ const FilterList = ({
   useEffect(() => {
     M.AutoInit();
   }, []);
+  const categoryList = categories.map(category => (
+    <li
+      value={category}
+      onClick={() => setCategoryFilter(category)}
+      key={categories.indexOf(category)}
+    >
+      <span>{category}</span>
+    </li>
+  ));
   return (
     <div className="category-filters">
       <span
@@ -25,15 +34,7 @@ const FilterList = ({
         <li value="All" onClick={() => setCategoryFilter("All")}>
           <span> All </span>
         </li>
-        {categories.map(category => (
-          <li
-            value={category}
-            onClick={() => setCategoryFilter(category)}
-            key={categories.indexOf(category)}
-          >
-            <span>{category}</span>
-          </li>
-        ))}
+        {categoryList}
       </ul>
       <span
         className="dropdown-trigger btn red accent-2 right"
