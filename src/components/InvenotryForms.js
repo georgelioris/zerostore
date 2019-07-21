@@ -30,13 +30,13 @@ const Inventory = ({
 
               <div className="input-field col s4">
                 <input
-                  id={"img-" + item.id}
-                  name="img"
+                  id={"category-" + item.id}
+                  name="category"
                   type="text"
-                  defaultValue={item.img}
-                  placeholder="Img url"
+                  defaultValue={item.category}
+                  placeholder="Item Category"
                 />
-                <label htmlFor={"img-" + item.id}>Img Url</label>
+                <label htmlFor={"category-" + item.id}>Category</label>
               </div>
               <div className="input-field col s2">
                 <input
@@ -47,6 +47,24 @@ const Inventory = ({
                   placeholder="$$"
                 />
                 <label htmlFor={"price-" + item.id}>Price</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="input-field col s9">
+                <input
+                  id={"img-" + item.id}
+                  name="img"
+                  type="text"
+                  defaultValue={item.img}
+                  placeholder="Image Url"
+                />
+                <label htmlFor={"img-" + item.id}>Image Url</label>
+              </div>
+              <div className="input-field col s3">
+                <select name="available" defaultValue={item.available}>
+                  <option value="true">Available</option>
+                  <option value="false">Unavailable</option>
+                </select>
               </div>
             </div>
             <div className="row">
@@ -62,35 +80,18 @@ const Inventory = ({
                 <label htmlFor={"desc-" + item.id}>Description</label>
               </div>
             </div>
-            <div className="row">
-              <div className="input-field col s6">
-                <input
-                  id={"cagegory-" + item.id}
-                  name="category"
-                  type="text"
-                  defaultValue={item.category}
-                  placeholder="Category"
-                />
-                <label htmlFor={"Category" + item.id}>Category</label>
-              </div>
-              <div className="input-field col s6">
-                <select name="available" defaultValue={item.available}>
-                  <option value="true">Available</option>
-                  <option value="false">Unavailable</option>
-                </select>
-              </div>
-            </div>
-            <span
+
+            <button
               className="waves-effect waves-light btn red"
               onClick={() => handleRemoveFromShop(item)}
             >
               remove
-            </span>
+            </button>
           </form>
         );
       })}
       <form
-        className="col s12 inventory-item"
+        className="col s12 inventory-item white"
         id="addItemForm"
         onSubmit={event => {
           event.preventDefault();
@@ -104,13 +105,25 @@ const Inventory = ({
           </div>
 
           <div className="input-field col s4">
-            <input name="img" id="img" type="text" />
+            <input name="category" id="category" type="text" />
 
-            <label htmlFor="img">Img Url</label>
+            <label htmlFor="category">Category</label>
           </div>
           <div className="input-field col s2">
             <input name="price" id="price" type="number" />
             <label htmlFor="price">Price</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s9">
+            <input name="img" id="img" type="text" />
+            <label htmlFor="img">Img Url</label>
+          </div>
+          <div className="input-field col s3">
+            <select name="available" defaultValue="true">
+              <option value="true">Available</option>
+              <option value="false">Unavalable</option>
+            </select>
           </div>
         </div>
         <div className="row">
@@ -124,23 +137,10 @@ const Inventory = ({
             <label htmlFor="desc">Description</label>
           </div>
         </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <input name="category" id="category" type="text" />
-            <label htmlFor="category">Category</label>
-          </div>
-          <div className="input-field col s6">
-            <select name="available" defaultValue="true">
-              <option value="true">Available</option>
-              <option value="false">Unavalable</option>
-            </select>
-          </div>
-          <span className="add-button">
-            <button className="waves-effect waves-light blue darken-2 btn">
-              Add Item
-            </button>
-          </span>
-        </div>
+
+        <button className="waves-effect waves-light blue darken-2 btn right">
+          Add Item
+        </button>
       </form>
     </div>
   );

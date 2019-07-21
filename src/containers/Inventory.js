@@ -11,6 +11,7 @@ const Inventory = ({ ...props }) => {
   }, []);
 
   useEffect(() => {
+    M.AutoInit();
     M.updateTextFields();
     return () => {
       document.getElementById("addItemForm").reset();

@@ -25,5 +25,5 @@ export const sortHigh = array => property => [
 ];
 
 export const sortLow = array => property => [
-  ...array.sort((a, b) => a[property] - b[property])
+  ...array.sort((a, b) => b[property] - a[property])
 ];
