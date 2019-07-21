@@ -14,7 +14,16 @@ export const total = (cartItems, items) => {
   return total ? `Total: ${total} $` : "";
 };
 // Return only unique entires that are not empty strings
-export const onlyUnique = array =>
-  array
+export const onlyUnique = array => [
+  ...array
     .filter((value, index, array) => array.indexOf(value) === index)
-    .filter(Boolean);
+    .filter(Boolean)
+];
+
+export const sortHigh = array => property => [
+  ...array.sort((a, b) => a[property] - b[property])
+];
+
+export const sortLow = array => property => [
+  ...array.sort((a, b) => a[property] - b[property])
+];

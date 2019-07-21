@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { onlyUnique } from "../helpers";
+import { onlyUnique, sortHigh, sortLow } from "../helpers";
 import {
   addToCart,
   removeFromCart,
@@ -38,23 +38,20 @@ const visibleItems = (itemsObj, filters) => {
       : Object.values(itemsObj).filter(
           i => i.category === filters.categoryFilter
         );
-  const sortedVisibleItems =
-    filters.priceFilter === "low"
-      ? visibleItems.sort((a, b) => a.price - b.price)
-      : filters.priceFilter === "high"
-      ? visibleItems.sort((a, b) => b.price - a.price)
-      : visibleItems;
-  return sortedVisibleItems;
+  return filters.priceFilter === "low"
+    ? sortHigh(visibleItems)("price")
+    : filters.priceFilter === "high"
+    ? sortLow(visibleItems)("price")
+    : visibleItems;
 };
 
 const categories = itemsObj => {
   const itemsArr = Object.values(itemsObj);
-  const getCategories = itemsArr.reduce(
+  const categories = itemsArr.reduce(
     (acc, item) => [...acc, item.category],
     []
   );
-  const categories = onlyUnique(getCategories);
-  return categories;
+  return onlyUnique(categories);
 };
 
 const mapStateToProps = state => {
