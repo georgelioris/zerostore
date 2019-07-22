@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Shop from "./containers/Shop";
 import Cart from "./containers/Cart";
 import Inventory from "./containers/Inventory";
+import ItemPage from "./containers/ItemPage";
 
 const App = ({ ...props }) => (
   <Router history={history}>
@@ -19,17 +20,16 @@ const App = ({ ...props }) => (
         <Route exact path="/Cart" component={Cart} />
         <Route exact path="/Shop" component={Shop} />
         <Route exact path="/Inventory" component={Inventory} />
+        <Route path="/Shop/items/:id" component={ItemPage} />
       </Switch>
     </div>
   </Router>
 );
 
-const mapStateToProps = state => {
-  return {
-    count: state.cartItems.reduce((acc, cartItem) => {
-      return acc + cartItem.quantity;
-    }, 0)
-  };
-};
+const mapStateToProps = state => ({
+  countCart: state.cartItems.reduce((acc, cartItem) => {
+    return acc + cartItem.quantity;
+  }, 0)
+});
 
 export default connect(mapStateToProps)(App);

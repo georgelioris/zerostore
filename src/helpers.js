@@ -1,7 +1,9 @@
 // Returns a (cartItem) (property) from (itemsObj)
 export const getProperty = items => cartItem => prop => {
   const key = cartItem.id;
-  return items.hasOwnProperty(key) ? items[key][prop] : "Item Removed";
+  return items.hasOwnProperty(key)
+    ? items[key][prop] || prop + " doesn't exist"
+    : "Item Removed";
 };
 
 // Returns a (cartItem) subtotal, getting the price from (itemsObj)

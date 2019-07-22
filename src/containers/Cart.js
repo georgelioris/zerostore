@@ -13,26 +13,22 @@ const Cart = ({ ...props }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    items: state.items,
-    cartItems: state.cartItems
-  };
-};
+const mapStateToProps = state => ({
+  items: state.items,
+  cartItems: state.cartItems
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    incQuant: cartItem => {
-      dispatch(incQuant(cartItem));
-    },
-    decQuant: cartItem => {
-      dispatch(decQuant(cartItem));
-    },
-    removeFromCart: cartItem => {
-      dispatch(removeFromCart(cartItem));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  incQuant: cartItem => {
+    dispatch(incQuant(cartItem));
+  },
+  decQuant: cartItem => {
+    dispatch(decQuant(cartItem));
+  },
+  removeFromCart: cartItem => {
+    dispatch(removeFromCart(cartItem));
+  }
+});
 
 export default connect(
   mapStateToProps,

@@ -178,7 +178,6 @@ body {
 
 .image-component {
   display: block;
-
   background-size: cover !important;
   background-position: center !important;
 }
@@ -207,7 +206,4 @@ body {
 
 .invenotry-itemlist .item-card-list {
   margin-top: 4.4em;
-}
-.invenotry-itemlist .item-card-list .row span {
-  pointer-events: none;
 }

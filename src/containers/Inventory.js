@@ -30,48 +30,44 @@ const Inventory = ({ ...props }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    items: Object.values(state.items)
-  };
-};
+const mapStateToProps = state => ({
+  items: Object.values(state.items)
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleItemChange: (event, name) => {
-      const e = event.target;
-      const key = name;
-      const eventValue = e.value.trim();
-      const properties =
-        eventValue === "true"
-          ? { [e.name]: true }
-          : eventValue === "false"
-          ? { [e.name]: false }
-          : { [e.name]: eventValue };
-      dispatch(itemChange({ key, properties }));
-    },
-    handleRemoveFromShop: item => {
-      dispatch(removeFromShop(item));
-    },
-    handleAddToShop: event => {
-      const e = event.target;
-      const getAvail = e.available.value === "true" ? true : false;
-      const newItem = {
-        title: e.title.value.trim(),
-        desc: e.desc.value.trim(),
-        price: e.price.value.trim(),
-        img: e.img.value.trim(),
-        category: e.category.value.trim(),
-        available: getAvail
-      };
-      ///Check if all fields are filled
-      if (Object.values(newItem).filter(value => value !== "").length === 6) {
-        dispatch(addToShop(newItem));
-        document.getElementById("addItemForm").reset();
-      }
+const mapDispatchToProps = dispatch => ({
+  handleItemChange: (event, name) => {
+    const e = event.target;
+    const key = name;
+    const eventValue = e.value.trim();
+    const properties =
+      eventValue === "true"
+        ? { [e.name]: true }
+        : eventValue === "false"
+        ? { [e.name]: false }
+        : { [e.name]: eventValue };
+    dispatch(itemChange({ key, properties }));
+  },
+  handleRemoveFromShop: item => {
+    dispatch(removeFromShop(item));
+  },
+  handleAddToShop: event => {
+    const e = event.target;
+    const getAvail = e.available.value === "true" ? true : false;
+    const newItem = {
+      title: e.title.value.trim(),
+      desc: e.desc.value.trim(),
+      price: e.price.value.trim(),
+      img: e.img.value.trim(),
+      category: e.category.value.trim(),
+      available: getAvail
+    };
+    ///Check if all fields are filled
+    if (Object.values(newItem).filter(value => value !== "").length === 6) {
+      dispatch(addToShop(newItem));
+      document.getElementById("addItemForm").reset();
     }
-  };
-};
+  }
+});
 
 export default connect(
   mapStateToProps,

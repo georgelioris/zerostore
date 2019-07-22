@@ -64,25 +64,23 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleItemClick: (item, cartItems) => {
-      const itemInCart = cartItems.find(cartItem => item.id === cartItem.id);
-      return itemInCart
-        ? dispatch(incQuant(itemInCart))
-        : dispatch(addToCart(item));
-    },
-    removeFromCart: cartItem => {
-      dispatch(removeFromCart(cartItem));
-    },
-    setCategoryFilter: filter => {
-      dispatch(setCategoryFilter(filter));
-    },
-    setPriceFilter: cartItem => {
-      dispatch(setPriceFilter(cartItem));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleItemClick: (item, cartItems) => {
+    const itemInCart = cartItems.find(cartItem => item.id === cartItem.id);
+    return itemInCart
+      ? dispatch(incQuant(itemInCart))
+      : dispatch(addToCart(item));
+  },
+  removeFromCart: cartItem => {
+    dispatch(removeFromCart(cartItem));
+  },
+  setCategoryFilter: filter => {
+    dispatch(setCategoryFilter(filter));
+  },
+  setPriceFilter: cartItem => {
+    dispatch(setPriceFilter(cartItem));
+  }
+});
 
 export default connect(
   mapStateToProps,

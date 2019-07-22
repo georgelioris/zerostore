@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const Navbar = ({ count }) => {
+const Navbar = ({ countCart }) => {
   return (
     <header>
       <nav className="nav-wrapper red darken-2 white-text">
@@ -24,7 +24,7 @@ const Navbar = ({ count }) => {
                   className="new badge white darken-3 black-text"
                   data-badge-caption=""
                 >
-                  {count}
+                  {countCart}
                 </span>
               </NavLink>
             </li>
@@ -60,7 +60,7 @@ const Navbar = ({ count }) => {
           >
             <i className="material-icons small">local_grocery_store</i>Cart
             <span className="new badge red darken-2" data-badge-caption="">
-              {count}
+              {countCart}
             </span>
           </NavLink>
         </li>

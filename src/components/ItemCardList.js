@@ -1,6 +1,7 @@
 import React from "react";
 import { Image } from "./Image";
 import { Link } from "react-router-dom";
+import { FloatingButton } from "./FloatingButton";
 
 const ItemCard = ({ ...item }) => (
   <div className="row">
@@ -8,17 +9,7 @@ const ItemCard = ({ ...item }) => (
       <div className="card" key={item.id}>
         <div className="card-image ">
           <Image url={item.img} width={"300px"} height={"200px"} />
-          <span
-            className={`btn-floating halfway-fab waves-effect waves-light red accent-2 sidenav-trigger ${
-              item.available === false ? " unavailable disabled" : ""
-            }`}
-            data-target="slide-out"
-            onClick={item.onItemClick}
-          >
-            <span>
-              <i className="material-icons">add</i>
-            </span>
-          </span>
+          <FloatingButton {...item} />
         </div>
 
         <div className="card-content">
@@ -40,7 +31,7 @@ const ItemCard = ({ ...item }) => (
           ) : (
             ""
           )}
-          <Link className="red-text" to={`/items/${item.title}-${item.id}`}>
+          <Link className="red-text" to={`/shop/items/${item.id}`}>
             More
           </Link>
         </div>
@@ -59,8 +50,12 @@ const ItemCardList = ({
     <ItemCard
       key={item.id}
       {...item}
-      onItemClick={() => handleItemClick(item, cartItems)}
-      onCategoryClick={() => setCategoryFilter(item.category)}
+      onItemClick={
+        handleItemClick ? () => handleItemClick(item, cartItems) : null
+      }
+      onCategoryClick={
+        handleItemClick ? () => setCategoryFilter(item.category) : null
+      }
     />
   ));
   return (
