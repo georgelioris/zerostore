@@ -31,3 +31,5 @@ export const sortHigh = array => property => [
 export const sortLow = array => property => [
   ...array.sort((a, b) => b[property] - a[property])
 ];
+
+export const lastIndex = array => array[array.length - 1];
