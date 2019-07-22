@@ -13,9 +13,6 @@ const Inventory = ({ ...props }) => {
   useEffect(() => {
     M.AutoInit();
     M.updateTextFields();
-    return () => {
-      document.getElementById("addItemForm").reset();
-    };
   }, [props.items.length]);
 
   return (
@@ -70,6 +67,7 @@ const mapDispatchToProps = dispatch => {
       ///Check if all fields are filled
       if (Object.values(newItem).filter(value => value !== "").length === 6) {
         dispatch(addToShop(newItem));
+        document.getElementById("addItemForm").reset();
       }
     }
   };

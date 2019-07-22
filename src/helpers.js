@@ -32,4 +32,8 @@ export const sortLow = array => property => [
   ...array.sort((a, b) => b[property] - a[property])
 ];
 
-export const lastIndex = array => array[array.length - 1];
+export const getNextKey = obj => {
+  const itemsArr = Object.keys(obj);
+  const lastIndex = Number(itemsArr[itemsArr.length - 1]);
+  return itemsArr.length !== 0 ? lastIndex + 1 : 1;
+};

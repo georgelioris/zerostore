@@ -110,7 +110,7 @@ const Inventory = ({
             <label htmlFor="category">Category</label>
           </div>
           <div className="input-field col s2">
-            <input name="price" id="price" type="number" />
+            <input name="price" id="price" type="number" min="0" />
             <label htmlFor="price">Price</label>
           </div>
         </div>

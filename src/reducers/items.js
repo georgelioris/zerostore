@@ -1,5 +1,5 @@
 import { ITEM_CHANGE, REMOVE_FROM_SHOP, ADD_TO_SHOP } from "../constants";
-import { lastIndex } from "../helpers";
+import { getNextKey } from "../helpers";
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -17,14 +17,14 @@ const item = (state = {}, action) => {
 
     case ADD_TO_SHOP:
       const { item } = action;
-      const addedKey = state;
-      const addedItem = {
-        [addedKey]: {
-          id: addedKey,
+      const newKey = state;
+      const newItem = {
+        [newKey]: {
+          id: newKey,
           ...item
         }
       };
-      return addedItem;
+      return newItem;
 
     case REMOVE_FROM_SHOP:
       const itemkey = action.item.id;
@@ -50,10 +50,9 @@ const items = (state = {}, action) => {
       const itemState = state[action.payload.key];
       return { ...state, ...item(itemState, action) };
     case ADD_TO_SHOP:
-      const itemsArr = Object.keys(state);
-      const lastKey = lastIndex(itemsArr);
-      const newKey = itemsArr.length !== 0 ? state[lastKey].id + 1 : 1;
-      return { ...state, ...item(newKey, action) };
+      const key = getNextKey(state);
+      debugger;
+      return { ...state, ...item(key, action) };
     case REMOVE_FROM_SHOP:
       return item(state, action);
     default:
