@@ -1,4 +1,4 @@
-import { defaultItems } from "./normalizesItems";
+import { defaultItems } from "./normalizedItems";
 
 export const initState = {
   items: defaultItems,
