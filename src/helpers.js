@@ -1,4 +1,4 @@
-// Returns a (cartItem) (property) from (itemsObj)
+// Returns a ({cartItem}) ("property") from ({items})
 export const getProperty = items => cartItem => prop => {
   const key = cartItem.id;
   return items.hasOwnProperty(key)
@@ -6,12 +6,12 @@ export const getProperty = items => cartItem => prop => {
     : "Item Removed";
 };
 
-// Returns a (cartItem) subtotal, getting the price from (itemsObj)
+// Returns a ({cartItem}) subtotal, getting the price from ({items})
 export const subTotal = items => cartItem => {
   return getProperty(items)(cartItem)("price") * cartItem.quantity;
 };
 
-// Returns [cartItems] total getting the price from (itemsObj)
+// Returns ([{cartItems}]) total getting the price from ({items})
 export const total = (cartItems, items) => {
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + subTotal(items)(cartItem);
@@ -19,17 +19,17 @@ export const total = (cartItems, items) => {
   return total ? `Total: ${total} $` : "";
 };
 
-// Returns a new array with only unique non-empty values
+// Returns a new ([array]) with only unique non-empty values
 export const onlyUnique = array =>
   array
     .filter((value, index, array) => array.indexOf(value) === index)
     .filter(Boolean);
 
-// Returns a new sorted [array]
+// Returns a new sorted ([array]) of objects with descending ("property") values
 export const sortHigh = array => property =>
   [...array].sort((a, b) => a[property] - b[property]);
 
-// Returns a new sorted [array]
+// Returns a new sorted ([array]) of objects with ascending ("property") values
 export const sortLow = array => property =>
   [...array].sort((a, b) => b[property] - a[property]);
 
@@ -39,7 +39,7 @@ export const getNextKey = obj => {
   return itemsArr.length !== 0 ? lastIndex + 1 : 1;
 };
 
-// Returns a new parent {Obj} that does not contain
+// Returns a new parent ({Obj}) that does not contain
 // the childObj specified by (itemKey)
 export const filterObjFromState = (obj, itemKey) =>
   Object.keys(obj).reduce(
