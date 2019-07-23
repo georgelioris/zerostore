@@ -20,21 +20,18 @@ export const total = (cartItems, items) => {
 };
 
 // Returns a new array with only unique non-empty values
-export const onlyUnique = array => [
-  ...array
+export const onlyUnique = array =>
+  array
     .filter((value, index, array) => array.indexOf(value) === index)
-    .filter(Boolean)
-];
+    .filter(Boolean);
 
 // Returns a new sorted [array]
-export const sortHigh = array => property => [
-  ...array.sort((a, b) => a[property] - b[property])
-];
+export const sortHigh = array => property =>
+  [...array].sort((a, b) => a[property] - b[property]);
 
 // Returns a new sorted [array]
-export const sortLow = array => property => [
-  ...array.sort((a, b) => b[property] - a[property])
-];
+export const sortLow = array => property =>
+  [...array].sort((a, b) => b[property] - a[property]);
 
 export const getNextKey = obj => {
   const itemsArr = Object.keys(obj);
@@ -42,8 +39,8 @@ export const getNextKey = obj => {
   return itemsArr.length !== 0 ? lastIndex + 1 : 1;
 };
 
-//Returns a new parent {Obj} that does not contain
-//the childObj specified by (itemKey)
+// Returns a new parent {Obj} that does not contain
+// the childObj specified by (itemKey)
 export const filterObjFromState = (obj, itemKey) =>
   Object.keys(obj).reduce(
     (acc, key) =>
