@@ -39,9 +39,9 @@ const visibleItems = (itemsObj, filters) => {
           i => i.category === filters.categoryFilter
         );
   return filters.priceFilter === "Highest"
-    ? sortDescend(visibleItems)("price")
+    ? sortDescend(visibleItems, "price")
     : filters.priceFilter === "Lowest"
-    ? sortAscend(visibleItems)("price")
+    ? sortAscend(visibleItems, "price")
     : visibleItems;
 };
 

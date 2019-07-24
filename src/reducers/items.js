@@ -37,7 +37,6 @@ const items = (state = {}, action) => {
       return { ...state, ...item(itemState, action) };
     case ADD_TO_SHOP:
       const key = getNextKey(state);
-      debugger;
       return { ...state, ...item(key, action) };
     case REMOVE_FROM_SHOP:
       const itemKey = action.item.id;

@@ -26,17 +26,17 @@ export const onlyUnique = array =>
     .filter(Boolean);
 
 // Returns a new sorted ([array]) of objects with descending ("property") values
-export const sortAscend = array => property =>
+export const sortAscend = (array, property) =>
   [...array].sort((a, b) => a[property] - b[property]);
 
 // Returns a new sorted ([array]) of objects with ascending ("property") values
-export const sortDescend = array => property =>
+export const sortDescend = (array, property) =>
   [...array].sort((a, b) => b[property] - a[property]);
 
 export const getNextKey = obj => {
-  const itemsArr = Object.keys(obj);
-  const lastIndex = Number(itemsArr[itemsArr.length - 1]);
-  return itemsArr.length !== 0 ? lastIndex + 1 : 1;
+  const itemsArr = Object.keys(obj).map(key => Number(key) || key);
+  const lastIndex = itemsArr[itemsArr.length - 1] || 0;
+  return lastIndex + 1;
 };
 
 // Returns a new ({Obj}) with all properties that pass the test
