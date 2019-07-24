@@ -1,5 +1,5 @@
 import { ITEM_CHANGE, REMOVE_FROM_SHOP, ADD_TO_SHOP } from "../constants";
-import { getNextKey, filterObjFromState } from "../helpers";
+import { getNextKey, filterObject } from "../helpers";
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -25,11 +25,6 @@ const item = (state = {}, action) => {
         }
       };
       return newItem;
-
-    case REMOVE_FROM_SHOP:
-      const itemkey = action.item.id;
-      return filterObjFromState(state, itemkey);
-
     default:
       return state;
   }
@@ -45,7 +40,8 @@ const items = (state = {}, action) => {
       debugger;
       return { ...state, ...item(key, action) };
     case REMOVE_FROM_SHOP:
-      return item(state, action);
+      const itemKey = action.item.id;
+      return filterObject(state, key => key !== itemKey);
     default:
       return state;
   }

@@ -26,11 +26,11 @@ export const onlyUnique = array =>
     .filter(Boolean);
 
 // Returns a new sorted ([array]) of objects with descending ("property") values
-export const sortHigh = array => property =>
+export const sortAscend = array => property =>
   [...array].sort((a, b) => a[property] - b[property]);
 
 // Returns a new sorted ([array]) of objects with ascending ("property") values
-export const sortLow = array => property =>
+export const sortDescend = array => property =>
   [...array].sort((a, b) => b[property] - a[property]);
 
 export const getNextKey = obj => {
@@ -39,16 +39,18 @@ export const getNextKey = obj => {
   return itemsArr.length !== 0 ? lastIndex + 1 : 1;
 };
 
-// Returns a new parent ({Obj}) that does not contain
-// the childObj specified by (itemKey)
-export const filterObjFromState = (obj, itemKey) =>
-  Object.keys(obj).reduce(
-    (acc, key) =>
-      Number(key) !== itemKey
-        ? {
-            ...acc,
-            [key]: obj[key]
-          }
-        : acc,
-    {}
-  );
+// Returns a new ({Obj}) with all properties that pass the test
+// implemented by the provided (callback).
+export const filterObject = (obj, callback) =>
+  Object.keys(obj)
+    .map(key => Number(key) || key)
+    .reduce(
+      (acc, key) =>
+        callback(key)
+          ? {
+              ...acc,
+              [key]: obj[key]
+            }
+          : acc,
+      {}
+    );

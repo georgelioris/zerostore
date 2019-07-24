@@ -48,10 +48,10 @@ const FilterList = ({
         </span>
       </span>
       <ul id="price-sort" className="dropdown-content">
-        <li value="low" onClick={() => setPriceFilter("low")}>
+        <li value="ascending" onClick={() => setPriceFilter("Lowest")}>
           <span>Lowest</span>
         </li>
-        <li value="high" onClick={() => setPriceFilter("high")}>
+        <li value="descending" onClick={() => setPriceFilter("Highest")}>
           <span>Highest</span>
         </li>
       </ul>

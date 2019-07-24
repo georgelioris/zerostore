@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { onlyUnique, sortHigh, sortLow } from "../helpers";
+import { onlyUnique, sortAscend, sortDescend } from "../helpers";
 import {
   addToCart,
   removeFromCart,
@@ -38,10 +38,10 @@ const visibleItems = (itemsObj, filters) => {
       : Object.values(itemsObj).filter(
           i => i.category === filters.categoryFilter
         );
-  return filters.priceFilter === "low"
-    ? sortHigh(visibleItems)("price")
-    : filters.priceFilter === "high"
-    ? sortLow(visibleItems)("price")
+  return filters.priceFilter === "Highest"
+    ? sortDescend(visibleItems)("price")
+    : filters.priceFilter === "Lowest"
+    ? sortAscend(visibleItems)("price")
     : visibleItems;
 };
 
