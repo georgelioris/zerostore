@@ -11,6 +11,7 @@ const Inventory = ({
       {items.map(item => {
         return (
           <form
+            autoComplete="off"
             className="col s12 white inventory-item"
             key={item.id}
             onChange={event => handleItemChange(event, item.id)}
@@ -91,6 +92,7 @@ const Inventory = ({
         );
       })}
       <form
+        autoComplete="off"
         className="col s12 inventory-item white"
         id="addItemForm"
         onSubmit={event => {

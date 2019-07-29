@@ -34,9 +34,9 @@ export const sortDescend = (array, property) =>
   [...array].sort((a, b) => b[property] - a[property]);
 
 export const getNextKey = obj => {
-  const itemsArr = Object.keys(obj).map(key => Number(key) || key);
-  const lastIndex = itemsArr[itemsArr.length - 1] || 0;
-  return lastIndex + 1;
+  const keysArr = Object.keys(obj).map(key => Number(key) || key);
+  const nextKey = (keysArr[keysArr.length - 1] || 0) + 1;
+  return nextKey;
 };
 
 // Returns a new ({Obj}) with all properties that pass the test
@@ -45,12 +45,6 @@ export const filterObject = (obj, callback) =>
   Object.keys(obj)
     .map(key => Number(key) || key)
     .reduce(
-      (acc, key) =>
-        callback(key)
-          ? {
-              ...acc,
-              [key]: obj[key]
-            }
-          : acc,
+      (acc, key) => (callback(key) ? { ...acc, [key]: obj[key] } : acc),
       {}
     );

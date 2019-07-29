@@ -7,7 +7,8 @@ import {
   REMOVE_FROM_SHOP,
   ADD_TO_SHOP,
   VISIBILITY_FILTER,
-  SORT_BY
+  SORT_BY,
+  TARGET_ITEM
 } from "../constants";
 
 export const addToCart = item => {
@@ -82,3 +83,8 @@ export const setPriceFilter = filter => {
 
   return action;
 };
+
+export const setTargetItem = filter => ({
+  type: TARGET_ITEM,
+  filter
+});

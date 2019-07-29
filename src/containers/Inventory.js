@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { itemChange, removeFromShop, addToShop } from "../actions/index";
+import {
+  itemChange,
+  removeFromShop,
+  addToShop,
+  setTargetItem
+} from "../actions/index";
 import ItemCardList from "../components/ItemCardList";
 import InventoryForms from "../components/InvenotryForms";
+import SearchBar from "../components/SearchBar";
 import M from "materialize-css";
 
 const Inventory = ({ ...props }) => {
+  console.log(props.searchBarData);
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -13,13 +20,14 @@ const Inventory = ({ ...props }) => {
   useEffect(() => {
     M.AutoInit();
     M.updateTextFields();
-  }, [props.items.length]);
+  }, [props.items.length, props.filters]);
 
   return (
     <main>
       <div className="row container invenotry-itemlist">
+        <h4>Inventory</h4>
+        <SearchBar {...props} />
         <div className="col s9">
-          <h4>Inventory</h4>
           <InventoryForms {...props} />
         </div>
         <div className="col s3">
@@ -30,8 +38,34 @@ const Inventory = ({ ...props }) => {
   );
 };
 
+const autoCompleteData = obj => {
+  const itemsArray = Object.values(obj);
+  return itemsArray.reduce(
+    (acc, item) => ({
+      ...acc,
+      [item.title]: item.img,
+      [item.category + " Category"]: null
+    }),
+    {}
+  );
+};
+
+const searchItems = (itemsObj, filter) => {
+  const items = Object.values(itemsObj);
+  const searchTarget = filter && filter.split(" Category")[0];
+  const filterResult = filter
+    ? filter.match("Category")
+      ? items.filter(item => item.category === searchTarget)
+      : items.filter(item => item.title === searchTarget)
+    : items;
+
+  return filterResult;
+};
+
 const mapStateToProps = state => ({
-  items: Object.values(state.items)
+  items: searchItems(state.items, state.filters.targetItem),
+  filters: state.filters,
+  searchBarData: autoCompleteData(state.items)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -66,6 +100,10 @@ const mapDispatchToProps = dispatch => ({
       dispatch(addToShop(newItem));
       document.getElementById("addItemForm").reset();
     }
+  },
+  handleSearch: event => {
+    const targetItem = event.target ? event.target.search.value : event;
+    dispatch(setTargetItem(targetItem));
   }
 });
 
