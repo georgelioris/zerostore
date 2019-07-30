@@ -207,3 +207,24 @@ body {
 .invenotry-itemlist .item-card-list {
   margin-top: 4.4em;
 }
+
+/* label focus color
+#search:focus + label {
+  color: red;
+} */
+/* label underline focus color */
+#search:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+#search {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: rgba(0, 0, 0, 0.6);
+}
+.input-field .prefix {
+  color: rgba(0, 0, 0, 0.4);
+}

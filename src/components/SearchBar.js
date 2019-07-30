@@ -6,20 +6,28 @@ const SearchBar = ({ searchBarData, handleSearch }) => {
     const searchBar = document.getElementById("search");
     M.Autocomplete.init(searchBar, {
       data: searchBarData,
-      onAutocomplete: event => handleSearch(event)
+      onAutocomplete: event => handleSearch(event),
+      sortFunction: (a, b) => {
+        return a < b ? -1 : a > b ? 1 : 0;
+      }
     });
   });
   return (
     <div className="input-field col s4">
       <form
         autoComplete="off"
-        onSubmit={event => {
+        onChange={event => {
           event.preventDefault();
           handleSearch(event);
         }}
+        onSubmit={event => {
+          event.preventDefault();
+        }}
       >
-        <input id="search" type="text" placeholder="Search..." />
-        <i className="material-icons prefix">search</i>
+        <div className="search-wrapper">
+          <i className="material-icons prefix">search</i>
+          <input id="search" type="text" placeholder="Search..." />
+        </div>
       </form>
     </div>
   );

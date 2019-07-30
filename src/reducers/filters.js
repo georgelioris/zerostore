@@ -13,7 +13,7 @@ const filters = (state = { categoryFilter: "All" }, action) => {
         ? {
             ...state,
             searchItem: null,
-            searchCategory: lowerCaseFilter.split(" category")[0]
+            searchCategory: lowerCaseFilter.split("category ")[1]
           }
         : { ...state, searchCategory: null, searchItem: lowerCaseFilter };
       return filter

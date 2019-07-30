@@ -1,6 +1,6 @@
 import React from "react";
 
-const Inventory = ({
+const InventoryForms = ({
   items,
   handleItemChange,
   handleAddToShop,
@@ -151,4 +151,4 @@ const Inventory = ({
   );
 };
 
-export default Inventory;
+export default InventoryForms;

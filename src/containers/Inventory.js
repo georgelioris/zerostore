@@ -43,7 +43,7 @@ const autoCompleteData = obj => {
     (acc, item) => ({
       ...acc,
       [item.title]: item.img,
-      [item.category + " Category"]: null
+      ["Category " + item.category]: null
     }),
     {}
   );
@@ -52,11 +52,11 @@ const autoCompleteData = obj => {
 const searchItems = (itemsObj, filter) => {
   const items = Object.values(itemsObj);
   return filter.searchCategory
-    ? items.filter(
-        item => item.category.toLowerCase() === filter.searchCategory
+    ? items.filter(item =>
+        item.category.toLowerCase().match(filter.searchCategory)
       )
     : filter.searchItem
-    ? items.filter(item => item.title.toLowerCase() === filter.searchItem)
+    ? items.filter(item => item.title.toLowerCase().match(filter.searchItem))
     : items;
 };
 
@@ -102,8 +102,7 @@ const mapDispatchToProps = dispatch => ({
   handleSearch: event => {
     // Input get passed either from the search form as an event
     // or by onAutocomplete callback as a string
-    const searchInput =
-      typeof event === "object" ? event.target.search.value : event;
+    const searchInput = typeof event === "object" ? event.target.value : event;
     dispatch(setTargetItem(searchInput));
   }
 });
