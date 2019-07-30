@@ -1,4 +1,4 @@
-import { VISIBILITY_FILTER, SORT_BY, TARGET_ITEM } from "../constants";
+import { VISIBILITY_FILTER, SORT_BY, SEARCH_ITEMS } from "../constants";
 
 const filters = (state = { categoryFilter: "All" }, action) => {
   const { filter } = action;
@@ -7,8 +7,18 @@ const filters = (state = { categoryFilter: "All" }, action) => {
       return { ...state, categoryFilter: filter };
     case SORT_BY:
       return { ...state, priceFilter: filter };
-    case TARGET_ITEM:
-      return { ...state, targetItem: filter };
+    case SEARCH_ITEMS:
+      const lowerCaseFilter = filter.toLowerCase();
+      const searchFilters = lowerCaseFilter.match("category")
+        ? {
+            ...state,
+            searchItem: null,
+            searchCategory: lowerCaseFilter.split(" category")[0]
+          }
+        : { ...state, searchCategory: null, searchItem: lowerCaseFilter };
+      return filter
+        ? searchFilters
+        : { ...state, searchCategory: null, searchItem: null };
     default:
       return state;
   }

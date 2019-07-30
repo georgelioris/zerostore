@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import M from "materialize-css";
 
 const SearchBar = ({ searchBarData, handleSearch }) => {
-  //   console.log(Object.keys(searchBarData).find(i => i.match(/w*/g)));
   useEffect(() => {
     const searchBar = document.getElementById("search");
     M.Autocomplete.init(searchBar, {

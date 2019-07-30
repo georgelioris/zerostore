@@ -12,7 +12,6 @@ import SearchBar from "../components/SearchBar";
 import M from "materialize-css";
 
 const Inventory = ({ ...props }) => {
-  console.log(props.searchBarData);
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -52,18 +51,17 @@ const autoCompleteData = obj => {
 
 const searchItems = (itemsObj, filter) => {
   const items = Object.values(itemsObj);
-  const searchTarget = filter && filter.split(" Category")[0];
-  const filterResult = filter
-    ? filter.match("Category")
-      ? items.filter(item => item.category === searchTarget)
-      : items.filter(item => item.title === searchTarget)
+  return filter.searchCategory
+    ? items.filter(
+        item => item.category.toLowerCase() === filter.searchCategory
+      )
+    : filter.searchItem
+    ? items.filter(item => item.title.toLowerCase() === filter.searchItem)
     : items;
-
-  return filterResult;
 };
 
 const mapStateToProps = state => ({
-  items: searchItems(state.items, state.filters.targetItem),
+  items: searchItems(state.items, state.filters),
   filters: state.filters,
   searchBarData: autoCompleteData(state.items)
 });
@@ -95,15 +93,18 @@ const mapDispatchToProps = dispatch => ({
       category: e.category.value.trim(),
       available: getAvail
     };
-    ///Check if all fields are filled
+    // Check if all fields are filled
     if (Object.values(newItem).filter(value => value !== "").length === 6) {
       dispatch(addToShop(newItem));
       document.getElementById("addItemForm").reset();
     }
   },
   handleSearch: event => {
-    const targetItem = event.target ? event.target.search.value : event;
-    dispatch(setTargetItem(targetItem));
+    // Input get passed either from the search form as an event
+    // or by onAutocomplete callback as a string
+    const searchInput =
+      typeof event === "object" ? event.target.search.value : event;
+    dispatch(setTargetItem(searchInput));
   }
 });
 
