@@ -35,7 +35,7 @@ const Inventory = ({ ...props }) => {
             <ItemCardList visibleItems={props.items} />
           ) : (
             <div
-              className=" container"
+              className="container"
               style={{ fontSize: "3em", color: "rgba(0, 0, 0, 0.09)" }}
             >
               No Match
