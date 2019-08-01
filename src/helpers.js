@@ -48,3 +48,6 @@ export const filterObject = (obj, callback) =>
       (acc, key) => (callback(key) ? { ...acc, [key]: obj[key] } : acc),
       {}
     );
+
+export const sanitizeString = string =>
+  string.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "").trim();

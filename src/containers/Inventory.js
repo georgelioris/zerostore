@@ -10,6 +10,7 @@ import ItemCardList from "../components/ItemCardList";
 import InventoryForms from "../components/InvenotryForms";
 import SearchBar from "../components/SearchBar";
 import M from "materialize-css";
+import { sanitizeString } from "../helpers";
 
 const Inventory = ({ ...props }) => {
   useEffect(() => {
@@ -30,7 +31,16 @@ const Inventory = ({ ...props }) => {
           <InventoryForms {...props} />
         </div>
         <div className="col s3">
-          <ItemCardList visibleItems={props.items} />
+          {props.items.length ? (
+            <ItemCardList visibleItems={props.items} />
+          ) : (
+            <div
+              className=" container"
+              style={{ fontSize: "3em", color: "rgba(0, 0, 0, 0.09)" }}
+            >
+              No Match
+            </div>
+          )}
         </div>
       </div>
     </main>
@@ -103,7 +113,8 @@ const mapDispatchToProps = dispatch => ({
     // Input get passed either from the search form as an event
     // or by onAutocomplete callback as a string
     const searchInput = typeof event === "object" ? event.target.value : event;
-    dispatch(setTargetItem(searchInput));
+    const sanitizedInput = sanitizeString(searchInput);
+    dispatch(setTargetItem(sanitizedInput));
   }
 });
 

@@ -13,7 +13,7 @@ const SearchBar = ({ searchBarData, handleSearch }) => {
     });
   });
   return (
-    <div className="input-field col s4">
+    <div className="input-field col s9">
       <form
         autoComplete="off"
         onChange={event => {
@@ -26,7 +26,7 @@ const SearchBar = ({ searchBarData, handleSearch }) => {
       >
         <div className="search-wrapper">
           <i className="material-icons prefix">search</i>
-          <input id="search" type="text" placeholder="Search..." />
+          <input id="search" type="text" placeholder="All Items..." />
         </div>
       </form>
     </div>
