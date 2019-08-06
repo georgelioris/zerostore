@@ -20,9 +20,12 @@ export const total = (cartItems, items) => {
 };
 
 // Returns a new ([array]) with only unique non-empty values
+// (case insensitive)
 export const onlyUnique = array =>
   array
-    .filter((value, index, array) => array.indexOf(value) === index)
+    .filter(
+      (value, index, array) => array.indexOf(value.toLowerCase()) === index
+    )
     .filter(Boolean);
 
 // Returns a new sorted ([array]) of objects with descending ("property") values
@@ -51,3 +54,6 @@ export const filterObject = (obj, callback) =>
 
 export const sanitizeString = string =>
   string.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "").trim();
+
+export const formatPropertyValue = string =>
+  string === "true" ? true : string === "false" ? false : string.trim();

@@ -122,7 +122,7 @@ const InventoryForms = ({
             <label htmlFor="img">Img Url</label>
           </div>
           <div className="input-field col s3">
-            <select name="available" defaultValue="true">
+            <select name="available" id="available" defaultValue="true">
               <option value="true">Available</option>
               <option value="false">Unavalable</option>
             </select>

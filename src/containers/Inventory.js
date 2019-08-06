@@ -10,7 +10,7 @@ import ItemCardList from "../components/ItemCardList";
 import InventoryForms from "../components/InvenotryForms";
 import SearchBar from "../components/SearchBar";
 import M from "materialize-css";
-import { sanitizeString } from "../helpers";
+import { sanitizeString, formatPropertyValue } from "../helpers";
 
 const Inventory = ({ ...props }) => {
   useEffect(() => {
@@ -77,16 +77,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleItemChange: (event, name) => {
+  handleItemChange: (event, id) => {
     const e = event.target;
-    const key = name;
-    const eventValue = e.value.trim();
-    const properties =
-      eventValue === "true"
-        ? { [e.name]: true }
-        : eventValue === "false"
-        ? { [e.name]: false }
-        : { [e.name]: eventValue };
+    const key = id;
+    const properties = { [e.name]: formatPropertyValue(e.value) };
     dispatch(itemChange({ key, properties }));
   },
   handleRemoveFromShop: item => {
@@ -94,16 +88,11 @@ const mapDispatchToProps = dispatch => ({
   },
   handleAddToShop: event => {
     const e = event.target;
-    const getAvail = e.available.value === "true" ? true : false;
-    const newItem = {
-      title: e.title.value.trim(),
-      desc: e.desc.value.trim(),
-      price: e.price.value.trim(),
-      img: e.img.value.trim(),
-      category: e.category.value.trim(),
-      available: getAvail
-    };
-    // Check if all fields are filled
+    const newItem = Object.values(e).reduce(
+      (acc, i) =>
+        i.name ? { ...acc, [i.name]: formatPropertyValue(i.value) } : acc,
+      {}
+    );
     if (Object.values(newItem).filter(value => value !== "").length === 6) {
       dispatch(addToShop(newItem));
       document.getElementById("addItemForm").reset();

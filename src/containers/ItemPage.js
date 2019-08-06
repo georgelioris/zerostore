@@ -14,7 +14,7 @@ const ItemPage = ({ item }) => {
         </div>
       </div>
       <div class="card white" style={{ width: "100%" }}>
-        <div class="card-content  grey lighten-4 black-text">
+        <div class="card-content  white lighten-4 black-text">
           <div className="row">
             <div className="card-image col l5 s12 m12">
               <img
