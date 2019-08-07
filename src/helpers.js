@@ -20,13 +20,10 @@ export const total = (cartItems, items) => {
 };
 
 // Returns a new ([array]) with only unique non-empty values
-// (case insensitive)
 export const onlyUnique = array =>
-  array
-    .filter(
-      (value, index, array) => array.indexOf(value.toLowerCase()) === index
-    )
-    .filter(Boolean);
+  array.filter(
+    (value, index, array) => value && array.indexOf(value) === index
+  );
 
 // Returns a new sorted ([array]) of objects with descending ("property") values
 export const sortAscend = (array, property) =>

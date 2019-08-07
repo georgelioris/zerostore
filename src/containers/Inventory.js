@@ -89,8 +89,10 @@ const mapDispatchToProps = dispatch => ({
   handleAddToShop: event => {
     const e = event.target;
     const newItem = Object.values(e).reduce(
-      (acc, i) =>
-        i.name ? { ...acc, [i.name]: formatPropertyValue(i.value) } : acc,
+      (acc, input) =>
+        input.name
+          ? { ...acc, [input.name]: formatPropertyValue(input.value) }
+          : acc,
       {}
     );
     if (Object.values(newItem).filter(value => value !== "").length === 6) {

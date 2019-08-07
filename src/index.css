@@ -155,7 +155,6 @@ body {
 }
 
 .category-filters {
-  text-transform: capitalize;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
