@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import {
   itemChange,
@@ -22,17 +22,21 @@ const Inventory = ({ ...props }) => {
     M.updateTextFields();
   }, [props.items.length, props.filters]);
 
+  const searchResults = useCallback(searchItems(props.items, props.filters), [
+    props.filters
+  ]).map(key => props.items[key]);
+
   return (
     <main>
       <div className="row container invenotry-itemlist">
         <h4>Inventory</h4>
         <SearchBar {...props} />
         <div className="col s9">
-          <InventoryForms {...props} />
+          <InventoryForms {...props} items={searchResults} />
         </div>
         <div className="col s3">
-          {props.items.length ? (
-            <ItemCardList visibleItems={props.items} />
+          {searchResults.length ? (
+            <ItemCardList visibleItems={searchResults} />
           ) : (
             <div
               className="container"
@@ -62,16 +66,20 @@ const autoCompleteData = obj => {
 const searchItems = (itemsObj, filter) => {
   const items = Object.values(itemsObj);
   return filter.searchCategory
-    ? items.filter(item =>
-        item.category.toLowerCase().match(filter.searchCategory)
-      )
+    ? items
+        .filter(item =>
+          item.category.toLowerCase().match(filter.searchCategory)
+        )
+        .map(i => i.id)
     : filter.searchItem
-    ? items.filter(item => item.title.toLowerCase().match(filter.searchItem))
-    : items;
+    ? items
+        .filter(item => item.title.toLowerCase().match(filter.searchItem))
+        .map(i => i.id)
+    : items.map(i => i.id);
 };
 
 const mapStateToProps = state => ({
-  items: searchItems(state.items, state.filters),
+  items: state.items,
   filters: state.filters,
   searchBarData: autoCompleteData(state.items)
 });
@@ -103,7 +111,8 @@ const mapDispatchToProps = dispatch => ({
   handleSearch: event => {
     // Input get passed either from the search form as an event
     // or by onAutocomplete callback as a string
-    const searchInput = typeof event === "object" ? event.target.value : event;
+    const searchInput =
+      typeof event === "object" ? event.target.search.value : event;
     const sanitizedInput = sanitizeString(searchInput);
     dispatch(setTargetItem(sanitizedInput));
   }

@@ -3,12 +3,12 @@ import ItemImg from "./images/swshoer.png";
 export const defaultItems = {
   1: {
     id: 1,
-    title: "Winter body",
+    title: "winter body",
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 110,
     img: ItemImg,
-    category: "Winter",
+    category: "winter",
     available: true
   },
   2: {
@@ -18,7 +18,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 80,
     img: ItemImg,
-    category: "New",
+    category: "new",
     available: true
   },
   3: {
@@ -28,7 +28,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 120,
     img: ItemImg,
-    category: "On Sale",
+    category: "on sale",
     available: true
   },
   4: {
@@ -38,7 +38,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 260,
     img: ItemImg,
-    category: "On Sale",
+    category: "on sale",
     available: true
   },
   5: {
@@ -48,7 +48,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 160,
     img: ItemImg,
-    category: "Summer",
+    category: "summer",
     available: true
   },
   6: {
@@ -58,7 +58,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 90,
     img: ItemImg,
-    category: "Summer",
+    category: "summer",
     available: true
   },
   7: {
@@ -68,7 +68,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 390,
     img: ItemImg,
-    category: "Winter",
+    category: "winter",
     available: true
   },
   8: {
@@ -78,7 +78,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 40,
     img: ItemImg,
-    category: "New",
+    category: "new",
     available: true
   },
   9: {
@@ -88,7 +88,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 190,
     img: ItemImg,
-    category: "New",
+    category: "new",
     available: true
   },
   10: {
@@ -98,7 +98,7 @@ export const defaultItems = {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 55,
     img: ItemImg,
-    category: "New",
+    category: "new",
     available: true
   }
 };

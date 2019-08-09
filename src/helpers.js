@@ -50,7 +50,14 @@ export const filterObject = (obj, callback) =>
     );
 
 export const sanitizeString = string =>
-  string.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "").trim();
+  string.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "").trim() || "";
 
 export const formatPropertyValue = string =>
   string === "true" ? true : string === "false" ? false : string.trim();
+
+export const formatProperties = obj => {
+  const formatedProps = obj.hasOwnProperty("category")
+    ? { ...obj, category: obj.category.toLowerCase() }
+    : {};
+  return { ...obj, ...formatedProps };
+};

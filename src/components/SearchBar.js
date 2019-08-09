@@ -16,12 +16,9 @@ const SearchBar = ({ searchBarData, handleSearch }) => {
     <div className="input-field col s9">
       <form
         autoComplete="off"
-        onChange={event => {
-          event.preventDefault();
-          handleSearch(event);
-        }}
         onSubmit={event => {
           event.preventDefault();
+          handleSearch(event);
         }}
       >
         <div className="search-wrapper">

@@ -1,5 +1,5 @@
 import { ITEM_CHANGE, REMOVE_FROM_SHOP, ADD_TO_SHOP } from "../constants";
-import { getNextKey, filterObject } from "../helpers";
+import { getNextKey, filterObject, formatProperties } from "../helpers";
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -10,7 +10,7 @@ const item = (state = {}, action) => {
       const updatedItem = {
         [key]: {
           ...state,
-          ...updatedProperties
+          ...formatProperties(updatedProperties)
         }
       };
       return updatedItem;
@@ -21,7 +21,7 @@ const item = (state = {}, action) => {
       const newItem = {
         [newKey]: {
           id: newKey,
-          ...item
+          ...formatProperties(item)
         }
       };
       return newItem;
