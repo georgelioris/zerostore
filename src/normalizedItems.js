@@ -3,7 +3,7 @@ import ItemImg from "./images/swshoer.png";
 export const defaultItems = {
   1: {
     id: 1,
-    title: "winter body",
+    title: "Winter body",
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 110,

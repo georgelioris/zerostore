@@ -22,9 +22,16 @@ const Inventory = ({ ...props }) => {
     M.updateTextFields();
   }, [props.items.length, props.filters]);
 
+  // Calls searchItems whenever filters change
+  // Returns items from state
   const searchResults = useCallback(searchItems(props.items, props.filters), [
     props.filters
-  ]).map(key => props.items[key]);
+  ]).reduce(
+    (acc, key) =>
+      props.items.hasOwnProperty(key) ? [...acc, props.items[key]] : acc,
+    []
+  );
+  console.log(searchResults);
 
   return (
     <main>
@@ -63,6 +70,7 @@ const autoCompleteData = obj => {
   );
 };
 
+// Returns the item ids that match search results
 const searchItems = (itemsObj, filter) => {
   const items = Object.values(itemsObj);
   return filter.searchCategory
