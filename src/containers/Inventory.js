@@ -23,7 +23,7 @@ const Inventory = ({ ...props }) => {
   }, [props.items.length, props.filters]);
 
   // Calls searchItems whenever filters change
-  // Returns items from state
+  // Returns items that exist in store state
   const searchResults = useCallback(searchItems(props.items, props.filters), [
     props.filters
   ]).reduce(
@@ -31,7 +31,6 @@ const Inventory = ({ ...props }) => {
       props.items.hasOwnProperty(key) ? [...acc, props.items[key]] : acc,
     []
   );
-  console.log(searchResults);
 
   return (
     <main>
