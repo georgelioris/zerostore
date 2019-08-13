@@ -56,8 +56,7 @@ export const formatPropertyValue = string =>
   string === "true" ? true : string === "false" ? false : string.trim();
 
 export const formatProperties = obj => {
-  const formatedProps = obj.hasOwnProperty("category")
+  return obj.hasOwnProperty("category")
     ? { ...obj, category: obj.category.toLowerCase() }
-    : {};
-  return { ...obj, ...formatedProps };
+    : obj;
 };

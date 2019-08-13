@@ -45,14 +45,8 @@ const visibleItems = (itemsObj, filters) => {
     : visibleItems;
 };
 
-const categories = itemsObj => {
-  const itemsArr = Object.values(itemsObj);
-  const categories = itemsArr.reduce(
-    (acc, item) => [...acc, item.category],
-    []
-  );
-  return onlyUnique(categories);
-};
+const categories = itemsObj =>
+  onlyUnique(Object.values(itemsObj).map(item => item.category));
 
 const mapStateToProps = state => {
   return {
