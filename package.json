@@ -39,6 +39,6 @@
     ]
   },
 	"resolutions": {
-    "babel-jest": "23.6.0"
+    "babel-jest": "24.7.1"
   }
 }
