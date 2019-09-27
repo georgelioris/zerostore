@@ -7,9 +7,8 @@ export const getProperty = items => cartItem => prop => {
 };
 
 // Returns a ({cartItem}) subtotal, getting the price from ({items})
-export const subTotal = items => cartItem => {
-  return getProperty(items)(cartItem)("price") * cartItem.quantity;
-};
+export const subTotal = items => cartItem =>
+  getProperty(items)(cartItem)("price") * cartItem.quantity;
 
 // Returns ([{cartItems}]) total getting the price from ({items})
 export const total = (cartItems, items) => {
@@ -55,8 +54,7 @@ export const sanitizeString = string =>
 export const formatPropertyValue = string =>
   string === "true" ? true : string === "false" ? false : string.trim();
 
-export const formatProperties = obj => {
-  return obj.hasOwnProperty("category")
+export const formatProperties = obj =>
+  obj.hasOwnProperty("category")
     ? { ...obj, category: obj.category.toLowerCase() }
     : obj;
-};

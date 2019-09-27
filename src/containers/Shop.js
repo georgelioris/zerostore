@@ -48,15 +48,13 @@ const visibleItems = (itemsObj, filters) => {
 const categories = itemsObj =>
   onlyUnique(Object.values(itemsObj).map(item => item.category));
 
-const mapStateToProps = state => {
-  return {
-    items: state.items,
-    visibleItems: visibleItems(state.items, state.filters),
-    cartItems: state.cartItems,
-    filters: state.filters,
-    categories: categories(state.items)
-  };
-};
+const mapStateToProps = state => ({
+  items: state.items,
+  visibleItems: visibleItems(state.items, state.filters),
+  cartItems: state.cartItems,
+  filters: state.filters,
+  categories: categories(state.items)
+});
 
 const mapDispatchToProps = dispatch => ({
   handleItemClick: (item, cartItems) => {

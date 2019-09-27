@@ -60,9 +60,8 @@ const Inventory = ({ ...props }) => {
   );
 };
 
-const autoCompleteData = obj => {
-  const itemsArray = Object.values(obj);
-  return itemsArray.reduce(
+const autoCompleteData = itemsObj =>
+  Object.values(itemsObj).reduce(
     (acc, item) => ({
       ...acc,
       [item.title]: item.img,
@@ -70,7 +69,6 @@ const autoCompleteData = obj => {
     }),
     {}
   );
-};
 
 // Returns the item ids that match search results
 const searchItems = (itemsObj, filter) => {
