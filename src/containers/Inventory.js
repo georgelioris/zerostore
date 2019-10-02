@@ -20,17 +20,20 @@ const Inventory = ({ ...props }) => {
   useEffect(() => {
     M.AutoInit();
     M.updateTextFields();
-  }, [props.items.length, props.filters]);
+  }, [props.items, props.filters]);
 
   // Calls searchItems whenever filters change
+  // or item is added/removed
   // Returns items that exist in store state
   const searchResults = useCallback(searchItems(props.items, props.filters), [
-    props.filters
-  ]).reduce(
-    (acc, key) =>
-      props.items.hasOwnProperty(key) ? [...acc, props.items[key]] : acc,
-    []
-  );
+    props.filters,
+    Object.keys(props.items)
+  ]).map(key => props.items[key]);
+
+  const renderedItems =
+    props.filters.searchCategory || props.filters.searchItem
+      ? searchResults
+      : Object.values(props.items);
 
   return (
     <main>
@@ -38,11 +41,11 @@ const Inventory = ({ ...props }) => {
         <h4>Inventory</h4>
         <SearchBar {...props} />
         <div className="col s9">
-          <InventoryForms {...props} items={searchResults} />
+          <InventoryForms {...props} items={renderedItems} />
         </div>
         <div className="col s3">
-          {searchResults.length ? (
-            <ItemCardList visibleItems={searchResults} />
+          {renderedItems.length ? (
+            <ItemCardList visibleItems={renderedItems} />
           ) : (
             <div
               className="container"
@@ -57,9 +60,8 @@ const Inventory = ({ ...props }) => {
   );
 };
 
-const autoCompleteData = obj => {
-  const itemsArray = Object.values(obj);
-  return itemsArray.reduce(
+const autoCompleteData = itemsObj =>
+  Object.values(itemsObj).reduce(
     (acc, item) => ({
       ...acc,
       [item.title]: item.img,
@@ -67,7 +69,6 @@ const autoCompleteData = obj => {
     }),
     {}
   );
-};
 
 // Returns the item ids that match search results
 const searchItems = (itemsObj, filter) => {
@@ -82,7 +83,7 @@ const searchItems = (itemsObj, filter) => {
     ? items
         .filter(item => item.title.toLowerCase().match(filter.searchItem))
         .map(i => i.id)
-    : items.map(i => i.id);
+    : Object.keys(itemsObj);
 };
 
 const mapStateToProps = state => ({
