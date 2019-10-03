@@ -7,7 +7,7 @@ const initstate = {
     title: "Title",
     desc: "some desc",
     price: 110,
-    img: "someUrl",
+    img: "imgSrc",
     category: "winter",
     available: true
   }
@@ -37,7 +37,7 @@ describe("items reucer", () => {
         title: "New Title",
         desc: "some desc",
         price: 42,
-        img: "someUrl",
+        img: "imgSrc",
         category: "new category",
         available: true
       }
@@ -51,7 +51,7 @@ describe("items reucer", () => {
           title: "Added Item Title",
           desc: "Added Item Desc",
           price: 42,
-          img: "someUrl",
+          img: "imgSrc",
           category: "ADDED Category",
           available: true
         }
@@ -62,7 +62,7 @@ describe("items reucer", () => {
         title: "Title",
         desc: "some desc",
         price: 110,
-        img: "someUrl",
+        img: "imgSrc",
         category: "winter",
         available: true
       },
@@ -71,7 +71,7 @@ describe("items reucer", () => {
         title: "Added Item Title",
         desc: "Added Item Desc",
         price: 42,
-        img: "someUrl",
+        img: "imgSrc",
         category: "added category",
         available: true
       }

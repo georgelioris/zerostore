@@ -1,13 +1,12 @@
 import * as actions from "../actions";
 import * as types from "../constants";
-import ItemImg from "../images/swshoe.png";
 
 const item = {
   id: 42,
   title: "Item Title",
   desc: "Item Description",
   price: 110,
-  img: ItemImg,
+  img: "imgSrc",
   category: "winter",
   available: true
 };
