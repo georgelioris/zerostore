@@ -22,7 +22,7 @@ const cartItem = (state, action) => {
       }
       return state;
     case DEC_QUANT:
-      if (state.id === item.id && item.quantity > 1) {
+      if (state.id === item.id && state.quantity > 1) {
         return {
           ...state,
           quantity: state.quantity - 1
