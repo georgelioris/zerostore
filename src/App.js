@@ -1,15 +1,19 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import history from "./history";
-import "materialize-css"; // It installs the JS asset only
-import "materialize-css/dist/css/materialize.min.css";
-import "material-icons";
+import { createStore } from "redux";
+import { rootReducer } from "./reducers";
+import { Provider } from "react-redux";
+import { initState } from "./preloadState";
 import Navbar from "./components/Navbar";
 import Shop from "./containers/Shop";
 import Cart from "./containers/Cart";
 import Inventory from "./containers/Inventory";
 import ItemPage from "./containers/ItemPage";
+import "materialize-css"; // It installs the JS asset only
+import "materialize-css/dist/css/materialize.min.css";
+import "material-icons/iconfont/material-icons.css";
+import history from "./history";
 
 const App = ({ ...props }) => (
   <Router history={history}>
@@ -32,4 +36,14 @@ const mapStateToProps = state => ({
   }, 0)
 });
 
-export default connect(mapStateToProps)(App);
+const ConnectedApp = connect(mapStateToProps)(App);
+
+const store = createStore(rootReducer, initState);
+
+export const Root = () => {
+  return (
+    <Provider store={store}>
+      <ConnectedApp />
+    </Provider>
+  );
+};
