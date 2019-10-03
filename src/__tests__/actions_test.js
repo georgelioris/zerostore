@@ -19,7 +19,7 @@ const payload = {
 
 const filter = "filter value";
 
-describe("actions", () => {
+describe("addToCart", () => {
   it("should return the item to be added to cart", () => {
     const expectedAction = {
       type: types.ADD_TO_CART,
@@ -29,7 +29,7 @@ describe("actions", () => {
   });
 });
 
-describe("actions", () => {
+describe("removeFromCart", () => {
   it("should return the item to be removed from cart", () => {
     const expectedAction = {
       type: types.REMOVE_FROM_CART,
@@ -69,7 +69,7 @@ describe("itemChange", () => {
   });
 });
 
-describe("actions", () => {
+describe("removeFromShop", () => {
   it("should return the item to be removed from shop", () => {
     const expectedAction = {
       type: types.REMOVE_FROM_SHOP,
@@ -79,7 +79,7 @@ describe("actions", () => {
   });
 });
 
-describe("actions", () => {
+describe("addToShop", () => {
   it("should return the item to be added to shop", () => {
     const expectedAction = {
       type: types.ADD_TO_SHOP,
@@ -89,7 +89,7 @@ describe("actions", () => {
   });
 });
 
-describe("actions", () => {
+describe("setCategoryFilter", () => {
   it("should return the category filter", () => {
     const expectedAction = {
       type: types.VISIBILITY_FILTER,
@@ -99,7 +99,7 @@ describe("actions", () => {
   });
 });
 
-describe("actions", () => {
+describe("setPriceFilter", () => {
   it("should return the price filter", () => {
     const expectedAction = {
       type: types.SORT_BY,
@@ -109,7 +109,7 @@ describe("actions", () => {
   });
 });
 
-describe("actions", () => {
+describe("setTargetItem", () => {
   it("should return the target item filter", () => {
     const expectedAction = {
       type: types.SEARCH_ITEMS,
