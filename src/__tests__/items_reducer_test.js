@@ -13,7 +13,7 @@ const initstate = {
   }
 };
 
-describe("items reucer", () => {
+describe("items reducer", () => {
   it("should return the initial state", () => {
     expect(items(initstate, {})).toEqual(initstate);
   });
@@ -43,6 +43,7 @@ describe("items reucer", () => {
       }
     });
   });
+
   it("should add an item to shop", () => {
     expect(
       items(initstate, {

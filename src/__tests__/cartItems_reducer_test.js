@@ -18,7 +18,7 @@ describe("cartItems reducer", () => {
     expect(cartItems(initstate, {})).toEqual(initstate);
   });
 
-  it("should handle addToCart", () => {
+  it("should handle adding an item to cart", () => {
     expect(
       cartItems(initstate, {
         type: types.ADD_TO_CART,
@@ -27,18 +27,19 @@ describe("cartItems reducer", () => {
     ).toEqual([...initstate, { id: 1, quantity: 1 }]);
   });
 
-  it("should handle incQuant", () => {
+  it("should handle increasing cart item quantity", () => {
     expect(
       cartItems(initstate, { type: types.INC_QUANT, item: { id: 2 } })
     ).toEqual([{ id: 2, quantity: 3 }, { id: 4, quantity: 1 }]);
   });
 
-  it("should handle decQuatn", () => {
+  it("should handle decreasing cart item quantity", () => {
     expect(
       cartItems(initstate, { type: types.DEC_QUANT, item: { id: 2 } })
     ).toEqual([{ id: 2, quantity: 1 }, { id: 4, quantity: 1 }]);
   });
-  it("should handle removeFromCart", () => {
+
+  it("should handle removing an item from cart", () => {
     expect(
       cartItems(initstate, { type: types.REMOVE_FROM_CART, item: { id: 2 } })
     ).toEqual([{ id: 4, quantity: 1 }]);
