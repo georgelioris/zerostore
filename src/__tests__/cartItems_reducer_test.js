@@ -39,6 +39,15 @@ describe("cartItems reducer", () => {
     ).toEqual([{ id: 2, quantity: 1 }, { id: 4, quantity: 1 }]);
   });
 
+  it("should not decrease cartItem quantity below 1", () => {
+    expect(
+      cartItems(initstate, {
+        type: types.DEC_QUANT,
+        item: { id: 4 }
+      })
+    ).toEqual([{ id: 2, quantity: 2 }, { id: 4, quantity: 1 }]);
+  });
+
   it("should handle removing an item from cart", () => {
     expect(
       cartItems(initstate, { type: types.REMOVE_FROM_CART, item: { id: 2 } })
