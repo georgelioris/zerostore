@@ -19,7 +19,7 @@ export const defaultItems = {
     price: 80,
     img: ItemImg,
     category: "new",
-    available: true
+    available: false
   },
   3: {
     id: 3,
@@ -79,7 +79,7 @@ export const defaultItems = {
     price: 40,
     img: ItemImg,
     category: "new",
-    available: true
+    available: false
   },
   9: {
     id: 9,
@@ -89,7 +89,7 @@ export const defaultItems = {
     price: 190,
     img: ItemImg,
     category: "new",
-    available: true
+    available: false
   },
   10: {
     id: 10,
