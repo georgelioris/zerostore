@@ -5,10 +5,13 @@
 <center>
 
 #### A simple web store built with functional react and redux
+### Homepage
+<img src="./src/images/sample1.png" width="800" />
 
-<img src="./src/images/store-sample.png" width="800" />
+### Inventory
+<img src="./src/images/sample2.png" width="800" />
 
-### [View on Netlify](https://zerostore.netlify.com)
+### [View Live](https://zerostore.netlify.com)
 
 </center>
 
