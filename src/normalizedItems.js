@@ -13,7 +13,7 @@ export const defaultItems = {
   },
   2: {
     id: 2,
-    title: "Adidas",
+    title: "Purple Runner",
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 80,
@@ -23,7 +23,7 @@ export const defaultItems = {
   },
   3: {
     id: 3,
-    title: "Vans",
+    title: "Red Lows",
     desc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",
     price: 120,
