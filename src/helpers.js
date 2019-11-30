@@ -1,7 +1,7 @@
 // Returns a ({cartItem}) ("property") from ({items})
 export const getProperty = items => cartItem => prop => {
   const key = cartItem.id;
-  return items.hasOwnProperty(key)
+  return Object.prototype.hasOwnProperty.call(items, key)
     ? items[key][prop] || prop + " doesn't exist"
     : "Item Removed";
 };
@@ -55,6 +55,6 @@ export const formatPropertyValue = string =>
   string === "true" ? true : string === "false" ? false : string.trim();
 
 export const formatProperties = obj =>
-  obj.hasOwnProperty("category")
+  Object.prototype.hasOwnProperty.call(obj, "category")
     ? { ...obj, category: obj.category.toLowerCase() }
     : obj;

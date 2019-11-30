@@ -58,7 +58,6 @@ const CartItemList = ({
         <CartItem
           key={cartItem.id}
           {...cartItem}
-          items={items}
           getProperty={getProperty(items)(cartItem)}
           subTotal={subTotal(items)(cartItem)}
           onClickInc={() => incQuant(cartItem)}
