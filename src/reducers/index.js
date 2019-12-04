@@ -14,8 +14,10 @@ export const rootReducer = (state, action) => {
   /// Filter cartItems that are not longer in store or unavailable
   const filteredCart = intermediateState.cartItems.filter(
     cartItem =>
-      intermediateState.items.hasOwnProperty(cartItem.id) &&
-      intermediateState.items[cartItem.id].available
+      Object.prototype.hasOwnProperty.call(
+        intermediateState.items,
+        cartItem.id
+      ) && intermediateState.items[cartItem.id].available
   );
   return { ...intermediateState, cartItems: filteredCart };
 };

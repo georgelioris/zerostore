@@ -7,7 +7,7 @@ const filters = (state = { categoryFilter: "All" }, action) => {
       return { ...state, categoryFilter: filter };
     case SORT_BY:
       return { ...state, priceFilter: filter };
-    case SEARCH_ITEMS:
+    case SEARCH_ITEMS: {
       const lowerCaseFilter = filter.toLowerCase();
       const searchFilters = lowerCaseFilter.match("category")
         ? {
@@ -19,6 +19,7 @@ const filters = (state = { categoryFilter: "All" }, action) => {
       return filter
         ? searchFilters
         : { ...state, searchCategory: null, searchItem: null };
+    }
     default:
       return state;
   }
