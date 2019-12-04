@@ -42,7 +42,7 @@ const FilterList = ({
       >
         <span className="valign-wrapper">
           <i className="material-icons">sort</i>
-          {filters.hasOwnProperty("priceFilter")
+          {Object.prototype.hasOwnProperty.call(filters, "priceFilter")
             ? filters.priceFilter
             : "Sort By"}
         </span>
