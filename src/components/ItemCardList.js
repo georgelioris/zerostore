@@ -7,7 +7,7 @@ const ItemCard = ({ ...item }) => (
   <div className="row">
     <div className="col s12 m6">
       <div className="card" key={item.id}>
-        <div className="card-image ">
+        <div className="card-image">
           <Image url={item.img} width={"300px"} height={"200px"} />
           <FloatingButton {...item} />
         </div>
@@ -20,7 +20,7 @@ const ItemCard = ({ ...item }) => (
           </p>
         </div>
         <div className="card-action grey lighten-4">
-          {item.category ? (
+          {item.category && (
             <button
               onClick={item.onCategoryClick}
               className="waves-effect
@@ -28,8 +28,6 @@ const ItemCard = ({ ...item }) => (
             >
               {item.category}
             </button>
-          ) : (
-            ""
           )}
           <Link className="red-text" to={`/shop/items/${item.id}`}>
             More

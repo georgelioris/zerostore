@@ -8,7 +8,7 @@ const imageStyle = ({ url, width, height }) => ({
 
 export const Image = ({ ...styles }) => (
   <div
-    className={`image-component ${styles.classNames}`}
+    className={`image-component ${styles.classNames || ""}`}
     style={imageStyle({ ...styles })}
   ></div>
 );
