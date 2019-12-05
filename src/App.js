@@ -31,7 +31,7 @@ const App = ({ ...props }) => (
 );
 
 const mapStateToProps = state => ({
-  countCart: state.cartItems.reduce((acc, cartItem) => {
+  countCart: Object.values(state.cartItems).reduce((acc, cartItem) => {
     return acc + cartItem.quantity;
   }, 0)
 });

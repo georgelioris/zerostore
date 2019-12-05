@@ -51,7 +51,7 @@ const categories = itemsObj =>
 const mapStateToProps = state => ({
   items: state.items,
   visibleItems: visibleItems(state.items, state.filters),
-  cartItems: state.cartItems,
+  cartItems: Object.values(state.cartItems),
   filters: state.filters,
   categories: categories(state.items)
 });

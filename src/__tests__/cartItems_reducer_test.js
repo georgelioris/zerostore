@@ -1,7 +1,7 @@
 import cartItems from "../reducers/cart";
 import * as types from "../constants";
 
-const initstate = [{ id: 2, quantity: 2 }, { id: 4, quantity: 1 }];
+const initstate = { 2: { id: 2, quantity: 2 }, 4: { id: 4, quantity: 1 } };
 
 const item = {
   id: 1,
@@ -24,19 +24,19 @@ describe("cartItems reducer", () => {
         type: types.ADD_TO_CART,
         item
       })
-    ).toEqual([...initstate, { id: 1, quantity: 1 }]);
+    ).toEqual({ ...initstate, 1: { id: 1, quantity: 1 } });
   });
 
   it("should handle increasing cart item quantity", () => {
     expect(
       cartItems(initstate, { type: types.INC_QUANT, item: { id: 2 } })
-    ).toEqual([{ id: 2, quantity: 3 }, { id: 4, quantity: 1 }]);
+    ).toEqual({ 2: { id: 2, quantity: 3 }, 4: { id: 4, quantity: 1 } });
   });
 
   it("should handle decreasing cart item quantity", () => {
     expect(
       cartItems(initstate, { type: types.DEC_QUANT, item: { id: 2 } })
-    ).toEqual([{ id: 2, quantity: 1 }, { id: 4, quantity: 1 }]);
+    ).toEqual({ 2: { id: 2, quantity: 1 }, 4: { id: 4, quantity: 1 } });
   });
 
   it("should not decrease cartItem quantity below 1", () => {
@@ -45,12 +45,12 @@ describe("cartItems reducer", () => {
         type: types.DEC_QUANT,
         item: { id: 4 }
       })
-    ).toEqual([{ id: 2, quantity: 2 }, { id: 4, quantity: 1 }]);
+    ).toEqual({ 2: { id: 2, quantity: 2 }, 4: { id: 4, quantity: 1 } });
   });
 
   it("should handle removing an item from cart", () => {
     expect(
       cartItems(initstate, { type: types.REMOVE_FROM_CART, item: { id: 2 } })
-    ).toEqual([{ id: 4, quantity: 1 }]);
+    ).toEqual({ 4: { id: 4, quantity: 1 } });
   });
 });

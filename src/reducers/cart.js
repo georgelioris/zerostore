@@ -4,50 +4,56 @@ import {
   DEC_QUANT,
   REMOVE_FROM_CART
 } from "../constants";
+import { filterObject } from "../helpers";
 
 const cartItem = (state, action) => {
-  const { item } = action;
+  const {
+    item: { id }
+  } = action;
   switch (action.type) {
     case ADD_TO_CART:
       return {
-        id: item.id,
-        quantity: 1
+        [id]: {
+          ...state,
+          id: id,
+          quantity: 1
+        }
       };
     case INC_QUANT:
-      if (state.id === item.id) {
-        return {
+      return {
+        [id]: {
           ...state,
           quantity: state.quantity + 1
-        };
-      }
-      return state;
+        }
+      };
     case DEC_QUANT:
-      if (state.id === item.id && state.quantity > 1) {
-        return {
+      return {
+        [id]: {
           ...state,
           quantity: state.quantity - 1
-        };
-      }
-      return state;
-
+        }
+      };
     default:
       return state;
   }
 };
 
-const cartItems = (state = [], action) => {
+const cartItems = (state = {}, action) => {
   const { item } = action;
+  const itemState = item && state[item.id];
   switch (action.type) {
     case ADD_TO_CART:
       return item.available === true
-        ? [...state, cartItem(undefined, action)]
+        ? { ...state, ...cartItem(itemState, action) }
         : state;
     case INC_QUANT:
-      return state.map(i => cartItem(i, action));
+      return { ...state, ...cartItem(itemState, action) };
     case DEC_QUANT:
-      return state.map(i => cartItem(i, action));
+      return state[item.id].quantity > 1
+        ? { ...state, ...cartItem(itemState, action) }
+        : state;
     case REMOVE_FROM_CART:
-      return state.filter(i => i.id !== item.id);
+      return filterObject(state, key => key !== item.id);
     default:
       return state;
   }

@@ -15,7 +15,7 @@ const Cart = ({ ...props }) => {
 
 const mapStateToProps = state => ({
   items: state.items,
-  cartItems: state.cartItems
+  cartItems: Object.values(state.cartItems)
 });
 
 const mapDispatchToProps = dispatch => ({
