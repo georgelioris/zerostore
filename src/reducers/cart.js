@@ -49,7 +49,7 @@ const cartItems = (state = {}, action) => {
     case INC_QUANT:
       return { ...state, ...cartItem(itemState, action) };
     case DEC_QUANT:
-      return state[item.id].quantity > 1
+      return itemState.quantity > 1
         ? { ...state, ...cartItem(itemState, action) }
         : state;
     case REMOVE_FROM_CART:
