@@ -14,7 +14,6 @@ const cartItem = (state, action) => {
     case ADD_TO_CART:
       return {
         [id]: {
-          ...state,
           id: id,
           quantity: 1
         }
@@ -44,7 +43,7 @@ const cartItems = (state = {}, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return item.available === true
-        ? { ...state, ...cartItem(itemState, action) }
+        ? { ...state, ...cartItem(undefined, action) }
         : state;
     case INC_QUANT:
       return { ...state, ...cartItem(itemState, action) };
