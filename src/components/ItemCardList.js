@@ -41,7 +41,7 @@ const ItemCard = ({ ...item }) => (
 const ItemCardList = ({
   visibleItems,
   handleItemClick,
-  cartItems,
+  cartObject,
   setCategoryFilter
 }) => {
   const itemCardList = visibleItems.map(item => (
@@ -49,7 +49,7 @@ const ItemCardList = ({
       key={item.id}
       {...item}
       onItemClick={
-        handleItemClick ? () => handleItemClick(item, cartItems) : null
+        handleItemClick ? () => handleItemClick(item, cartObject) : null
       }
       onCategoryClick={
         handleItemClick ? () => setCategoryFilter(item.category) : null

@@ -52,13 +52,14 @@ const mapStateToProps = state => ({
   items: state.items,
   visibleItems: visibleItems(state.items, state.filters),
   cartItems: Object.values(state.cartItems),
+  cartObject: state.cartItems,
   filters: state.filters,
   categories: categories(state.items)
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleItemClick: (item, cartItems) => {
-    const itemInCart = cartItems.find(cartItem => item.id === cartItem.id);
+  handleItemClick: (item, cartObject) => {
+    const itemInCart = cartObject[item.id];
     return itemInCart
       ? dispatch(incQuant(itemInCart))
       : dispatch(addToCart(item));
