@@ -2,7 +2,7 @@ import React from "react";
 import CartItemList from "../CartItemList";
 import { unmountComponentAtNode } from "react-dom";
 import { act, create } from "react-test-renderer";
-import { defaultItems } from "../../normalizedItems";
+import { defaultItems as items } from "../../normalizedItems";
 
 let container = null;
 beforeEach(() => {
@@ -20,7 +20,6 @@ afterEach(() => {
 
 // Mock state and actions
 const mock = jest.fn();
-const items = defaultItems;
 const cartItems = [{ id: 1, quantity: 1 }, { id: 4, quantity: 2 }];
 const props = {
   items: items,
