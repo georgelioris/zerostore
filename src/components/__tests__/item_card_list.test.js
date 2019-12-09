@@ -19,12 +19,15 @@ afterEach(() => {
   container = null;
 });
 
+// Mock state and function
 const mock = jest.fn();
 const props = {
   visibleItems: Object.values(items).slice(0, 4),
   cartObject: { 1: { id: 1, quantity: 1 }, 4: { id: 4, quanity: 2 } },
   handleItemClick: mock
 };
+
+// Tests
 describe("ItemCardList component", () => {
   const container = create(
     <Router>
@@ -35,6 +38,7 @@ describe("ItemCardList component", () => {
     expect(container.toJSON()).toMatchSnapshot();
   });
   it("Should dispatch handleItemClick on button click", () => {
+    // Click all hadndleItemClick buttons
     act(() => {
       container.root
         .findAllByProps({
@@ -65,6 +69,7 @@ describe("ItemCardList component", () => {
     );
   });
   it("Should include Link to /shop/items/ID", () => {
+    // Get all Link.to locations
     const links = container.root
       .findAllByProps({ className: "red-text" })
       .reduce((acc, i) => (i.props.to ? [...acc, i.props.to] : acc), []);
