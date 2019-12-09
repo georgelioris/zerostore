@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemList component Matches the snapshot 1`] = `
+<div
+  className="cartList"
+>
+  <h4>
+    My Cart
+  </h4>
+  <div
+    className="card white"
+  >
+    <div
+      className="card-content black-text row"
+    >
+      <div
+        className="col s2"
+      >
+        <div
+          className="image-component circle"
+          style={
+            Object {
+              "background": "url(swshoer.png)",
+              "height": "120px",
+              "width": "120px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="col s10"
+      >
+        <span
+          className="card-title"
+        >
+          Winter body
+          <div
+            className="remove"
+          >
+            <span
+              onClick={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="material-icons MuiIcon-root"
+              >
+                clear
+              </span>
+            </span>
+          </div>
+        </span>
+        <div
+          className="action"
+        >
+          <span
+            className="btn-floating white disabled"
+            onClick={[Function]}
+          >
+            <i
+              className="material-icons black-text"
+            >
+              remove
+            </i>
+          </span>
+          <span
+            className="quantity"
+          >
+            1
+          </span>
+          <span
+            className="btn-floating white"
+            onClick={[Function]}
+          >
+            <i
+              className="small material-icons black-text"
+            >
+              add
+            </i>
+          </span>
+          <br />
+          <div
+            className="subTotal"
+          >
+            Subtotal: 110$
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card white"
+  >
+    <div
+      className="card-content black-text row"
+    >
+      <div
+        className="col s2"
+      >
+        <div
+          className="image-component circle"
+          style={
+            Object {
+              "background": "url(swshoer.png)",
+              "height": "120px",
+              "width": "120px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="col s10"
+      >
+        <span
+          className="card-title"
+        >
+          White
+          <div
+            className="remove"
+          >
+            <span
+              onClick={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="material-icons MuiIcon-root"
+              >
+                clear
+              </span>
+            </span>
+          </div>
+        </span>
+        <div
+          className="action"
+        >
+          <span
+            className="btn-floating white "
+            onClick={[Function]}
+          >
+            <i
+              className="material-icons black-text"
+            >
+              remove
+            </i>
+          </span>
+          <span
+            className="quantity"
+          >
+            2
+          </span>
+          <span
+            className="btn-floating white"
+            onClick={[Function]}
+          >
+            <i
+              className="small material-icons black-text"
+            >
+              add
+            </i>
+          </span>
+          <br />
+          <div
+            className="subTotal"
+          >
+            Subtotal: 520$
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="total"
+  >
+    <span>
+      Total: 630 $
+    </span>
+  </div>
+</div>
+`;
