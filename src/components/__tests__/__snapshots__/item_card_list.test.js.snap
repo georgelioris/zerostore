@@ -1,0 +1,318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemCardList component Should match the snapshot 1`] = `
+<div>
+  <div
+    className="item-card-list"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col s12 m6"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-image"
+          >
+            <div
+              className="image-component "
+              style={
+                Object {
+                  "background": "url(swshoer.png)",
+                  "height": "200px",
+                  "width": "300px",
+                }
+              }
+            />
+            <div
+              className="btn-floating halfway-fab waves-effect waves-light red accent-2  sidenav-trigger"
+              data-target="slide-out"
+              onClick={[Function]}
+            >
+              <span>
+                <i
+                  className="material-icons"
+                >
+                  add
+                </i>
+              </span>
+            </div>
+          </div>
+          <div
+            className="card-content"
+          >
+            <span
+              className="card-title"
+            >
+              Winter body
+            </span>
+            <p
+              className="truncate"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.
+            </p>
+            <p>
+              <b>
+                Price: 
+                110
+                $
+              </b>
+            </p>
+          </div>
+          <div
+            className="card-action grey lighten-4"
+          >
+            <button
+              className="waves-effect red accent-1 white-text waves-light  btn-flat"
+              onClick={[Function]}
+            >
+              winter
+            </button>
+            <a
+              className="red-text"
+              href="/shop/items/1"
+              onClick={[Function]}
+            >
+              More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col s12 m6"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-image"
+          >
+            <div
+              className="image-component "
+              style={
+                Object {
+                  "background": "url(swshoer.png)",
+                  "height": "200px",
+                  "width": "300px",
+                }
+              }
+            />
+            <div
+              className="btn-floating halfway-fab waves-effect waves-light red accent-2 unavailable disabled sidenav-trigger"
+              data-target="slide-out"
+              onClick={[Function]}
+            >
+              <span>
+                <i
+                  className="material-icons"
+                >
+                  add
+                </i>
+              </span>
+            </div>
+          </div>
+          <div
+            className="card-content"
+          >
+            <span
+              className="card-title"
+            >
+              Purple Runner
+            </span>
+            <p
+              className="truncate"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.
+            </p>
+            <p>
+              <b>
+                Price: 
+                80
+                $
+              </b>
+            </p>
+          </div>
+          <div
+            className="card-action grey lighten-4"
+          >
+            <button
+              className="waves-effect red accent-1 white-text waves-light  btn-flat"
+              onClick={[Function]}
+            >
+              new
+            </button>
+            <a
+              className="red-text"
+              href="/shop/items/2"
+              onClick={[Function]}
+            >
+              More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col s12 m6"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-image"
+          >
+            <div
+              className="image-component "
+              style={
+                Object {
+                  "background": "url(swshoer.png)",
+                  "height": "200px",
+                  "width": "300px",
+                }
+              }
+            />
+            <div
+              className="btn-floating halfway-fab waves-effect waves-light red accent-2  sidenav-trigger"
+              data-target="slide-out"
+              onClick={[Function]}
+            >
+              <span>
+                <i
+                  className="material-icons"
+                >
+                  add
+                </i>
+              </span>
+            </div>
+          </div>
+          <div
+            className="card-content"
+          >
+            <span
+              className="card-title"
+            >
+              Red Lows
+            </span>
+            <p
+              className="truncate"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.
+            </p>
+            <p>
+              <b>
+                Price: 
+                120
+                $
+              </b>
+            </p>
+          </div>
+          <div
+            className="card-action grey lighten-4"
+          >
+            <button
+              className="waves-effect red accent-1 white-text waves-light  btn-flat"
+              onClick={[Function]}
+            >
+              on sale
+            </button>
+            <a
+              className="red-text"
+              href="/shop/items/3"
+              onClick={[Function]}
+            >
+              More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col s12 m6"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-image"
+          >
+            <div
+              className="image-component "
+              style={
+                Object {
+                  "background": "url(swshoer.png)",
+                  "height": "200px",
+                  "width": "300px",
+                }
+              }
+            />
+            <div
+              className="btn-floating halfway-fab waves-effect waves-light red accent-2  sidenav-trigger"
+              data-target="slide-out"
+              onClick={[Function]}
+            >
+              <span>
+                <i
+                  className="material-icons"
+                >
+                  add
+                </i>
+              </span>
+            </div>
+          </div>
+          <div
+            className="card-content"
+          >
+            <span
+              className="card-title"
+            >
+              White
+            </span>
+            <p
+              className="truncate"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.
+            </p>
+            <p>
+              <b>
+                Price: 
+                260
+                $
+              </b>
+            </p>
+          </div>
+          <div
+            className="card-action grey lighten-4"
+          >
+            <button
+              className="waves-effect red accent-1 white-text waves-light  btn-flat"
+              onClick={[Function]}
+            >
+              on sale
+            </button>
+            <a
+              className="red-text"
+              href="/shop/items/4"
+              onClick={[Function]}
+            >
+              More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
