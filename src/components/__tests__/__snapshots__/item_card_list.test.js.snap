@@ -18,7 +18,7 @@ exports[`ItemCardList component Should match the snapshot 1`] = `
             className="card-image"
           >
             <div
-              className="image-component "
+              className="image-component"
               style={
                 Object {
                   "background": "url(swshoer.png)",
@@ -95,7 +95,7 @@ exports[`ItemCardList component Should match the snapshot 1`] = `
             className="card-image"
           >
             <div
-              className="image-component "
+              className="image-component"
               style={
                 Object {
                   "background": "url(swshoer.png)",
@@ -172,7 +172,7 @@ exports[`ItemCardList component Should match the snapshot 1`] = `
             className="card-image"
           >
             <div
-              className="image-component "
+              className="image-component"
               style={
                 Object {
                   "background": "url(swshoer.png)",
@@ -249,7 +249,7 @@ exports[`ItemCardList component Should match the snapshot 1`] = `
             className="card-image"
           >
             <div
-              className="image-component "
+              className="image-component"
               style={
                 Object {
                   "background": "url(swshoer.png)",
