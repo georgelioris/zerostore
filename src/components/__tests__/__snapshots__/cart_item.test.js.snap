@@ -133,7 +133,7 @@ exports[`CartItemList component Matches the snapshot 1`] = `
           className="action"
         >
           <span
-            className="btn-floating white "
+            className="btn-floating white"
             onClick={[Function]}
           >
             <i
