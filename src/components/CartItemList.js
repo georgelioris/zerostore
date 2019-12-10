@@ -26,8 +26,8 @@ const CartItem = ({ ...cartItem }) => (
 
         <div className="action">
           <span
-            className={`btn-floating white ${
-              cartItem.quantity === 1 ? "disabled" : ""
+            className={`btn-floating white${
+              cartItem.quantity === 1 ? " disabled" : ""
             }`}
             onClick={cartItem.onClickDec}
           >
