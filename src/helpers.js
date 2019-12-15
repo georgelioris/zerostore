@@ -51,10 +51,19 @@ export const filterObject = (obj, callback) =>
 export const sanitizeString = string =>
   string.replace(/[^a-z0-9áéíóúñü .,_-]/gim, "").trim() || "";
 
-export const formatPropertyValue = string =>
-  string === "true" ? true : string === "false" ? false : string.trim();
-
-export const formatProperties = obj =>
-  Object.prototype.hasOwnProperty.call(obj, "category")
-    ? { ...obj, category: obj.category.toLowerCase() }
-    : obj;
+export const formatProperties = obj => {
+  const formater = property =>
+    property === "category"
+      ? obj[property].toLowerCase()
+      : property === "price"
+      ? Number(obj[property])
+      : property === "available"
+      ? obj[property] === "true"
+        ? true
+        : false
+      : obj[property];
+  return Object.keys(obj).reduce(
+    (acc, key) => ({ ...acc, [key]: formater(key) }),
+    {}
+  );
+};
