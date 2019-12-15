@@ -1,14 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getProperty, total } from "../helpers";
 import { Link } from "react-router-dom";
 
 const SideCartItem = ({ ...cartItem }) => (
-  <Link to="/">
+  <span>
     <i className="material-icons tiny" onClick={cartItem.onClickRemove}>
       clear
     </i>
     {cartItem.getProperty("title")} (x{cartItem.quantity})
-  </Link>
+  </span>
 );
 
 const SideCart = ({ cartItems, items, removeFromCart }) => {
@@ -46,6 +47,17 @@ const SideCart = ({ cartItems, items, removeFromCart }) => {
       </li>
     </ul>
   );
+};
+
+SideCart.propTypes = {
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      quantity: PropTypes.number
+    })
+  ),
+  items: PropTypes.objectOf(PropTypes.object),
+  removeFromCart: PropTypes.func
 };
 
 export default SideCart;
