@@ -57,10 +57,10 @@ export const formatProperties = obj => {
       ? obj[property].toLowerCase()
       : property === "price"
       ? Number(obj[property])
-      : property === "available"
-      ? obj[property] === "true"
-        ? true
-        : false
+      : property === "available" && obj[property] === "true"
+      ? true
+      : property === "available" && obj[property] === "false"
+      ? false
       : obj[property];
   return Object.keys(obj).reduce(
     (acc, key) => ({ ...acc, [key]: formater(key) }),
