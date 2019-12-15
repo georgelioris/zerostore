@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import M from "materialize-css";
 
 const FilterList = ({
@@ -57,5 +58,15 @@ const FilterList = ({
       </ul>
     </div>
   );
+};
+
+FilterList.propTypes = {
+  filters: PropTypes.shape({
+    categoryFilter: PropTypes.string,
+    priceFilter: PropTypes.string
+  }),
+  categories: PropTypes.arrayOf(PropTypes.string),
+  setCategoryFilter: PropTypes.func,
+  setPriceFilter: PropTypes.func
 };
 export default FilterList;

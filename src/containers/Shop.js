@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { onlyUnique, sortAscend, sortDescend } from "../helpers";
 import {
@@ -74,6 +75,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setPriceFilter(cartItem));
   }
 });
+
+Shop.propTypes = {
+  filters: PropTypes.shape({
+    categoryFilter: PropTypes.string
+  })
+};
 
 export default connect(
   mapStateToProps,

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const InventoryForms = ({
   items,
@@ -149,6 +150,23 @@ const InventoryForms = ({
       </form>
     </div>
   );
+};
+
+InventoryForms.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      img: PropTypes.string,
+      price: PropTypes.number,
+      category: PropTypes.string,
+      available: PropTypes.bool
+    })
+  ),
+  handleItemChange: PropTypes.func,
+  handleAddToShop: PropTypes.func,
+  handleRemoveFromShop: PropTypes.func
 };
 
 export default InventoryForms;

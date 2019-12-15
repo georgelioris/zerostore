@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   itemChange,
@@ -10,7 +11,7 @@ import ItemCardList from "../components/ItemCardList";
 import InventoryForms from "../components/InvenotryForms";
 import SearchBar from "../components/SearchBar";
 import M from "materialize-css";
-import { sanitizeString, formatPropertyValue } from "../helpers";
+import { sanitizeString } from "../helpers";
 
 const Inventory = ({ ...props }) => {
   useEffect(() => {
@@ -96,7 +97,9 @@ const mapDispatchToProps = dispatch => ({
   handleItemChange: (event, id) => {
     const e = event.target;
     const key = id;
-    const properties = { [e.name]: formatPropertyValue(e.value) };
+    const properties = {
+      [e.name]: typeof e.value === "string" ? e.value.trim() : e.value
+    };
     dispatch(itemChange({ key, properties }));
   },
   handleRemoveFromShop: item => {
@@ -107,7 +110,13 @@ const mapDispatchToProps = dispatch => ({
     const newItem = Object.values(e).reduce(
       (acc, input) =>
         input.name
-          ? { ...acc, [input.name]: formatPropertyValue(input.value) }
+          ? {
+              ...acc,
+              [input.name]:
+                typeof input.value === "string"
+                  ? input.value.trim()
+                  : input.value
+            }
           : acc,
       {}
     );
@@ -125,6 +134,24 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setTargetItem(sanitizedInput));
   }
 });
+Inventory.propTypes = {
+  items: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      img: PropTypes.string,
+      category: PropTypes.string,
+      available: PropTypes.bool
+    })
+  ),
+  filters: PropTypes.shape({
+    categoryFilter: PropTypes.string,
+    priceFilter: PropTypes.string,
+    searchCategory: PropTypes.string,
+    searchItem: PropTypes.string
+  })
+};
 
 export default connect(
   mapStateToProps,

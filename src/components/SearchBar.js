@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import M from "materialize-css";
 
 const SearchBar = ({ searchBarData, handleSearch }) => {
@@ -28,6 +29,11 @@ const SearchBar = ({ searchBarData, handleSearch }) => {
       </form>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  searchBarData: PropTypes.object,
+  handleSearch: PropTypes.func
 };
 
 export default SearchBar;

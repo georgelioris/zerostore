@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Image } from "./Image";
 import { Link } from "react-router-dom";
 import { FloatingButton } from "./FloatingButton";
@@ -63,4 +64,25 @@ const ItemCardList = ({
   );
 };
 
+ItemCardList.propTypes = {
+  visibleItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      img: PropTypes.string,
+      price: PropTypes.number,
+      category: PropTypes.string,
+      available: PropTypes.bool
+    })
+  ),
+  cartObject: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      quantity: PropTypes.number
+    })
+  ),
+  handleItemClick: PropTypes.func,
+  setCategoryFilter: PropTypes.func
+};
 export default ItemCardList;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
 import { Image } from "./Image";
 import { getProperty, total, subTotal } from "../helpers";
@@ -82,4 +83,25 @@ const CartItemList = ({
   );
 };
 
+CartItemList.propTypes = {
+  items: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      img: PropTypes.string,
+      category: PropTypes.string,
+      available: PropTypes.bool
+    })
+  ),
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      quantity: PropTypes.number
+    })
+  ),
+  incQuant: PropTypes.func,
+  decQuant: PropTypes.func,
+  removeFromCart: PropTypes.func
+};
 export default CartItemList;
