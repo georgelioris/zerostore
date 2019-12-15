@@ -1,11 +1,29 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import SideCart from "../components/SideCart";
 import { connect } from "react-redux";
+import { FloatingButton } from "../components/FloatingButton";
+import { incQuant, addToCart, removeFromCart } from "../actions";
 import M from "materialize-css";
 
-const ItemPage = ({ item }) => {
+const ItemPage = ({ ...props }) => {
   useEffect(() => {
     M.AutoInit();
-  }, [item]);
+    const sideCart = document.getElementById("slide-out");
+    M.Sidenav.init(sideCart, { edge: "right" });
+  }, []);
+
+  return (
+    <main>
+      <SideCart {...props} />
+      <div className="container">
+        <SingleItem {...props} />
+      </div>
+    </main>
+  );
+};
+
+const SingleItem = ({ item, handleItemClick, cartObject }) => {
   return (
     <div className="item-page container">
       <div className="row">
@@ -13,8 +31,8 @@ const ItemPage = ({ item }) => {
           <h4>{item.title}</h4>
         </div>
       </div>
-      <div class="card white" style={{ width: "100%" }}>
-        <div class="card-content  white lighten-4 black-text">
+      <div className="card white" style={{ width: "100%" }}>
+        <div className="card-content  white lighten-4 black-text">
           <div className="row">
             <div className="card-image col l5 s12 m12">
               <img
@@ -23,17 +41,10 @@ const ItemPage = ({ item }) => {
                 alt={item.title}
                 className="materialboxed"
               />
-              <span
-                className={`btn-floating halfway-fab right btn-large waves-effect waves-light red accent-2 sidenav-trigger ${
-                  item.available === false ? "unavailable disabled" : ""
-                }`}
-                data-target="slide-out"
-                onClick={item.onItemClick}
-              >
-                <span>
-                  <i className="material-icons">add</i>
-                </span>
-              </span>
+              <FloatingButton
+                {...item}
+                onItemClick={() => handleItemClick(item, cartObject)}
+              />
             </div>
 
             <div className="col l7 s12 m12">
@@ -55,8 +66,40 @@ const mapStateToProps = (state, routeProps) => {
   const { match } = routeProps;
   const id = match.params.id;
   return {
-    item: state.items[id]
+    item: state.items[id],
+    items: state.items,
+    cartItems: Object.values(state.cartItems),
+    cartObject: state.cartItems
   };
 };
 
-export default connect(mapStateToProps)(ItemPage);
+const mapDispatchToProps = dispatch => ({
+  handleItemClick: (item, cartObject) => {
+    const itemInCart = cartObject[item.id];
+    return itemInCart
+      ? dispatch(incQuant(itemInCart))
+      : dispatch(addToCart(item));
+  },
+  removeFromCart: cartItem => {
+    dispatch(removeFromCart(cartItem));
+  }
+});
+
+SingleItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    img: PropTypes.string,
+    price: PropTypes.number,
+    category: PropTypes.string,
+    available: PropTypes.bool
+  }),
+  handleItemClick: PropTypes.func,
+  cartObject: PropTypes.objectOf(PropTypes.object)
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemPage);
